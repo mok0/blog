@@ -1,0 +1,13 @@
+{{ define "main"}}
+<div class="container">
+  <article>
+    <h2>{{.Title}}</h2>
+    <div class="homepage-article__date">{{ .Params.date.Format "2006-01-02 15:04" }}</div>
+    <div class="homepage-article__author">{{ index .Params.author }}</div>
+    <hr />
+    <div class=content>
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}

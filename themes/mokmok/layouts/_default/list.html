@@ -1,0 +1,24 @@
+{{ define "main"}}
+<div class="container">
+<section>
+  <h3>Blog posts</h3>
+  <div class="posts">
+    {{ range where .Site.RegularPages "Type" "posts" }}
+    <ul class="homepage-article">
+      <div class="homepage-article__title">
+        <a class="homepage-article__link" href="{{ .Permalink }}">{{ .Title }}</a>
+      </div>
+      <div class="homepage-article__date">{{ .Params.date.Format "2006-01-02" }}</div>
+      <div class="homepage-article__summary">
+        {{ .Summary }}
+        <span>
+          <a class="homepage-article__link" href="{{ .Permalink }}"> ... </a>
+        </span>
+      </div>
+      <hr/>
+    </ul>
+    {{ end }}
+  </div>
+</section>
+</div>
+{{ end }}

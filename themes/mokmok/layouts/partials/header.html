@@ -1,0 +1,9 @@
+<header>
+  <span id="header-title">
+    {{ .Site.Title }}
+  </span>
+  <div id="header-subtitle">
+        {{ .Site.Params.slogan }}
+  </div>
+  {{- partial "nav.html" . -}}
+</header>

@@ -1,0 +1,37 @@
+{{ define "main"}}
+<div class="container">
+  <article>
+    <h2>{{.Title}}</h2>
+    <div class="homepage-article__date">{{ .Params.date.Format "2006-01-02 15:04" }}</div>
+    <div class="homepage-article__author">{{ index .Params.author 0 }}</div>
+    <hr />
+    <div class=content>
+      {{ .Content }}
+    </div>
+  </article>
+
+
+<!-- test tag section from theme jane -->
+<!--
+<div class="tag-section">
+          {{ with .Params.tags -}}
+            <div class="post-tags">
+              {{ range . }}
+                {{- $name := . -}}
+                {{- with $.Site.GetPage "taxonomy" (printf "tags/%s" $name) | default ($.Sit
+e.GetPage "taxonomy" (printf "tags/%s" ($name | urlize))) -}}
+                  <a href="{{ .Permalink }}">{{ $name }}</a>
+                {{ end -}}
+              {{ end }}
+            </div>
+          {{- end }}
+</div>
+-->
+
+
+
+
+
+
+</div>
+{{ end }}
