@@ -1,0 +1,37 @@
+#+TITLE: Installing Jekyll
+#+AUTHOR: Morten Kjeldgaard
+#+DATE: [2015-05-02T20:56:12+2:00]
+#+DATE_CREATED: 2015-05-02 20:56:12
+#+DRAFT: false
+#+CATEGORY: Jekyll
+#+TAGS[]: jekyll ruby gem python3
+#+WEIGHT: 10
+
+If you are using Python 3 as a standard, the [[http://jekyllrb.com][Jekyll]] installation from [[http://brew.sh][homebrew]] might give you problems, because the Jekyll installation out-of-the box uses the syntax higlighter [[http://pygments.org][Pygments]], which does not work under Python 3. # more
+
+This is the rather mysterious error I got:
+
+#+begin_src bash
+$ jekyll serve --trace
+Configuration file: /Users/mok/github/mok0.github.io/_config.yml
+            Source: /Users/mok/github/mok0.github.io
+       Destination: /Users/mok/github/mok0.github.io/_site
+      Generating...
+  Liquid Exception: No header received back. in _posts/2015-05-02-welcome-to-jekyll.markdown
+#+end_src
+
+Instead, use the Ruby highlighter =rouge=. In =_config.yml= add:
+#+begin_src yml
+highlighter: rouge
+#+end_src
+
+and install the rouge highlighter gem:
+#+begin_src shell
+gem install rouge
+#+end_src
+
+Now the installation should go without problems.
+
+# Local Variables:
+# org-time-stamp-custom-formats: ("<%Y-%m>" . "<%Y-%m-%dT%H:%M:%S%:z>")
+# End:

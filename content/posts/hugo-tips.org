@@ -1,0 +1,113 @@
+#+TITLE: Tips for Hugo
+#+DATE: [2024-06-12 19:11]
+#+DRAFT: false
+#+AUTHOR: Morten Kjeldgaard
+#+CATEGORY: Hugo
+#+TAGS[]: Emacs Org-mode
+#+WEIGHT: 10
+
+My unordered tips and reminders for Hugo as developing this site.  # more
+
+* Emacs Org Mode support in Hugo
+
+If your content format is Emacs Org Mode, you may provide front matter using Org Mode keywords.
+For example:
+
+
+#+begin_src org
+#+TITLE: Example
+#+DATE: 2024-02-02T04:14:54-08:00
+#+DRAFT: false
+#+AUTHOR: John Smith
+#+GENRES: mystery
+#+GENRES: romance
+#+TAGS: red
+#+TAGS: blue
+#+WEIGHT: 10
+#+end_src
+
+Note that you can also specify array elements on a single line:
+
+#+begin_src org
+ #+TAGS[]: red blue
+#+end_src
+
+When using the Emacs Org Mode content format, use a =# more= divider to indicate the end of the content summary.
+
+Check out the Hugo manual [[https://gohugo.io/content-management/front-matter/#emacs-org-mode][here]].
+
+* Highlight of code and other markup settings
+
+
+#+begin_src toml
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true  # false turns off code highlighting
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4
+#+end_src
+
+* Allow HTML in files
+To allow the export of raw HTML in content files, the following has to be in the site's =config.toml= file:
+#+begin_src toml
+ [markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+
+#+end_src
+
+** Literal export in Org mode files
+
+A single line of raw HTML can be exported like this:
+#+begin_src org
+#+HTML: <p>Literal HTML code for export</p>
+#+end_src
+
+Larger blocks can be embedded in an HTML block:
+
+#+begin_src org
+#+BEGIN_EXPORT html
+  <p><i>All lines between these markers are exported literally</i></p>
+#+END_EXPORT
+#+end_src
+Below is an example of this:
+
+#+html: <hr />
+#+HTML: <p>Literal HTML code for export</p>
+
+#+BEGIN_EXPORT html
+<p><i>All lines between these markers are exported literally</i><p>
+#+END_EXPORT
+#+html: <hr />
+
+Check out the Org manual [[https://orgmode.org/manual/Quoting-HTML-tags.html][here]].
+
+
+* Set Hugo code block theme
+
+Hugo uses the Chroma highlighter engine[fn:1] . The default theme is apparently monokai, but it is too much contrast for my site with super black code blocks. I found the list of themes [[https://github.com/alecthomas/chroma/tree/master/styles][here]] and chose =monokailight= which looks much nicer. The code theme is defined in =config.toml= thus:
+
+#+begin_src toml
+ pygmentsstyle = "monokailight"
+#+end_src
+
+
+
+
+* Footnotes
+
+[fn:1] Look here: [[https://gohugo.io/content-management/syntax-highlighting/]]
+
+
+# Local Variables:
+# org-time-stamp-custom-formats: ("<%Y-%m>" . "<%Y-%m-%dT%H:%M:%S%:z>")
+# End:
