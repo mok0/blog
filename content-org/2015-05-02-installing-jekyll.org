@@ -1,11 +1,13 @@
 #+TITLE: Installing Jekyll
+#+DATE: [2015-05-02 20:56]
 #+AUTHOR: Morten Kjeldgaard
-#+DATE: [2015-05-02T20:56:12+2:00]
 #+DATE_CREATED: 2015-05-02 20:56:12
-#+DRAFT: false
-#+CATEGORY: Jekyll
-#+TAGS[]: jekyll ruby gem python3
-#+WEIGHT: 10
+#+HUGO_CATEGORIES: Jekyll
+#+HUGO_TAGS: jekyll ruby gem python3
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: ./posts/jekyll
+#+OPTIONS: author:nil
+#+HUGO_CUSTOM_FRONT_MATTER: :author "Morten Kjeldgaard"
 
 If you are using Python 3 as a standard, the [[http://jekyllrb.com][Jekyll]] installation from [[http://brew.sh][homebrew]] might give you problems, because the Jekyll installation out-of-the box uses the syntax higlighter [[http://pygments.org][Pygments]], which does not work under Python 3. # more
 

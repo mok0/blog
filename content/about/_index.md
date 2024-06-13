@@ -3,19 +3,18 @@ title: "About me!"
 layout: single
 ---
 
-Here's a bit about me.
+Structural Biologist from Aarhus University, retired. Antifascist. Tweets about science, politics, IT, pseudoscience, scientific racism and other nonsense.
 
 <div class="grid">
   <div>
-  Left columns
-  </div>
-  <div>
-    <img alt="Me in 2017" src="/img/selfie-20170111.jpg">
-  </div>
+    Morten Kjeldgaard<br/>
+    Havvejen 166<br/>
+    8305 Samsø<br/>
+    <a href="mailto:"mortenkjeldgaard@gmail.com">mortenkjeldgaard@gmail.com</a><br/>
+    <a href="https://mastodon.online/@mok0">@mok0@mastodon.online</a><br/>
+    <a href="https://www.instagram.com/mok0/">instagram</a><br/>
 </div>
-
-Morten Kjeldgaard\
-Havvejen 166\
-8305 Samsø\
-</i><mortenkjeldgaard@gmail.com>\
-@mok0@mastodon.online
+<div>
+<img alt="Me in 2017" src="/img/selfie-20170111.jpg">
+</div>
+</div>

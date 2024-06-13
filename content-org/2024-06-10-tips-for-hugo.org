@@ -1,0 +1,227 @@
+#+TITLE: Tips for Hugo
+#+DATE: [2024-06-13 22:18]
+#+AUTHOR: Morten Kjeldgaard
+#+HUGO_CATEGORIES: Hugo
+#+HUGO_TAGS: emacs org-mode
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: ./posts
+#+OPTIONS: author:nil toc:nil num:1
+#+HUGO_CUSTOM_FRONT_MATTER: :author Morten Kjeldgaard
+#+HUGO_CUSTOM_FRONT_MATTER: :description My Hugo tips
+#+HUGO_CUSTOM_FRONT_MATTER: :keywords hugo ox-hugo emacs
+
+
+Tips and tricks on Hugo, Emacs, Org-mode and =ox-hugo= I discovered while developing this site, in random order.
+#+html: <!--more-->
+
+#+TOC: headlines 2
+
+* Emacs Org Mode support in Hugo
+
+If your content format is Emacs Org Mode, you may provide front matter using Org Mode keywords.
+For example:
+
+
+#+begin_src org
+#+TITLE: Example
+#+DATE: 2024-02-02T04:14:54-08:00
+#+DRAFT: false
+#+AUTHOR: John Smith
+#+GENRES: mystery
+#+GENRES: romance
+#+TAGS: red
+#+TAGS: blue
+#+WEIGHT: 10
+#+end_src
+
+Note that you can also specify array elements on a single line:
+
+#+begin_src org
+ #+TAGS[]: red blue
+#+end_src
+
+which is now the preferred way, multiline tags are deprecated.
+
+When using the Emacs Org Mode content format, use a =# more= divider to indicate the end of the content summary.
+
+Check out the Hugo manual [[https://gohugo.io/content-management/front-matter/#emacs-org-mode][here]].
+
+** Hugo's translation of Org mode files not working
+
+Hugo can translate Org files but the dates are messed up, Hugo can't interpret the =#+DATE:= field as written by Emacs.  I have given up to figure out how it works and I am going back to =ox-hugo=.
+
+These are the fields you need to tag for =ox-hugo=, they are different from the tags Hugo uses when translating Org files.
+
+#+begin_src org
+,#+HUGO_BASE_DIR: ../
+,#+HUGO_SECTION: ./posts
+,#+HUGO_WEIGHT: 2001
+,#+HUGO_AUTO_SET_LASTMOD: t
+,#+HUGO_DESCRIPTION: "A description of this page"
+,#+HUGO_TAGS: hugo org
+,#+HUGO_CATEGORIES: Emacs
+,#+HUGO_DRAFT: false
+,#+HUGO_MENU: :menu "main" :weight 20
+,#+HUGO_CUSTOM_FRONT_MATTER: :foo bar :baz zoo :alpha 1 :beta "two words"
+#+end_src
+
+There is a problem with =ox-hugo= when it exports author, in the toml frontmatter it outputs:
+
+#+begin_src toml
+author = ["Morten Kjeldgaard"]
+  #+end_src
+
+but it needs to be:
+
+#+begin_src toml
+author = "Morten Kjeldgaard"
+  #+end_src
+
+therefore I also  have to specify no export of author, AND export the author verbatim, like this:
+
+#+begin_src org
+,#+OPTIONS: author:nil
+,#+HUGO_CUSTOM_FRONT_MATTER: :author "Morten Kjeldgaard"
+#+end_src
+
+** Advantage of using =ox-hugo= over Hugo's Org translation
+The _advantage_ of using =ox-hugo= is that document remains a pristine Org-mode document, with proper Org-mode header lines, but most importantly, without Hugo patches to the format. The most notable is the end-of-summary marker, which in Hugo's org is =#more=, but that line will appear if you export your Org document to other formats. Instead, use this:
+#+begin_src org
+,#+html: <!--more-->
+#+end_src
+
+The _drawback_ of using =ox-hugo= is that there's an extra step exporting the document to /markdown/, usually with a =C-c C-e H h= key combo. However, this can be skipped if the =org-hugo-auto-export-mode= is set, this can be done on a per file basis by entering as the last lines of the document:
+#+begin_src org
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:
+#+end_src
+or it can be activated globally in =init.el=.
+
+* Highlight of code and other markup settings
+
+
+#+begin_src toml
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true  # false turns off code highlighting
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4
+#+end_src
+
+* Allow HTML in files
+To allow the export of raw HTML in content files, the following has to be in the site's =config.toml= file:
+#+begin_src toml
+ [markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+
+#+end_src
+
+** Literal export in Org mode files
+
+A single line of raw HTML can be exported like this:
+#+begin_src org
+#+HTML: <p>Literal HTML code for export</p>
+#+end_src
+
+Larger blocks can be embedded in an HTML block:
+
+#+begin_src org
+#+BEGIN_EXPORT html
+  <p><i>All lines between these markers are exported literally</i></p>
+#+END_EXPORT
+#+end_src
+Below is an example of this:
+
+#+html: <hr />
+#+HTML: <p>Literal HTML code for export</p>
+
+#+BEGIN_EXPORT html
+<p><i>All lines between these markers are exported literally</i><p>
+#+END_EXPORT
+#+html: <hr />
+
+Check out the Org manual [[https://orgmode.org/manual/Quoting-HTML-tags.html][here]].
+
+* Set Hugo code block theme
+
+Hugo uses the Chroma highlighter engine[fn:1] . The default theme is apparently monokai, but it is too much contrast for my site with super black code blocks. I found the list of themes [[https://github.com/alecthomas/chroma/tree/master/styles][here]] and chose =monokailight= which looks much nicer. The code theme is defined in =config.toml= thus:
+
+#+begin_src toml
+ pygmentsstyle = "monokailight"
+#+end_src
+
+* Add metatags for SEO
+
+Found these suggestions [[https://djangocas.dev/blog/hugo/tips-on-hugo-seo/][here]].
+
+Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services. The <meta> tag defines metadata about an HTML document. <meta> tags always go inside the <head> element, and are typically used to specify character set charset, page description, keywords, author of the document, and viewport settings.
+
+** Keywords
+
+Use keywords meta tag to provide a list of search keywords of current the page.  This is done in Hugo by adding the keywords meta tag in the =partials/head.html=  template:
+
+#+begin_src hugo
+{{ with .Param.Keywords }}
+   <meta name="keywords" content="{{ delimit . "," }}">
+{{ end }}
+#+end_src
+
+Then in /markdown/ use keywords to define a list of keywords:
+
+#+begin_src yaml
+---
+title: Tips on Hugo SEO
+keywords:
+- hugo
+- seo
+---
+#+end_src
+
+** Description
+
+Use =description= tag to provide a short description of the page, this adds a  description meta tag to allow search engine used in the snippet shown in search results in some situations.
+
+#+begin_src hugo
+{{ with .Param.Description }}
+   <meta name="keywords" content="{{ . }}">
+{{ end }}
+#+end_src
+
+** How to insert description and keyword metatags with ox-hugo
+
+Unfortunately, there are no =#+HUGO_DESCRIPTION= or  =#+HUGO_KEYWORDS= tags for =ox-hugo=, but the following works:
+
+#+begin_src org
+  ,#+HUGO_CUSTOM_FRONT_MATTER: :description My Hugo tips
+  ,#+HUGO_CUSTOM_FRONT_MATTER: :keywords hugo ox-hugo emacs
+#+end_src
+
+When the right code in ==partials/head.html=, this becomes strings in the markdown front matter and eventually gets translated into =meta= tags:
+#+begin_src html
+ <meta name="description" content="My Hugo tips">
+ <meta name="keywords" content="hugo, ox-hugo, emacs">
+#+end_src
+
+
+
+
+
+* Footnotes
+
+[fn:1] Look here: [[https://gohugo.io/content-management/syntax-highlighting/]]
+
+# Local Variables:
+# org-time-stamp-custom-formats: ("<%Y-%m>" . "<%Y-%m-%dT%H:%M:%S%:z>")
+# eval: (org-hugo-auto-export-mode)
+# End:
