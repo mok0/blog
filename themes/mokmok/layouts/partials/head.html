@@ -1,20 +1,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-      />
-
-    <!-- Additional CSS -->
+    {{- with .Params.Description -}}
+    <meta name="description" content="{{ . }}">
+    {{ end }}
+    {{- with .Params.Keywords -}}
+    <meta name="keywords" content="{{ delimit . ", " }}">
+    {{ end }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link href="/css/main.css" rel="stylesheet"/>
-
     <title>
       {{- if .IsHome -}}
-         {{- .Site.Title -}}{{ with .Site.Params.slogan }} ~ {{ . }}{{ end }}
+      {{- .Site.Title -}}{{ with .Site.Params.slogan }} ~ {{ . }}{{ end }}
       {{- else -}}
-         {{- .Title}} ~ {{.Site.Title -}}
+      {{- .Title}} ~ {{.Site.Title -}}
       {{- end -}}
     </title>
 </head>

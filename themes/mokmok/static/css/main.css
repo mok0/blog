@@ -1,14 +1,8 @@
-/* body {
-    font-size: 14px;
-}
-*/
-
- :root {
+:root {
      --pico-border-radius: 0.6rem;
-     --pico-font-size: 14px;
-    --pico-typography-spacing-vertical: 1.5rem;
+     --pico-font-size: 10pt;
+     --pico-typography-spacing-vertical: 1.5rem;
     }
-
 
 header {
     background-color: var(--pico-color);
@@ -53,12 +47,10 @@ footer {
      transform: scale(2);
 }
 
-
 a:hover {
     color: #aaa;
      transform: scale(1.1);
 }
-
 
 .homepage-article__link {
     color: #999;
@@ -68,14 +60,28 @@ a:hover {
 
 }
 
-
 .homepage-article__title {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-/*
-.highlight pre {
-    background-color: #e7e7e7 !important;
+.homepage-article__categories {
+    text-align: left;
 }
-*/
+
+.homepage-article__categories a {
+   text-decoration: none;
+}
+
+.homepage-article__tags {
+    font-size: 0.8rem;
+}
+
+.homepage-article__tags a {
+    text-decoration: none;
+}
+
+.title-latest-blogpost {
+    color: var(--pico-h1-color);
+    text-decoration: none;
+}

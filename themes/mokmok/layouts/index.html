@@ -8,11 +8,13 @@
   <div class="posts">
     {{ range where .Site.RegularPages "Type" "posts" | first 1 }}
     <article class="homepage-article">
-      <h1>{{ .Title }}</h1>
+      <h1>
+      <a href="{{ .Permalink }}" class="title-latest-blogpost"> {{ .Title }}</a>
+      </h1>
       <div class="homepage-article__date">{{ .Params.date.Format "2006-01-02" }}</div>
       <div class="homepage-article__author">{{ index .Params.author }}</div>
       <hr />
-      <div class=content>
+      <div class="content">
         {{ .Content }}
       </div>
     </article>
