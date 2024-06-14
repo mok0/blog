@@ -10,6 +10,7 @@ author = "Treblinka Tanketom"
 Da Jørgen Varnæs får den gode idé, at rygtet om bryllup og graviditet
 bliver endeligt bekræftet. Bliver i 1946 op til te hos familien
 Varnæs. Maudes sarte næse, sætter hende på en rejse til Paris.
+<!--more-->
 
 Stiller i 1946 gifter med bilkongen De Strella og flytter ind hos sin
 datter og svigersøn. På vej hjem møder han Mads Andersen-Skjern og

@@ -8,7 +8,10 @@ language = "da"
 +++
 
 Elisabeth Friis lægger sig ud med borgerskabet ved at indfinde sig med
-en cykelpumpe. Mads sætter dog sin vilje igennem og får derved et
+en cykelpumpe.
+<!--more-->
+
+Mads sætter dog sin vilje igennem og får derved et
 anstrengt forhold til Ulla Jacobsen bliver ofte efter lukketid for at
 bede om et økonomisk tilskud, men er blevet nazist og soldat i
 Regiment Nordland. Efter prøver kommer der en mand og advarer Herbert

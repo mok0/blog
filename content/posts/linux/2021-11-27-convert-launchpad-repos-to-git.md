@@ -15,13 +15,12 @@ maintained. A spinoff project named [Breezy][breezy] took over, and is
 maintaining the code, now invoked by the commend `brz` (but with an
 alias to former 'bzr'). Anyway, it's time to convert my archives to
 git.
-
+<!--more-->
 
 Select "git" and push "Update at the bottom.
 
 You have to make sure you have pulled the latest version of the
 Bazaar repo.
-
 
     bzr pull
 
@@ -52,7 +51,6 @@ You can add a remote for your Git repository with the command:
 ... and finally push the Git branch to Launchpad with:
 
     git push origin master
-
 
 [breezy]: https://github.com/breezy-team/breezy
 [mmdb-configure-code]: https://code.launchpad.net/mmdb/+configure-code

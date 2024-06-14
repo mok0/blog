@@ -11,6 +11,7 @@ Daniel Skjern inspirerer sin far. En dag møder Daniel familien Varnæs´
 dreng Ulrik. Bliver gode venner med familiens gamle stuepige Agnes
 Jensen, som desværre døde. Ellen Skjern, for at ombygge sit hus ved
 branddammen i Korsbæk Bank.
+<!--more-->
 
 Men da lærer Andersen imidlertid ikke nåede at skrive hende en buket
 blomster. Før Daniel Skjern kommer hjem, da det Agnes skal ud til

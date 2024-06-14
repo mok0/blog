@@ -8,7 +8,7 @@ theme = "mokmok"
 pygmentsstyle = "monokailight"
 
 # Length of summary in words
-summaryLength = 30
+#summaryLength = 30
 
 [params]
 slogan = "Super Cool"

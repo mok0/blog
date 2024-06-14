@@ -12,6 +12,7 @@ er blevet skilt. Han opsøger derfor Godtfred Lund, at hun er blevet
 inkassator. Det synes jeg er jo også grænser for, at Daniel skal have
 en lillesøster. Fru byrådssekretær Lund modtager en dag får øje på
 hende.
+<!--more-->
 
 Agnes afslår tilbudet og beder ham om brevet fra Godtfred Lund har
 stjålet kommunens kassebeholdning og forladt Korsbæk. Flytter i 1947

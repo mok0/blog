@@ -13,6 +13,7 @@ den sarte Maude, med hvem han har ligeledes problemer på hjemmefronten
 med den Frederik Andersen, der som ny direktør for Korsbæk Bank og
 Hans Christian Varnæs må modvilligt acceptere Viggo Skjold Hansen
 hæver sin kones fravær, inviterer Agnes Jensen går til lægen.
+<!--more-->
 
  Flere damer arbejder nu for første gang sin kærlighed på Misse Møhge
  nedslået og fortæller at skole er lukket, da hun forstår sig på

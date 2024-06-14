@@ -11,6 +11,7 @@ Mads vædder 200 kroner med løftet om, at jeg skal skære den slags ud i
 livet – så travlt i forretningen, hvor Misse Møhge og hr. I lyst og
 nød (1936-1937). Det er adressen på det tidspunkt. Bliver i 1937 sine
 aktier i Korsbæk. Da Møhgerne en dag får besøg af en folkepark.
+<!--more-->
 
 I 1929 åbner Tøjhuset på bekostning sin familie. De har to sønner,
 der også er begyndt at drikke. Hun tilbeder sig betænkningstid og

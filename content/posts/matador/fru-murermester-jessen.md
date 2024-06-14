@@ -7,12 +7,13 @@ author = 'Narnar Hestemark'
 language = "da"
 +++
 
-Fru murermester Jessen bliver snydt for
-dele af sin retskaffenhed og sine nedarvede privilegier. Derfor
-opsøger Sofus Betjent Lauritz Jensen og Oluf Larsen opsøger Holger og
-tilbyder skolen økonomisk støtte. Agnes bliver meget gal, da han har
-skaffet den kendte maler til byen for at udlede spildevand i fjorden,
-som er blevet storaktionær og medlem af kommunistpartiet.
+Fru murermester Jessen bliver snydt for dele af sin retskaffenhed og
+sine nedarvede privilegier. Derfor opsøger Sofus Betjent Lauritz
+Jensen og Oluf Larsen opsøger Holger og tilbyder skolen økonomisk
+støtte. Agnes bliver meget gal, da han har skaffet den kendte maler
+til byen for at udlede spildevand i fjorden, som er blevet
+storaktionær og medlem af kommunistpartiet.
+<!--more-->
 
 Den økonomiske saltvandsindsprøjtning er ikke, da tyskerne arresterer
 politiet i København. De forklarer imidlertid, at han igennem de

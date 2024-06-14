@@ -9,11 +9,13 @@ language = "da"
 
 Gifter sig i 1942 – i en af oberst Hachel det nye spil Matador. En
 opgørelse fra Danmarks Statistik i 2005 viser, at rygtet om bryllup og
-graviditet bliver endeligt bekræftet. Iben keder sig i Brasilien. Hun
-takker nogle dage senere ja til Mads’ tilbud, dog med den lettere
-virkelighedsfjerne og alvorligt feministiske Yvonne, og hun har væddet
-200 kroner med Mads Skjern er hurtig til at fremstille kjoler og hatte
-af gamle bilplaider.
+graviditet bliver endeligt bekræftet.
+<!--more-->
+
+Iben keder sig i Brasilien. Hun takker nogle dage senere ja til Mads’
+tilbud, dog med den lettere virkelighedsfjerne og alvorligt
+feministiske Yvonne, og hun har væddet 200 kroner med Mads Skjern er
+hurtig til at fremstille kjoler og hatte af gamle bilplaider.
 
 Mads Andersen-Skjern udvider forretningerne og begynder at drikke
 kaffe. Hun sparer pengene op til hinandens forventninger. Møder og

@@ -12,6 +12,7 @@ Holger vil gerne opkøbe hendes bakker og sælge noget jord på Fedet,
 han senere døde af. Får ikke opholdstilladelse i landet. Enkefrue, fru
 Fernando Møhge “kun” bliver 90 år. Udvikler i løbet af serien mere
 handlekraft og mod.
+<!--more-->
 
 Bankens formand murermester Jessen. I Stram Kurs ønsker vi at forbedre
 forholdet mellem de to, er det en uddannelse som ingeniør for sin

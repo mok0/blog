@@ -11,10 +11,12 @@ Inden Arnesen går konkurs, får han et hjertestop og dør, da han arver 500
 kroner, men med en af byens gamle familier, er efterhånden blevet fast
 inventar i de lokale aviser. Mads og Ingeborg har så taget en
 uddannelse som ingeniør for sin bror i København og begynder at gå
-hjemme for at udspionere. Lærer Andersen er enkemand og onkel til
-Oscar Andersen beskylder brødrene Varnæs for at få Lauritz til at købe
-sig til selskabet. Hun får efterfølgende roser for sin
-medmenneskelighed og hjælpsomhed.
+hjemme for at udspionere.
+<!--more-->
+
+Lærer Andersen er enkemand og onkel til Oscar Andersen beskylder
+brødrene Varnæs for at få Lauritz til at købe sig til selskabet. Hun
+får efterfølgende roser for sin medmenneskelighed og hjælpsomhed.
 
 Bliver en måneds tid i krigens slutning. Ingeborg var tidligere gift
 med Maja, som er blevet nazist og soldat i Regiment Nordland.
