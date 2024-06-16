@@ -1,6 +1,6 @@
 ---
 title: Ubuntu on the Dell mini 10 (1)
-date: 2009-5-22 12:46:18
+date: 2009-05-22 12:46:18
 categories: ['Linux']
 tags: ['ubuntu']
 published: true
@@ -81,9 +81,8 @@ This post was originally authored for my Wordpress blog
 [mok0's world][moks-world], reformatted for inclusion in this blog 2015-05-15.
 
 - - -
-
-[cherry]: http://www.cherrycorp.com/english/keyboards/Industrial/4100/index.htm
-[ubuntu-mid]: http://cdimage.ubuntu.com/ubuntu-mid/daily-live/current/
+[cherry]: https://www.cherry-world.com/g84-4100
+[ubuntu-mid]: https://canonical.com/blog/ubuntu-mid-edition-804-achieves-its-first-public-release
 [instructions]: https://help.ubuntu.com/community/Installation/FromImgFiles
 [poulsbo]: https://blueprints.edge.launchpad.net/ubuntu-mobile/+spec/poulsbo-packaging
 [moks-world]: https://mok0.wordpress.com/2009/05/22/ubuntu-on-the-dell-mini-10/
