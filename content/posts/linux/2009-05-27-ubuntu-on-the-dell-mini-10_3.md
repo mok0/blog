@@ -92,3 +92,10 @@ netbook. Perhaps something to consider for the Xubuntu team? An XUNRR
 package? (Xubuntu UNR Revisited :-))
 
 [unr]: https://wiki.ubuntu.com/UNR
+
+
+This post was originally authored for my Wordpress blog
+[mok0's world][moks-world], reformatted for inclusion in this blog 2024-06-15.
+
+
+[moks-world]: https://mok0.wordpress.com/2009/05/27/ubuntu-on-the-dell-mini-10-3/

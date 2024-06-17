@@ -45,4 +45,11 @@ Jaunty.
 Kudos and many thanks to the Ubuntu Mobile Team for their effort and a
 job well done!
 
+---
+
+This post was originally authored for my Wordpress blog
+[mok0's world][moks-world], reformatted for inclusion in this blog 2024-06-15.
+
+
 [ubuntu-mobile]: https://edge.launchpad.net/~ubuntu-mobile
+[moks-world]: https://mok0.wordpress.com/2009/05/25/ubuntu-on-the-dell-mini-10-2/
