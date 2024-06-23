@@ -29,7 +29,7 @@
     <div class="article__tags">
       {{- if .Params.tags -}}
       {{- range .Params.tags -}}
-      <a class="article__tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a>
+      <a class="article__tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }} </a>
       {{- end -}}
       {{ end }}
     </div>
