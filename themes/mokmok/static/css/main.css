@@ -65,20 +65,34 @@ a:hover {
     font-size: 1.5rem;
 }
 
-.homepage-article__categories {
-    text-align: left;
+.article-categories {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2.0rem;
 }
 
-.homepage-article__categories a {
-   text-decoration: none;
-}
-
-.homepage-article__tags {
+.article-category {
+    color: var(--pico-fg-color);
+    text-decoration: none;
     font-size: 0.8rem;
 }
 
-.homepage-article__tags a {
+.article__tags {
+    margin-top: 3.0rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.0rem;
+}
+
+.article__tag {
+    color: var(--pico-fg-color);
+    background: #ddd;
+    border-radius: 0.8rem;
+    margin: 0.5rem 0.0;
+    padding: 0.4rem;
     text-decoration: none;
+    font-size: 0.75rem;
 }
 
 .title-latest-blogpost {

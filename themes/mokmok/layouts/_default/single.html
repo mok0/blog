@@ -8,16 +8,17 @@
         <h2>{{.Title}}</h2>
       </div>
 
-      <div class="homepage-article__categories">
+      <div class="article-categories">
         {{- if .Params.categories -}}
-        {{- range .Params.categories -}}
-        <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-        {{- end -}}
+          {{- range .Params.categories -}}
+            <span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{- end -}}
         {{ end }}
       </div>
 
     </div>
-    <div class="homepage-article__date">{{ .Params.date.Format "2006-01-02 15:04" }}</div>
+    <div class="homepage-article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
     <div class="homepage-article__author">{{ index .Params.author }}</div>
 
     <hr />
@@ -25,10 +26,10 @@
       {{ .Content }}
     </div>
 
-    <div class="homepage-article__tags">
+    <div class="article__tags">
       {{- if .Params.tags -}}
       {{- range .Params.tags -}}
-      <span><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}&nbsp;&nbsp;</a></span>
+      <a class="article__tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a>
       {{- end -}}
       {{ end }}
     </div>
