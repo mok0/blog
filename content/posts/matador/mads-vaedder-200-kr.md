@@ -3,7 +3,7 @@ title = "Mads Vædder 200 Kr."
 date = 2024-06-11T20:38:05+02:00
 language = "da"
 categories = ['Matador']
-tags = ['stuff']
+tags = ['mads', 'misse', 'schwann', 'maude']
 author = "Mini Grusomsen-Nielsen"
 +++
 
