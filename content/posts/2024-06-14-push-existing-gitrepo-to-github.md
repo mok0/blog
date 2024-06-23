@@ -1,6 +1,6 @@
 +++
 title = "How to push an existing repo to github"
-date = 2024-06-15T11:26:00+02:00
+date = 2024-06-18T00:46:00+02:00
 tags = ["emacs", "org-mode"]
 categories = ["git"]
 draft = false
@@ -23,7 +23,7 @@ Create an empty repository on github, through the web interface. Get the address
 $ git remote add origin https://github.com/youruid/myproject.git
 ```
 
-that will tie your existing git repo to the remote. Now you need to pull from github, but no worries, the directory upthere is empty, unless you chose to create a `README.md` file when creating the empty repo.
+that will tie your existing git repo to the remote. Now you need to pull from github, but no worries, the directory up there is empty, unless you chose to create a `README.md` file when creating the empty repo.
 
 ```shell
 $ git pull

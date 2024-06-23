@@ -1,7 +1,7 @@
 +++
 title = "Tips for Hugo"
 date = 2024-06-13T22:18:00+02:00
-tags = ["emacs", "org-mode"]
+tags = ["emacs", "org-mode", "hugo"]
 categories = ["Hugo"]
 draft = false
 author = "Morten Kjeldgaard"

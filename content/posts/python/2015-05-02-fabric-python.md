@@ -1,11 +1,9 @@
----
-title: Installing Python 3 compatible Fabric
-date: 2015-05-02T23:12:13+02:00
-categories:
-  - python
-author:
-  - Morten Kjeldgaard
----
++++
+title = "Installing Python 3 compatible Fabric"
+date = 2015-05-02T23:12:13+02:00
+categories = ['python']
+author = "Morten Kjeldgaard"
++++
 
 Unfortunately, [Fabric](https://pypi.python.org/pypi/Fabric/1.10.1)
 has not yet officilly been ported to Python 3. However, it is possible
