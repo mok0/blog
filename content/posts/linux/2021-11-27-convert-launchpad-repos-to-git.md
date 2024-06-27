@@ -52,6 +52,42 @@ You can add a remote for your Git repository with the command:
 
     git push origin master
 
+### Note added 2024-06-27
+
+Today I ran into a problem following the above procedure, which did not seem to work. This is what `git` told me:
+
+```shell
+git reset --hard
+git hist
+fatal: your current branch 'main' does not have any commits yet
+```
+
+It turns out I had to checkout master, because `git` now names the main branch `main` where `bzr fast-export` named it `master`. This is because in `~/.gitconfig` I have have set:
+```
+[init]
+        defaultBranch = main
+```
+which probably many people have done, since "master" is a poor name.
+
+```shell
+$ git checkout master
+error: The following untracked working tree files would be overwritten by checkout:
+... <list of files that would be overwritten>
+```
+I stashed those files away in `.tar.gz` archive, checked out `master` and git had all the revisions.
+
+#### The right way to do it
+
+After running `git init`, make sure the archive is on branch `master`:
+
+```shell
+$ git init .
+$ git checkout -b master
+Switched to a new branch 'master'
+```
+
+Then proceed to do `git fast-import`, and __be aware__ that any changes not in the `bzr` branch will be overwritten when you do `git rest --hard`.
+
 
 [breezy]: https://github.com/breezy-team/breezy
 [mmdb-configure-code]: https://code.launchpad.net/mmdb/+configure-code
