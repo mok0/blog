@@ -2,7 +2,7 @@
 title:  Convert Launchpad repos to git
 date: 2021-11-27
 categories: ['Linux']
-tags: ['git', 'launchpad']
+tags: ['git', 'bzr', 'launchpad']
 author: Morten Kjeldgaard
 ---
 
@@ -86,7 +86,7 @@ $ git checkout -b master
 Switched to a new branch 'master'
 ```
 
-Then proceed to do `git fast-import`, and __be aware__ that any changes not in the `bzr` branch will be overwritten when you do `git rest --hard`.
+Then proceed to do `git fast-import`, and __be aware__ that any changes not in the `bzr` branch will be __overwritten__ when you do `git rest --hard`.
 
 
 [breezy]: https://github.com/breezy-team/breezy

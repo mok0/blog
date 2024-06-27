@@ -1,7 +1,7 @@
 +++
 title = "How to push an existing repo to github"
-date = 2024-06-18T00:46:00+02:00
-tags = ["emacs", "org-mode"]
+date = 2024-06-27T22:20:00+02:00
+tags = ["git", "github"]
 categories = ["git"]
 draft = false
 author = "Morten Kjeldgaard"
@@ -35,4 +35,4 @@ Now github is ready to recieve an upload of your repo:
 $ git push origin main
 ```
 
-iff `main` is the branch you wish to push. You can also use `git push --all` to push all branches.
+if `main` is the branch you wish to push. You can also use `git push --all` to push all branches.

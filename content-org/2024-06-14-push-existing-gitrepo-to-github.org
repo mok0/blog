@@ -1,8 +1,8 @@
 #+TITLE: How to push an existing repo to github
-#+DATE: [2024-06-18 00:46]
+#+DATE: [2024-06-27 22:20]
 #+AUTHOR: Morten Kjeldgaard
 #+HUGO_CATEGORIES: git
-#+HUGO_TAGS: emacs org-mode
+#+HUGO_TAGS: git github
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: ./posts
 #+OPTIONS: author:nil toc:nil num:0
