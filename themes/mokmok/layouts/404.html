@@ -1,1 +1,11 @@
-<p>Yo!</p>
+{{ define "main"}}
+<div class="container">
+  <section>
+    <h1>404 - Page not found</h1>
+    <p>
+      Sorry, I can't find the page you're looking for. Try again by
+      going <a href="{{.Site.BaseURL}}">back to the homepage</a>.
+    </p>
+  </section>
+</div>
+{{ end }}
