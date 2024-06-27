@@ -99,3 +99,26 @@ a:hover {
     color: var(--pico-h1-color);
     text-decoration: none;
 }
+
+.pagination-default {
+    display: flex;
+    flex-direction: row;
+    gap: 1.0rem;
+}
+
+.pagination-default li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item a[role="button"] {
+    border: none;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.disabled a[role="button"] {
+    outline: none;
+
+    background-color: #666;
+}

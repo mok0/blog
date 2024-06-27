@@ -15,6 +15,8 @@ slogan = "Super Cool"
 theme = "light"
 footer = '© Morten Kjeldgaard, 2024'
 
+paginate = 4
+
 [taxonomies]
   category = 'categories'
   tag = 'tags'

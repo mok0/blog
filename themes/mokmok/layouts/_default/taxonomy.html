@@ -3,7 +3,8 @@
   <section>
     <h3> {{ .Type | humanize  }} </h3>
     <div class="posts">
-      {{ range  .Pages }}
+      {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
+      {{ range $paginator.Pages }}
       <ul class="homepage-article">
         <div class="homepage-article__title">
           <a class="homepage-article__link" href="{{ .Permalink }}">{{ .Title }}</a>
@@ -19,6 +20,8 @@
       </ul>
       {{ end }}
     </div>
+    <!-- Hugo's default pagination template. -->
+    {{ template "_internal/pagination.html" . }}
   </section>
 </div>
 {{ end }}
