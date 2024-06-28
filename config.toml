@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = "https://mok0.github.io/blog/"
 languageCode = 'en-dk'
 title = "MOK's Onomatomaniske Kaos"
 theme = "mokmok"

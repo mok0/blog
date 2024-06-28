@@ -1,6 +1,6 @@
 ---
 title: "Contacts"
-date: 2024-06-10T18:57:40+02:00
+date_created: 2024-06-10T18:57:40+02:00
 ---
 
 Men selvfølgelig har han med sine statistiske næsten-kendsgerninger

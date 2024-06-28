@@ -18,7 +18,9 @@
       </div>
 
     </div>
-    <div class="homepage-article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
+    {{ if not .Date.IsZero }}
+      <div class="homepage-article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
+    {{ end }}
     <div class="homepage-article__author">{{ index .Params.author }}</div>
 
     <hr />
