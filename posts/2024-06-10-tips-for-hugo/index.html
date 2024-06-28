@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="description" content="My Hugo tips">
+    <meta name="keywords" content="hugo, ox-hugo, emacs">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Tips for Hugo ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Tips for Hugo</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/hugo">Hugo</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2024-06-13 22:18</div>
+    
+    <div class="homepage-article__author">Morten Kjeldgaard</div>
+
+    <hr />
+    <div class="content">
+      <p>Tips and tricks on Hugo, Emacs, Org-mode and <code>ox-hugo</code> I discovered while developing this site, in random order.</p>
+<div class="ox-hugo-toc toc has-section-numbers">
+<div class="heading">Table of Contents</div>
+<ul>
+<li><span class="section-num">1</span> <a href="#emacs-org-mode-support-in-hugo">Emacs Org Mode support in Hugo</a>
+<ul>
+<li><a href="#hugo-s-translation-of-org-mode-files-not-working">Hugo&rsquo;s translation of Org mode files not working</a></li>
+<li><a href="#advantage-of-using-ox-hugo-over-hugo-s-org-translation">Advantage of using <code>ox-hugo</code> over Hugo&rsquo;s Org translation</a></li>
+</ul>
+</li>
+<li><span class="section-num">2</span> <a href="#highlight-of-code-and-other-markup-settings">Highlight of code and other markup settings</a></li>
+<li><span class="section-num">3</span> <a href="#allow-html-in-files">Allow HTML in files</a>
+<ul>
+<li><a href="#literal-export-in-org-mode-files">Literal export in Org mode files</a></li>
+</ul>
+</li>
+<li><span class="section-num">4</span> <a href="#set-hugo-code-block-theme">Set Hugo code block theme</a></li>
+<li><span class="section-num">5</span> <a href="#add-metatags-for-seo">Add metatags for SEO</a>
+<ul>
+<li><a href="#keywords">Keywords</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#how-to-insert-description-and-keyword-metatags-with-ox-hugo">How to insert description and keyword metatags with ox-hugo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!--endtoc-->
+<h2 id="emacs-org-mode-support-in-hugo"><span class="section-num">1</span> Emacs Org Mode support in Hugo</h2>
+<p>If your content format is Emacs Org Mode, you may provide front matter using Org Mode keywords.
+For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+TITLE</span><span style="color:#75715e">: Example</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+DATE</span><span style="color:#75715e">: 2024-02-02T04:14:54-08:00</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+DRAFT</span><span style="color:#75715e">: false</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+AUTHOR</span><span style="color:#75715e">: John Smith</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+GENRES</span><span style="color:#75715e">: mystery</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+GENRES</span><span style="color:#75715e">: romance</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+TAGS</span><span style="color:#75715e">: red</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+TAGS</span><span style="color:#75715e">: blue</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+WEIGHT</span><span style="color:#75715e">: 10</span>
+</span></span></code></pre></div><p>Note that you can also specify array elements on a single line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span> #+TAGS[]: red blue
+</span></span></code></pre></div><p>which is now the preferred way, multiline tags are deprecated.</p>
+<p>When using the Emacs Org Mode content format, use a <code># more</code> divider to indicate the end of the content summary.</p>
+<p>Check out the Hugo manual <a href="https://gohugo.io/content-management/front-matter/#emacs-org-mode">here</a>.</p>
+<h3 id="hugo-s-translation-of-org-mode-files-not-working">Hugo&rsquo;s translation of Org mode files not working</h3>
+<p>Hugo can translate Org files but the dates are messed up, Hugo can&rsquo;t interpret the <code>#+DATE:</code> field as written by Emacs.  I have given up to figure out how it works and I am going back to <code>ox-hugo</code>.</p>
+<p>These are the fields you need to tag for <code>ox-hugo</code>, they are different from the tags Hugo uses when translating Org files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_BASE_DIR</span><span style="color:#75715e">: ../</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_SECTION</span><span style="color:#75715e">: ./posts</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_WEIGHT</span><span style="color:#75715e">: 2001</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_AUTO_SET_LASTMOD</span><span style="color:#75715e">: t</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_DESCRIPTION</span><span style="color:#75715e">: &#34;A description of this page&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_TAGS</span><span style="color:#75715e">: hugo org</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_CATEGORIES</span><span style="color:#75715e">: Emacs</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_DRAFT</span><span style="color:#75715e">: false</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_MENU</span><span style="color:#75715e">: :menu &#34;main&#34; :weight 20</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_CUSTOM_FRONT_MATTER</span><span style="color:#75715e">: :foo bar :baz zoo :alpha 1 :beta &#34;two words&#34;</span>
+</span></span></code></pre></div><p>There is a problem with <code>ox-hugo</code> when it exports author, in the toml frontmatter it outputs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75af00">author</span> <span style="color:#111">=</span> <span style="color:#111">[</span><span style="color:#d88200">&#34;Morten Kjeldgaard&#34;</span><span style="color:#111">]</span>
+</span></span></code></pre></div><p>but it needs to be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75af00">author</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Morten Kjeldgaard&#34;</span>
+</span></span></code></pre></div><p>therefore I also  have to specify no export of author, AND export the author verbatim, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+OPTIONS</span><span style="color:#75715e">: author:nil</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+HUGO_CUSTOM_FRONT_MATTER</span><span style="color:#75715e">: :author &#34;Morten Kjeldgaard&#34;</span>
+</span></span></code></pre></div><h3 id="advantage-of-using-ox-hugo-over-hugo-s-org-translation">Advantage of using <code>ox-hugo</code> over Hugo&rsquo;s Org translation</h3>
+<p>The <span class="underline">advantage</span> of using <code>ox-hugo</code> is that document remains a pristine Org-mode document, with proper Org-mode header lines, but most importantly, without Hugo patches to the format. The most notable is the end-of-summary marker, which in Hugo&rsquo;s org is <code>#more</code>, but that line will appear if you export your Org document to other formats. Instead, use this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+html</span><span style="color:#75715e">: &lt;!--more--&gt;</span>
+</span></span></code></pre></div><p>The <span class="underline">drawback</span> of using <code>ox-hugo</code> is that there&rsquo;s an extra step exporting the document to <em>markdown</em>, usually with a <code>C-c C-e H h</code> key combo. However, this can be skipped if the <code>org-hugo-auto-export-mode</code> is set, this can be done on a per file basis by entering as the last lines of the document:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e"># Local Variables:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># eval: (org-hugo-auto-export-mode)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># End:</span>
+</span></span></code></pre></div><p>or it can be activated globally in <code>init.el</code>.</p>
+<h2 id="highlight-of-code-and-other-markup-settings"><span class="section-num">2</span> Highlight of code and other markup settings</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#111">[</span><span style="color:#75af00">markup</span><span style="color:#111">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">[</span><span style="color:#75af00">markup</span><span style="color:#111">.</span><span style="color:#75af00">highlight</span><span style="color:#111">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">anchorLineNos</span> <span style="color:#111">=</span> <span style="color:#00a8c8">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">codeFences</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">guessSyntax</span> <span style="color:#111">=</span> <span style="color:#00a8c8">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">hl_Lines</span> <span style="color:#111">=</span> <span style="color:#d88200">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">hl_inline</span> <span style="color:#111">=</span> <span style="color:#00a8c8">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">lineAnchors</span> <span style="color:#111">=</span> <span style="color:#d88200">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">lineNoStart</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">lineNos</span> <span style="color:#111">=</span> <span style="color:#00a8c8">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">lineNumbersInTable</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">noClasses</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span>  <span style="color:#75715e"># false turns off code highlighting</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">noHl</span> <span style="color:#111">=</span> <span style="color:#00a8c8">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">style</span> <span style="color:#111">=</span> <span style="color:#d88200">&#39;monokai&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75af00">tabWidth</span> <span style="color:#111">=</span> <span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><h2 id="allow-html-in-files"><span class="section-num">3</span> Allow HTML in files</h2>
+<p>To allow the export of raw HTML in content files, the following has to be in the site&rsquo;s <code>config.toml</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span> <span style="color:#111">[</span><span style="color:#75af00">markup</span><span style="color:#111">.</span><span style="color:#75af00">goldmark</span><span style="color:#111">.</span><span style="color:#75af00">renderer</span><span style="color:#111">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75af00">unsafe</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span> <span style="color:#75715e"># Allow HTML in md files</span>
+</span></span></code></pre></div><h3 id="literal-export-in-org-mode-files">Literal export in Org mode files</h3>
+<p>A single line of raw HTML can be exported like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+HTML</span><span style="color:#75715e">: &lt;p&gt;Literal HTML code for export&lt;/p&gt;</span>
+</span></span></code></pre></div><p>Larger blocks can be embedded in an HTML block:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+BEGIN_EXPORT </span><span style="color:#75715e">html</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">&lt;</span><span style="color:#f92672">p</span><span style="color:#111">&gt;&lt;</span><span style="color:#f92672">i</span><span style="color:#111">&gt;</span>All lines between these markers are exported literally<span style="color:#111">&lt;/</span><span style="color:#f92672">i</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">p</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#+END_EXPORT</span>
+</span></span></code></pre></div><p>Below is an example of this:</p>
+<hr />
+<p>Literal HTML code for export</p>
+<p><i>All lines between these markers are exported literally</i><p>
+<hr />
+<p>Check out the Org manual <a href="https://orgmode.org/manual/Quoting-HTML-tags.html">here</a>.</p>
+<h2 id="set-hugo-code-block-theme"><span class="section-num">4</span> Set Hugo code block theme</h2>
+<p>Hugo uses the Chroma highlighter engine<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. The default theme is apparently monokai, but it is too much contrast for my site with super black code blocks. I found the list of themes <a href="https://github.com/alecthomas/chroma/tree/master/styles">here</a> and chose <code>monokailight</code> which looks much nicer. The code theme is defined in <code>config.toml</code> thus:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span> <span style="color:#75af00">pygmentsstyle</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;monokailight&#34;</span>
+</span></span></code></pre></div><h2 id="add-metatags-for-seo"><span class="section-num">5</span> Add metatags for SEO</h2>
+<p>Found these suggestions <a href="https://djangocas.dev/blog/hugo/tips-on-hugo-seo/">here</a>.</p>
+<p>Metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services. The &lt;meta&gt; tag defines metadata about an HTML document. &lt;meta&gt; tags always go inside the &lt;head&gt; element, and are typically used to specify character set charset, page description, keywords, author of the document, and viewport settings.</p>
+<h3 id="keywords">Keywords</h3>
+<p>Use keywords meta tag to provide a list of search keywords of current the page.  This is done in Hugo by adding the keywords meta tag in the <code>partials/head.html</code>  template:</p>
+<pre tabindex="0"><code class="language-hugo" data-lang="hugo">{{ with .Param.Keywords }}
+   &lt;meta name=&#34;keywords&#34; content=&#34;{{ delimit . &#34;,&#34; }}&#34;&gt;
+{{ end }}
+</code></pre><p>Then in <em>markdown</em> use keywords to define a list of keywords:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#111">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span><span style="color:#111">:</span> <span style="color:#ae81ff">Tips on Hugo SEO</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">keywords</span><span style="color:#111">:</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">hugo</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">seo</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">---</span>
+</span></span></code></pre></div><h3 id="description">Description</h3>
+<p>Use <code>description</code> tag to provide a short description of the page, this adds a  description meta tag to allow search engine used in the snippet shown in search results in some situations.</p>
+<pre tabindex="0"><code class="language-hugo" data-lang="hugo">{{ with .Param.Description }}
+   &lt;meta name=&#34;keywords&#34; content=&#34;{{ . }}&#34;&gt;
+{{ end }}
+</code></pre><h3 id="how-to-insert-description-and-keyword-metatags-with-ox-hugo">How to insert description and keyword metatags with ox-hugo</h3>
+<p>Unfortunately, there are no <code>#+HUGO_DESCRIPTION</code> or  <code>#+HUGO_KEYWORDS</code> tags for <code>ox-hugo</code>, but the following works:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span>  #+HUGO_CUSTOM_FRONT_MATTER: :description My Hugo tips
+</span></span><span style="display:flex;"><span>  #+HUGO_CUSTOM_FRONT_MATTER: :keywords hugo ox-hugo emacs
+</span></span></code></pre></div><p>When the right code in <code>=partials/head.html</code>, this becomes strings in the markdown front matter and eventually gets translated into <code>meta</code> tags:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span> <span style="color:#111">&lt;</span><span style="color:#f92672">meta</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;description&#34;</span> <span style="color:#75af00">content</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;My Hugo tips&#34;</span><span style="color:#111">&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#111">&lt;</span><span style="color:#f92672">meta</span> <span style="color:#75af00">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;keywords&#34;</span> <span style="color:#75af00">content</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;hugo, ox-hugo, emacs&#34;</span><span style="color:#111">&gt;</span>
+</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Look here: <a href="https://gohugo.io/content-management/syntax-highlighting/">https://gohugo.io/content-management/syntax-highlighting/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+    </div>
+
+    <div class="article__tags"><a class="article__tag" href="/tags/emacs">#emacs </a><a class="article__tag" href="/tags/org-mode">#org-mode </a><a class="article__tag" href="/tags/hugo">#hugo </a>
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+:root {
+     /*--pico-border-radius: 0.4rem; */
+     --pico-font-size: 10pt;
+     --pico-typography-spacing-vertical: 1.5rem;
+    }
+
+header {
+    background-color: var(--pico-color);
+    color: var(--pico-background-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#header-title {
+    font-size: 3rem;
+}
+
+#header-subtitle {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+footer {
+    background-color: var(--pico-color);
+    color: var(--pico-background-color);
+    padding: 2rem;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+#footer-title {
+    font-size: 1rem;
+}
+
+.homepage-article__date {
+    color: grey;
+}
+
+.homepage-article__author {
+    color: grey;
+    font-style: italic;
+}
+
+.homepage-article__link:hover {
+    color: #009966;
+     transform: scale(2);
+}
+
+a:hover {
+    color: #aaa;
+     transform: scale(1.1);
+}
+
+.homepage-article__link {
+    color: #999;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+}
+
+.homepage-article__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.article-categories {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2.0rem;
+}
+
+.article-category {
+    color: var(--pico-fg-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.article__tags {
+    margin-top: 3.0rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.0rem;
+}
+
+.article__tag {
+    color: var(--pico-fg-color);
+    background: #ddd;
+    border-radius: 0.8rem;
+    margin: 0.5rem 0.0;
+    padding: 0.4rem;
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.title-latest-blogpost {
+    color: var(--pico-h1-color);
+    text-decoration: none;
+}
+
+.pagination-default {
+    display: flex;
+    flex-direction: row;
+    gap: 1.0rem;
+}
+
+.pagination-default li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item a[role="button"] {
+    border: none;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+
+.disabled a[role="button"] {
+    outline: none;
+
+    background-color: #666;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>How to use ssh authentication keys ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>How to use ssh authentication keys</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/linux">linux</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2006-05-06 13:03</div>
+    
+    <div class="homepage-article__author">[Morten Kjeldgaard]</div>
+
+    <hr />
+    <div class="content">
+      <p>If you have an account on a remote computer that you use very
+often, it is convienient if you do not have to type your password
+every time you log on to another host. You can achieve this by using
+ssh&rsquo;s authorization keys.</p>
+<p>First, you need to generate a key-pair. A key-pair consists of two
+small files. One file contains your <em>secret</em> key, the other your
+<em>public</em> key. Your secret key is, as the name implies, secret. You
+want to make sure noone gets hold of it. The public key is not secret
+at all, you can post it on your web-page if you wish. To generate the
+keypair, use the <strong>ssh-keygen</strong> program:</p>
+<pre><code>[somebody@monster ~]$ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/u/somebody/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /u/somebody/.ssh/id_rsa.
+Your public key has been saved in /u/somebody/.ssh/id_rsa.pub.
+The key fingerprint is:
+5a:0c:9d:c8:2b:aa:4d:1c:db:3e:ca:e2:1e:43:27:3c
+somebody@monster.bioxray.dk
+</code></pre>
+<p>Notice, I did not enter a passphrase. The passphrase is an optional
+password that protects your secret key. It is a password you have to
+type every time your secret key is used, but your security is only
+compromised if someone gets hold of your secret key, so you must
+protect that file using mode <code>600</code>. Now, the two files have been
+created in <code>$HOME/.ssh</code>:</p>
+<pre><code>[somebody@monster ~]$ ls .ssh
+authorized_keys id_rsa id_rsa.pub known_hosts
+</code></pre>
+<p>To achieve login on a remote machine without password, you need to
+append your public key to the <code>.ssh/authorized_keys</code> file on the
+remote machine. That is, if you specified a passphrase for your
+key-pair, you have to type <em>that</em> when you log on, but not the
+password on the remote machine.</p>
+<p>On bioxray, all users have NFS mounted home directories, so we can
+just do this:</p>
+<pre><code>cp .ssh/id_dsa.pub .ssh/authorized_keys
+</code></pre>
+<p>and we can use <code>slogin</code> and <code>ssh</code> between all hosts without specifying
+a password.</p>
+<p>You can also use the ssh authentication key scheme to give access to
+your account to a friend. Your friend must also generate a key-pair,
+and must send you the public part of it. You append that public key to
+your <code>authorized_keys</code> file. Your friend can then log on to your
+account, as long as the public key is in the file.</p>
+<p>If you have an account on a remote computer that you use very often,
+it is convienient if you do not have to type your password every time
+you log on to another host. You can achieve this by using ssh&rsquo;s
+authorization keys.</p>
+<h2 id="edit-20170123">Edit 20170123</h2>
+<ul>
+<li>Changed key type from rsa to dsa 4096 bits. For further information
+look <a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys">here</a>.</li>
+<li>Add note about passwordless secret key.</li>
+</ul>
+
+    </div>
+
+    <div class="article__tags">
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>KVM with bridge ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>KVM with bridge</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/linux">linux</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2008-02-20 16:45</div>
+    
+    <div class="homepage-article__author">[Morten Kjeldgaard]</div>
+
+    <hr />
+    <div class="content">
+      <p>In the following, I will describe how to set up kvm in an environment where you want the guest virtual machines to appear as independent servers, indistinguishable from the ordinary metal boxes sitting on the floor of the office.</p>
+<h2 id="host-configuration">Host Configuration</h2>
+<p>The server, called &lsquo;&lsquo;&lsquo;octopus&rsquo;&rsquo;&rsquo;, is a powerful HP 380 G5 machine, with an Intel dual quadcore CPU. This is a processor that has hardware virtualization enabled, which you can see by doing:</p>
+<pre><code>egrep ‘(vmx|svm)’ /proc/cpuinfo
+</code></pre>
+<p>If you get output from this command, your processor has either vmx (Intel) or svm (AMD) capability. If not, you can give up running qemu right here. It will be s.l.o.w. In our case, the server is pretty damn fast. It has the equivalent of 8 CPU&rsquo;s and is equipped with 12Gb RAM. We intend to run 8 guest servers on it, all for a particular task, e.g. web server, name server, etc.</p>
+<p>I started out with a fresh installed Ubuntu Server, version 7.10, &ldquo;Gutsy Gibbon&rdquo;.</p>
+<h3 id="installing-kvm-and-qemu">Installing kvm and qemu</h3>
+<p>First, install kvm and qemu:</p>
+<pre><code>octopus# install kvm qemu
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following extra packages will be installed:
+  bochsbios bridge-utils vgabios
+Suggested packages:
+  kvm-source debto debootstrap etherboot
+Recommended packages:
+  vde2 sharutils proll openhackware
+The following NEW packages will be installed:
+  bochsbios bridge-utils kvm qemu vgabios
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4788kB of archives.
+After unpacking 13.1MB of additional disk space will be used.
+Do you want to continue [Y/n]? y
+</code></pre>
+<p>As you see from the above, kvm pulls in a number of other packages that are needed. In particular, the bridge-util package is important. The very first thing to do is to make the host &lsquo;&lsquo;&lsquo;octopus&rsquo;&rsquo;&rsquo; function as a network bridge, that accepts network traffic that arrives on the guest&rsquo;s IP address, and relays it to the guest&rsquo;s virtual network interface.</p>
+<h3 id="load-kernel-module">Load kernel module</h3>
+<p>Next, we need to load a kvm kernel module:</p>
+<pre><code>modprobe kvm-intel
+</code></pre>
+<p>or &ldquo;kvm-amd&rdquo; if that is your hardware platform. &lsquo;&rsquo;(In 8.04 (Hardy) you can skip this step, since the kvm module is loaded automatically.)&rsquo;&rsquo;</p>
+<p>That command inserts the module in the currently running kernel. However, to have it loaded at each boot,
+insert the module name (kvm-intel/kvm-amd) in the file <code>/etc/modules</code>.</p>
+<h3 id="define-the-bridge-interface">Define the bridge interface</h3>
+<p>Edit the file <code>/etc/network/interface</code>, which on an Ubuntu or Debian system contains information for configuration of the network interface. This is what the file looked like before editing:</p>
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+        address 192.168.0.101
+        netmask 255.255.255.0
+        network 192.168.0.0
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 192.168.0.4
+        dns-search mydomain.net
+</code></pre>
+<p>We edit the file, so it gets the following content:</p>
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto br0
+iface br0 inet static
+        address 192.168.0.101
+        netmask 255.255.255.0
+        network 192.168.0.0
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+        bridge_ports eth0
+        bridge_stp off
+        bridge_maxwait 5
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 192.168.0.4
+        dns-search mydomain.net
+</code></pre>
+<p>We see that the internet address of &lsquo;&lsquo;&lsquo;octopus&rsquo;&rsquo;&rsquo; is now assigned to the <code>br0</code> interface, and the original <code>eth0</code> is defined tied to the bridge via the bridge_prots keyword. If your primary network interface is <code>eth1</code>, for example, you need to use that name.</p>
+<h3 id="bring-up-bridge">Bring Up Bridge</h3>
+<p>Either reboot, or cycle the interfaces if the machine is local:</p>
+<pre><code>sudo ifup br0
+</code></pre>
+<h3 id="check-the-host">Check the host</h3>
+<p>Once the server comes back up, you should test that it still has proper network connections, on both sides of the gateway, f.ex. using <code>ping</code>.</p>
+<p>Now, check the network interfaces using the <code>ip addr</code> command. Notice in the following listing, that <code>eth0</code> no longer has an associated IP address, while the new bridge device <code>br0</code> has taken over the IP address.</p>
+<pre><code>octopus# ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 brd 127.255.255.255 scope host lo
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:1c:c4:5e:18:5e brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::21c:c4ff:fe5e:185e/64 scope link
+       valid_lft forever preferred_lft forever
+3: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 00:1c:c4:5e:18:5e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.101/24 brd 192.168.0.255 scope global eth0
+    inet6 fe80::21c:c4ff:fe5e:185e/64 scope link
+       valid_lft forever preferred_lft forever
+</code></pre>
+<h2 id="libvirt-guest-configuration">libvirt Guest Configuration</h2>
+<p>In virt-manager, a &ldquo;bridge&rdquo; configuration is now selectable when creating a new VM.  To modify existing VMs, you can change the XML definition (in <code>/etc/libvirt/qemu</code> for the network interface, adjusting the mac address as desired:</p>
+<pre><code>&lt;interface type='bridge'&gt;
+  &lt;mac address='00:11:22:33:44:55'/&gt;
+  &lt;source bridge='br0'/&gt;
+&lt;/interface&gt;
+</code></pre>
+<p>Finally, restart libvirtd (make sure your VMs are shutdown):</p>
+<pre><code>sudo /etc/init.d/libvirtd restart
+</code></pre>
+<h2 id="kvm-only-guest-configuration">KVM-only Guest Configuration</h2>
+<p>We have a new device called <code>tap0</code>:</p>
+<pre><code>tap0      Link encap:Ethernet  HWaddr 00:FF:F9:C5:39:4A
+          inet6 addr: fe80::2ff:f9ff:fec5:394a/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2492 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:88109 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500
+          RX bytes:279707 (273.1 KB)  TX bytes:11379233 (10.8 MB)
+</code></pre>
+<h3 id="start-the-virtual-machine">Start the virtual machine</h3>
+<p>At this point, I assume that you already have access to a virtual server machine. How to create it is described elsewhere. On octopus, the virtual server &lsquo;&lsquo;&lsquo;octo1&rsquo;&rsquo;&rsquo; is a 5G file stored on the <code>/home</code> partition, and based on the Ubuntu JeOS server.</p>
+<p>We now start the virtual machine:</p>
+<pre><code>octopus# kvm -m 512 -net nic -net tap  /home/octopus-jeos.img
+</code></pre>
+<p>kvm will now boot the virtual machine in an X window. You will se the normal boot sequence inside the window. Eventually, the virtual machine comes up, and you should be able to log on. &lsquo;&lsquo;Beware that kvm&rsquo;s window takes control of your mouse, so the system seems completely unresponsive!&rsquo;&rsquo; You need to press <alt> and <ctrl> simultaneously for kvm to release the mouse.</p>
+<h3 id="configure-the-guest-machine">Configure the guest machine</h3>
+<p>Now is the time to configure the guest machine, in this case octo1. Notice that you should configure the guest machine exactly like you would configure a normal box sitting under your desk. In our case, the network on octo1 is set up, again in the file  <code>/etc/network/interface</code>, which on octo1 looks like this:</p>
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+#iface eth0 inet dhcp
+iface eth0 inet static
+        address 192.168.0.102
+        netmask 255.255.255.0
+        network 192.168.0.0
+        broadcast 192.168.0.255
+        gateway 192.168.0.1
+        dns-nameservers 192.168.0.4
+        dns-search mydomain.net
+</code></pre>
+<p>That&rsquo;s it! The guest machine (you may have to reboot it) should now have access to the internet, and you should be able to reach it from the outside. You can now configure it further.</p>
+<p>When you are done with the configuration, you will likely want to start up the virtual machine as a standalone process without a graphics console. That can be achieved using the <code>-daemonize</code> and <code>-nographic</code> options:</p>
+<pre><code>kvm -m 512 -net nic -net tap -daemonize -nographic /home/octopus-jeos.img
+</code></pre>
+<h2 id="several-virtual-machines-on-the-same-host">Several virtual machines on the same host</h2>
+<p>Soon, you will want to have several virtual machines running on the same server. Of course, each guest must have its own unique IP address, but in addition, you need to make sure that each virtual machine also has a unique mac-address. The network card in your computer has a hardwired mac-address, but of course this is not so with a virtual machine.</p>
+<p>The mac-address consists of six bytes, usually given in hexadecimal code. Normally, it encodes the vendor and a serial number. However, you can make your own mac addresses which can be any number as long as the first byte is 02. This is a so-called &lsquo;&rsquo;locally administered address&rsquo;&rsquo;.</p>
+<pre><code>octopus# kvm -m 512 -net nic,macaddr=02:00:00:00:00:01 -net tap  /home/octopus-jeos.img
+</code></pre>
+<p>If you have been using the virtual machine before, you will need to edit it&rsquo;s network configuration again, because the first time you invoke kvm with the macaddr option, it creates a new network device having the given mac address. That may be for example eth1, and so you will have to reconfigure that device with the correct IP address etc.</p>
+<hr>
+<p>This post was originally authored for the <a href="https://wiki.ubuntu.com/KvmWithBridge">Ubuntu Wiki</a>, reformatted for inclusion in this blog 2015-05-15.</p>
+<hr>
+
+    </div>
+
+    <div class="article__tags">
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

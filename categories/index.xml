@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://mok0.github.io/blog/categories/</link>
+    <description>Recent content in Categories on MOK&#39;s Onomatomaniske Kaos</description>
+    <generator>Hugo</generator>
+    <language>en-dk</language>
+    <lastBuildDate>Thu, 27 Jun 2024 22:20:00 +0200</lastBuildDate>
+    <atom:link href="https://mok0.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>https://mok0.github.io/blog/categories/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Matador</title>
+      <link>https://mok0.github.io/blog/categories/matador/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/matador/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://mok0.github.io/blog/categories/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://mok0.github.io/blog/categories/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nanostation</title>
+      <link>https://mok0.github.io/blog/categories/nanostation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/nanostation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://mok0.github.io/blog/categories/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jekyll</title>
+      <link>https://mok0.github.io/blog/categories/jekyll/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/jekyll/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mac</title>
+      <link>https://mok0.github.io/blog/categories/mac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/categories/mac/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

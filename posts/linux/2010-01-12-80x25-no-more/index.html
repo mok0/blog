@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="keywords" content="ubuntu">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>80 x 25 no more... ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>80 x 25 no more...</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/linux">Linux</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2010-01-12 05:37</div>
+    
+    <div class="homepage-article__author">Morten Kjeldgaard</div>
+
+    <hr />
+    <div class="content">
+      <p>o
+On my workstation, I have a beautiful, large, Samsung SyncMaster 275,
+which is a 27.5&quot; monitor. The screen area measures around 58 x 37 cm,
+and the nominal resolution is 1920 x 1200 pixels.</p>
+<p>The display is beautiful and crisp, and the fonts are nice and clear
+on the X-display, and Kubuntu looks lovely on the monitor. My
+wallpaper is an image of the stunning, intriguing and slightly eery
+<a href="http://adsadsf.dk">MandelBulb</a> 3-D fractal.</p>
+<p>For a while, however, I’ve been annoyed with the virtual TTYs on my
+workstation. With a screen this size, the font size of the 25×80
+terminal is approximately 1 cm. Working on it gives me a feeling of
+being teleported -25 years to an over sized version of the venerable
+DEC VT100 terminal. Another thing, the Kubuntu splash screen with the
+blue progress bar looked really ugly.</p>
+<p>So today I did something about it. First, I ran:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>    sudo hwinfo --framebuffer
+</span></span></code></pre></div><p>That gave me a rather long list of framebuffer modes. I chose the
+bottom one, that looked like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>    Mode 0x037d: 1920x1200 <span style="color:#f92672">(</span>+7680<span style="color:#f92672">)</span>, <span style="color:#ae81ff">24</span> bits
+</span></span></code></pre></div><p>The number I needed was 0x037d. Next step is to edit the
+/boot/grub/menu.lst and add:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>    <span style="color:#111">vga</span><span style="color:#f92672">=</span>0x037d
+</span></span></code></pre></div><p>to the default boot line, and reboot.</p>
+<p>I now have 240 x 75 character terminal, and it looks beautiful! Now, I
+can run <code>byobu</code> with all its geeky goodness. And the Kubuntu boot-splash
+screen now looks really professional. Nice. There’s a slight problem
+with the status messages (from <code>fsck</code>) scrolling, but I can live with
+that for now.</p>
+<p>Needless to say, I can’t show you a screendump… well, perhaps I’ll
+take a photo one of these days 🙂</p>
+<p>I am a happy camper.</p>
+<hr>
+<p>This post was originally written for my wordpress blog <a href="https://mok0.wordpress.com/2010/01/12/32/">MOK&rsquo;s
+world</a> and included here on 2024-06-17.</p>
+
+    </div>
+
+    <div class="article__tags"><a class="article__tag" href="/tags/ubuntu">#ubuntu </a>
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

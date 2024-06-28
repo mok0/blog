@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Installing Jekyll ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Installing Jekyll</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/jekyll">Jekyll</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2015-05-02 20:56</div>
+    
+    <div class="homepage-article__author">Morten Kjeldgaard</div>
+
+    <hr />
+    <div class="content">
+      <p>If you are using Python 3 as a standard, the <a href="http://jekyllrb.com">Jekyll</a> installation from <a href="http://brew.sh">homebrew</a> might give you problems, because the Jekyll installation out-of-the box uses the syntax higlighter <a href="http://pygments.org">Pygments</a>, which does not work under Python 3. # more</p>
+<p>This is the rather mysterious error I got:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ jekyll serve --trace
+</span></span><span style="display:flex;"><span>Configuration file: /Users/mok/github/mok0.github.io/_config.yml
+</span></span><span style="display:flex;"><span>            Source: /Users/mok/github/mok0.github.io
+</span></span><span style="display:flex;"><span>       Destination: /Users/mok/github/mok0.github.io/_site
+</span></span><span style="display:flex;"><span>      Generating...
+</span></span><span style="display:flex;"><span>  Liquid Exception: No header received back. in _posts/2015-05-02-welcome-to-jekyll.markdown
+</span></span></code></pre></div><p>Instead, use the Ruby highlighter <code>rouge</code>. In <code>_config.yml</code> add:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">highlighter</span><span style="color:#111">:</span> <span style="color:#ae81ff">rouge</span>
+</span></span></code></pre></div><p>and install the rouge highlighter gem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gem install rouge
+</span></span></code></pre></div><p>Now the installation should go without problems.</p>
+
+    </div>
+
+    <div class="article__tags"><a class="article__tag" href="/tags/jekyll">#jekyll </a><a class="article__tag" href="/tags/ruby">#ruby </a><a class="article__tag" href="/tags/gem">#gem </a><a class="article__tag" href="/tags/python3">#python3 </a>
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

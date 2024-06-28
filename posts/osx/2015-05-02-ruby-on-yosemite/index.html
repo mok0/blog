@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Install newer version of Ruby on OS X Yosemite ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Install newer version of Ruby on OS X Yosemite</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/mac">Mac</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2015-05-02 16:00</div>
+    
+    <div class="homepage-article__author">Morten Kjeldgaard</div>
+
+    <hr />
+    <div class="content">
+      <p>This post describes how to install a newer version of Ruby on OS X Yosemite.</p>
+<!-- more -->
+<p>Following this video: <a href="https://youtu.be/jx0NrIbQbzI">https://youtu.be/jx0NrIbQbzI</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ brew update
+</span></span></code></pre></div><p>First install <code>rbenv</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ brew install rbenv
+</span></span><span style="display:flex;"><span>$ brew info rbenv
+</span></span><span style="display:flex;"><span>$ emacs .bashrc
+</span></span></code></pre></div><p>Execute (and add to <code>.bashrc</code>):</p>
+<pre><code>export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi
+</code></pre>
+<p>Now we have <code>rbenv</code> installed. See if it works:</p>
+<pre><code>$ rbenv
+</code></pre>
+<p>We need to install the <code>ruby-build</code> plugin. Clone the git directory
+directly into the <code>rbenv</code> plugin directory in the <a href="http://brew.sh">homebrew</a>
+managed tree:</p>
+<pre><code>$ cd /usr/local/var/rbenv/
+$ mkdir plugins
+$ cd plugins/
+$ git clone --depth=1 git@github.com:sstephenson/ruby-build.git
+$ rbenv
+</code></pre>
+<p><code>rbenv</code> now has some new commands, e.g. install. What versions of Ruby
+are available?</p>
+<pre><code>$ rbenv install --list
+</code></pre>
+<p>Install newest one (2.2.2 as of now):</p>
+<pre><code>$ rbenv install 2.2.2
+$ ruby --version
+ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]
+</code></pre>
+<p>Still running system Ruby version, use <code>rbenv</code> to switch:</p>
+<pre><code>$ rbenv global 2.2.2
+$ ruby --version
+ruby 2.2.2p95 (2015-04-13 revision 50295) [x86_64-darwin14]
+</code></pre>
+<p>Now we are running 2.2.2. Install the <code>bundler</code> gem:</p>
+<pre><code> $ gem install bundler
+</code></pre>
+<p><a href="http://bundler.io">Bundler</a> provides a consistent environment for Ruby projects by
+tracking and installing the exact gems and versions that are needed.</p>
+
+    </div>
+
+    <div class="article__tags"><a class="article__tag" href="/tags/ruby">#ruby </a><a class="article__tag" href="/tags/brew">#brew </a><a class="article__tag" href="/tags/macos">#macos </a>
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

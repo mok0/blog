@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Why abandon CentOS for Ubuntu? ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Why abandon CentOS for Ubuntu?</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/linux">linux</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2007-06-06 13:49</div>
+    
+    <div class="homepage-article__author">[Morten Kjeldgaard]</div>
+
+    <hr />
+    <div class="content">
+      <h2 id="my-linux-experience">My Linux experience</h2>
+<p>My first Linux experience was around 1996 with the slackware
+distribution installed from floppies. I quickly went on using RedHat
+3.03, and went all the way. When RedHat stopped their free version we
+went to Fedora Core 1. However, I quickly got fed up with Fedora&rsquo;s
+perpetual upgrade-circus. It was just too much work upgrading all the
+time, and with no apparent gains (other that eye-candy stuff, but who
+cares). So when RedHat EL4 appeared some years ago we jumped to CentOS
+4.</p>
+<p>So, for a couple of years, we&rsquo;ve had a constant platform (EL4) on
+which to base our (1) own software development, and (2) adapting other
+peoples software (mainly for macromolecular crystallography and
+bioinformatics). But along the way, I have become aware of the
+inherent weakness of the RedHat/CentOS platform for our needs.</p>
+<h2 id="why-jump-to-ubuntudebian">Why jump to Ubuntu/Debian?</h2>
+<p>CentOS is based on RedHat, so the base of the distribution is RedHat&rsquo;s
+packages, which also means that the packaging policy is defined by
+RedHat. However, they only supply ~2500 packages, which is not
+sufficient for our use. We very often need software that is not
+available from RedHat. This is where the 3rd party repositories
+started playing a role.</p>
+<p>A few years ago &ndash; in my naiveté &ndash; I had a whole bunch of repo&rsquo;s
+defined in my sources.list.d directory. I really believed in the &ldquo;let
+a thousand repos blossom&rdquo; idea. However, gradually, I had to remove
+repos from the list, because software in our systems started breaking.</p>
+<p>Finally, I was down to just two repos when one day, I came in and
+discovered that a lot of our local software &ndash; that relied on fftw2 &ndash;
+did not work anymore because one repo suddenly decided to provide
+fftw-3, and that package replaced fftw-2 and crashed our local
+software that <em>needs</em> fftw2.</p>
+<p>It is
+<em>necessary</em> to solve these problems if people are to rely on updating
+a system for long periods of time. But RedHat&rsquo;s and Fedora&rsquo;s basic
+strategy is to supply a system that you have to upgrade regularly,
+replacing all the base software in one big swoop, and then compile all
+add-on software again. The constant update-cycle of Fedora disguised
+this fact for a while, but it has become visible during the two-year
+CentOS period.</p>
+<p>This is when I realized that
+CentOS is never going to work for us. We can&rsquo;t continue using third
+party repos, but this problem is not going away anytime soon and
+people don&rsquo;t seem to care about it.</p>
+<p>With over 10 years of experience packaging RPMs it has not been easy
+to come to the conclusion that Debian is the way to go. It is not the
+RPM format <em>per se</em>. Although Debians packaging mechanism is a bit
+more advanced that for RPMs, I believe that the RPM packaging system
+is sufficiently capable, and it <em>is</em> easier to use, and has a gentler
+learning curve. The problem is RedHat&rsquo;s packaging policy. Basically,
+RedHat has ~2500 packages that they care about. The rest is added by
+third party repos who basically make up their own policies. If at all.</p>
+<h2 id="my-first-ubuntu-experience">My first Ubuntu experience</h2>
+<p>In the meantime, I have had an Kubuntu system at home for six months
+now, and it has been an amazing experience. There are over 20K
+packages available from the repos, and I have not <em>once</em> run into
+problems. I can have different packages, that rely on different
+versions of the same libraries, installed side-by-side. It <em>just
+works</em>. I did a dist-upgrade from etchy to feisty without a single
+problem. In addition, I have access to all the multimedia packages
+that I care to install, the latest KDE/Gnome environments, games, and
+so on (which is what our users ask for on the workstations ;-)).</p>
+<p>So I decided that rather than porting my repo to EL5, I would port it
+to Debian and be in with Flynn :-)</p>
+<h2 id="what-packaging-means-to-the-lab">What packaging means to the lab</h2>
+<p>We currently have around 25 workstations, some are in a big room in
+the basement, some are on people&rsquo;s personal desks. We also have a
+small HPC cluster with 5*2 CPUs. All users have an NFS mounted home
+directory which is sitting on one of two large diskarrays. The other
+diskarray is on a server in a remote building and is used for backups.
+We use rsnapshot to save snapshots from the last 40 days. The backup
+array is mounted on a virtual partition so every user can visit their
+own backup directory.</p>
+<p>All workstation have the exact
+same configuration of software, this is achieved by using cfengine,
+apt, and a few cron scripts.</p>
+<p>To keep this setup running without a large support team we absolutely
+need to have all software packaged. Until now, I have packaged
+everything in RPM packages. Proprietary software &ndash; which we
+unfortunately in some cases are forced to use &ndash; is also packaged, but
+stored on an apt partition which can not be reached from outside our
+network.</p>
+<p>At the time of writing (6. june 2007) I have begun porting my RPM
+packages to .deb format, and when that process is completed, we will
+start a gradual move from CentOS to Kubuntu on the workstations. The
+servers will probably be running Debian stable.</p>
+
+    </div>
+
+    <div class="article__tags">
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

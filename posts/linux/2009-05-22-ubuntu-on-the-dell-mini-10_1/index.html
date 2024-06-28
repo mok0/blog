@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Ubuntu on the Dell mini 10 (1) ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Ubuntu on the Dell mini 10 (1)</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/linux">Linux</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2009-05-22 12:46</div>
+    
+    <div class="homepage-article__author"></div>
+
+    <hr />
+    <div class="content">
+      <p>I recently purchased a Dell Mini 10 notebook. I&rsquo;ve been wanting to get
+a netbook for some time, and I was planning to one of the Asus EEE
+series. However, looking at one at the local computer store, I found
+it a bit &ldquo;plastic-y&rdquo;. I&rsquo;ve always heard that Dell computers have a
+good build quality, so one morning, on a whim, I ordered a Dell. I
+told the salesman that I had no use for Windows XP. He said there was
+no price on it, but gave me a discount of around 26 Euro. My suspicion
+is that Microsoft allows Dell to install XP for free.</p>
+<p>Now that I have it, I&rsquo;m a bit disappointed in the Dell&rsquo;s build
+quality. I find the Mini 10 a bit plastic-y too. But then, I&rsquo;m used to
+the solid feel of my PowerBook G4, and in build quality, nothing comes
+close to Apple I guess.</p>
+<p>Apart from that, the Mini 10 has some really nice features, among
+others I really like the touchpad without buttons. From the Mac, I am
+used to using gestures on the touchpad, and I can reveal that it works
+nearly perfectly under Ubuntu 9.04. I also really like the keyboard,
+which is about the same size as my <a href="https://www.cherry-world.com/g84-4100">Cherry 4100 keyboard</a>
+4100 keyboard</a> that I use on my workstations. In fact, everything
+works&hellip; except the graphics&hellip; but more on that later.</p>
+<p>Initially, I was confused by the fact that Ubuntu recommends that you
+install the UNR version on all netbooks, but that is for the i386
+architecture only, and I wanted to use lpia, because it&rsquo;s optimized
+for the Atom processor and has been reported to run better, and give
+better battery life.</p>
+<p>So instead of UNR, I chose to download the <a href="https://canonical.com/blog/ubuntu-mid-edition-804-achieves-its-first-public-release">MID version of
+Ubuntu</a> which installs lpia architecture packages.</p>
+<p>I put the image file on an USB key following the <a href="https://help.ubuntu.com/community/Installation/FromImgFiles">instructions on the
+download page</a>. I then booted up the Mini 10 with the
+pre-installed XP &ndash; just to make sure that it worked. When the XP
+installation came to the point where you have to accept the license,
+it felt REALLY good to hit the &ldquo;No&rdquo; button :-). The XP install
+process then rebooted the Mini 10 from the USB key.</p>
+<p>So I installed the Ubuntu-MID version, zapping XP with 2 ext4
+partitions <code>/</code> and <code>/home</code> (plus 5Gb swap). Everything went very
+smooth and the Mini 10 sprung to life.</p>
+<p>The MID version by default installs a very simple window manager; it
+seems to work fine but was unfamiliar to me (and after all, the Mini
+10 is not MID device) so I installed ubuntu-desktop. It works very
+well. (I am actually a Kubuntu user, but KDE4 is not at all suited for
+the limited resolution on the notebook.)</p>
+<p>Every worked out of the box: WiFi, bluetooth, sound, even the little
+camera. BUT, the machine runs at resolution 800 x 576 so images and
+fonts look a bit &ldquo;squished&rdquo;. The Mini 10 is based on the Poulsbo
+chipset and Intel&rsquo;s GMA-500 graphics chip. There&rsquo;s been a lot of
+chatter on the net on the lack of Linux drivers from Intel for these
+chips. You can google and see for yourself. The situation for Linux is
+pretty bad, since the Poulsbo chipset is appearing in more and more
+netbook computers.</p>
+<p>To cut a long story short, X does not recognize the GMA-500 graphics
+chip, so it uses the VESA driver. The native resolution on the Mini 10
+is 1024 x 576, but the VESA driver refuses to use that resolution. I
+have tried various things, i.e. specifying the modeline, but to no
+avail. X always returns to 800 x 576. So for now, I&rsquo;ve settled and am
+using that resolution. Another thing is that there&rsquo;s no acceleration
+and glxgears runs pathetically slow (25-30 fps) but the Mini 10 is
+perfectly usable as a netbook despite of this.</p>
+<p>There&rsquo;s an <a href="https://blueprints.edge.launchpad.net/ubuntu-mobile/+spec/poulsbo-packaging">effort to get drivers for the Poulsbo chipset</a> in
+shape, hopefully that will result in something soon.</p>
+<hr>
+<p>This post was originally authored for my Wordpress blog
+<a href="https://mok0.wordpress.com/2009/05/22/ubuntu-on-the-dell-mini-10/">mok0&rsquo;s world</a>, reformatted for inclusion in this blog 2015-05-15.</p>
+<hr>
+
+    </div>
+
+    <div class="article__tags"><a class="article__tag" href="/tags/ubuntu">#ubuntu </a>
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

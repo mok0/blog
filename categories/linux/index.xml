@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://mok0.github.io/blog/categories/linux/</link>
+    <description>Recent content in Linux on MOK&#39;s Onomatomaniske Kaos</description>
+    <generator>Hugo</generator>
+    <language>en-dk</language>
+    <lastBuildDate>Sat, 27 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mok0.github.io/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convert Launchpad repos to git</title>
+      <link>https://mok0.github.io/blog/posts/linux/2021-11-27-convert-launchpad-repos-to-git/</link>
+      <pubDate>Sat, 27 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2021-11-27-convert-launchpad-repos-to-git/</guid>
+      <description>&lt;p&gt;This is a short guide on how to convert your Bazaar repos to git on&#xA;Launchpad, which is Ubuntu&amp;rsquo;s development server. Bazaar was chosen by&#xA;Ubuntu as their revision control system, and the developers did a lot&#xA;of work on the Bazaar code, which is written in Python. However,&#xA;development stopped several years ago, and Bazaar was no longer&#xA;maintained. A spinoff project named &lt;a href=&#34;https://github.com/breezy-team/breezy&#34;&gt;Breezy&lt;/a&gt; took over, and is&#xA;maintaining the code, now invoked by the commend &lt;code&gt;brz&lt;/code&gt; (but with an&#xA;alias to former &amp;lsquo;bzr&amp;rsquo;). Anyway, it&amp;rsquo;s time to convert my archives to&#xA;git.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sacrosanct Linux Feature Dies</title>
+      <link>https://mok0.github.io/blog/posts/linux/2012-03-23-sacrosanct-linux-feature-dies/</link>
+      <pubDate>Fri, 23 Mar 2012 19:07:13 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2012-03-23-sacrosanct-linux-feature-dies/</guid>
+      <description>I&amp;rsquo;ve been using Linux since 1996. Since then, the OS has undergone an amazing development, and all distributions provide an impressive high-resolution graphical interface. However, one feature has remained sacrosanct: the 6 virtual terminals. In the old days, when you had to provide timings for the video card and manually edit the xfree86 config file, it was easy to mess up the graphics display. But then, CTRL-Alt-F1 to the rescue! It was ALWAYS possible to get a terminal and consequently access to the operating system.</description>
+    </item>
+    <item>
+      <title>Oneiric on the Dell Mini 10: Nope</title>
+      <link>https://mok0.github.io/blog/posts/linux/2012-01-28-oneric-on-the-dell-mini-10-nope/</link>
+      <pubDate>Sat, 28 Jan 2012 21:18:56 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2012-01-28-oneric-on-the-dell-mini-10-nope/</guid>
+      <description>A couple of months ago, I downloaded the Ubuntu 11.10 installer and put it on an USB stick. Judging from the discussions on the net, I might be one of the only people on the planet who actually like Unity, and I was really looking forward to getting it on my netbook. In my opinion, Oneiric Ocelot is a terrific release. I have it on my workstation and I like it a lot.</description>
+    </item>
+    <item>
+      <title>Disk Quota Exceeded?</title>
+      <link>https://mok0.github.io/blog/posts/linux/2011-04-11-disk-quota-exceeded/</link>
+      <pubDate>Mon, 11 Apr 2011 21:11:14 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2011-04-11-disk-quota-exceeded/</guid>
+      <description>&lt;p&gt;The disk quota system in Linux is quite old, and if you have a&#xA;distributed workstation environment with NFS mounted shares it is not&#xA;possible in a convenient way to inform users that they have exceeded&#xA;their disk limits.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Free and Completely Ubuntu (2)</title>
+      <link>https://mok0.github.io/blog/posts/linux/2011-02-12-free-and-completely-ubuntu-2/</link>
+      <pubDate>Sat, 12 Feb 2011 05:05:13 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2011-02-12-free-and-completely-ubuntu-2/</guid>
+      <description>The other day, I reported here that Tuesday evening (Feb. 8.), the popular tech-review program on danish public television channel DR2 “So Ein Ding…” dedicated an entire episode to Ubuntu.&#xA;A commenter asked for a translation, so here it is, including the program host, Nicolaj Sonne’s evocative sound effects.&#xA;Hey!&#xA;Today we jump in, and go all-in with Open Source. I have purchased a compltely new Low-budget computer, nuked Windows, and installed the free OS Ubuntu.</description>
+    </item>
+    <item>
+      <title>Free and Completely Ubuntu</title>
+      <link>https://mok0.github.io/blog/posts/linux/2011-02-10-free-and-completely-ubuntu/</link>
+      <pubDate>Thu, 10 Feb 2011 21:08:39 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2011-02-10-free-and-completely-ubuntu/</guid>
+      <description>Tuesday evening (Feb. 8.), the popular tech-review program on Danish public television channel DR2 “So Ein Ding…” dedicated an entire episode to Ubuntu. The program host, Nikolaj Sonne, took Ubunto for a test spin, and gives a very positive, fair and balanced review. His final verdict ends on 4 out of 6, which is extremely good, especially considering that an upgrade broke his Maverick installation in the trials (no trackpad, no keyboard) and he had to downgrade to Lucid.</description>
+    </item>
+    <item>
+      <title>80 x 25 no more...</title>
+      <link>https://mok0.github.io/blog/posts/linux/2010-01-12-80x25-no-more/</link>
+      <pubDate>Tue, 12 Jan 2010 05:37:13 +0100</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2010-01-12-80x25-no-more/</guid>
+      <description>o On my workstation, I have a beautiful, large, Samsung SyncMaster 275, which is a 27.5&amp;quot; monitor. The screen area measures around 58 x 37 cm, and the nominal resolution is 1920 x 1200 pixels.&#xA;The display is beautiful and crisp, and the fonts are nice and clear on the X-display, and Kubuntu looks lovely on the monitor. My wallpaper is an image of the stunning, intriguing and slightly eery MandelBulb 3-D fractal.</description>
+    </item>
+    <item>
+      <title>Ubuntu on the Dell Mini 10 (3)</title>
+      <link>https://mok0.github.io/blog/posts/linux/2009-05-27-ubuntu-on-the-dell-mini-10_3/</link>
+      <pubDate>Wed, 27 May 2009 16:09:13 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2009-05-27-ubuntu-on-the-dell-mini-10_3/</guid>
+      <description>A few people have asked if the psb X driver is stable running under jaunty. It is indeed&amp;hellip; rock stable. So now that&amp;rsquo;s established, let&amp;rsquo;s move on to something else.&#xA;I really want the Dell to be a &amp;ldquo;mini-laptop&amp;rdquo; so I originally installed the ubuntu-desktop package. But I&amp;rsquo;ve felt that the response was a bit sluggish. The menus were just a few fractions of a second to appear, they kind of &amp;ldquo;rolled&amp;rdquo; on instead of just appearing etc.</description>
+    </item>
+    <item>
+      <title>Ubuntu on the Dell Mini 10 (2)</title>
+      <link>https://mok0.github.io/blog/posts/linux/2009-05-25-ubuntu-on-the-dell-mini-10_2/</link>
+      <pubDate>Mon, 25 May 2009 21:20:13 +0200</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2009-05-25-ubuntu-on-the-dell-mini-10_2/</guid>
+      <description>Great news! The Dell Mini 10 now runs on Ubuntu 9.04 at full nominal resolution of 1024 x 576!&#xA;What has happened is that the Ubuntu Mobile Team has compiled and packaged kernel modules, X.org drivers, libraries to interface to kernel DRM services, etc. etc. for the Poulsbo chipset and made them available on their PPA.&#xA;Remember from my previous post, that my Mini 10 was running using the VESA driver for X.</description>
+    </item>
+    <item>
+      <title>Ubuntu on the Dell mini 10 (1)</title>
+      <link>https://mok0.github.io/blog/posts/linux/2009-05-22-ubuntu-on-the-dell-mini-10_1/</link>
+      <pubDate>Fri, 22 May 2009 12:46:18 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2009-05-22-ubuntu-on-the-dell-mini-10_1/</guid>
+      <description>I recently purchased a Dell Mini 10 notebook. I&amp;rsquo;ve been wanting to get a netbook for some time, and I was planning to one of the Asus EEE series. However, looking at one at the local computer store, I found it a bit &amp;ldquo;plastic-y&amp;rdquo;. I&amp;rsquo;ve always heard that Dell computers have a good build quality, so one morning, on a whim, I ordered a Dell. I told the salesman that I had no use for Windows XP.</description>
+    </item>
+    <item>
+      <title>KVM with bridge</title>
+      <link>https://mok0.github.io/blog/posts/linux/2008-02-20-kvm-with.bridge/</link>
+      <pubDate>Wed, 20 Feb 2008 16:45:43 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2008-02-20-kvm-with.bridge/</guid>
+      <description>In the following, I will describe how to set up kvm in an environment where you want the guest virtual machines to appear as independent servers, indistinguishable from the ordinary metal boxes sitting on the floor of the office.&#xA;Host Configuration The server, called &amp;lsquo;&amp;lsquo;&amp;lsquo;octopus&amp;rsquo;&amp;rsquo;&amp;rsquo;, is a powerful HP 380 G5 machine, with an Intel dual quadcore CPU. This is a processor that has hardware virtualization enabled, which you can see by doing:</description>
+    </item>
+    <item>
+      <title>Why abandon CentOS for Ubuntu?</title>
+      <link>https://mok0.github.io/blog/posts/linux/2007-06-06-why-abandon-centos-for-ubuntu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2007-06-06-why-abandon-centos-for-ubuntu/</guid>
+      <description>My Linux experience My first Linux experience was around 1996 with the slackware distribution installed from floppies. I quickly went on using RedHat 3.03, and went all the way. When RedHat stopped their free version we went to Fedora Core 1. However, I quickly got fed up with Fedora&amp;rsquo;s perpetual upgrade-circus. It was just too much work upgrading all the time, and with no apparent gains (other that eye-candy stuff, but who cares).</description>
+    </item>
+    <item>
+      <title>How to use ssh authentication keys</title>
+      <link>https://mok0.github.io/blog/posts/linux/2006-05-06-how-to-authenticate-using-ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mok0.github.io/blog/posts/linux/2006-05-06-how-to-authenticate-using-ssh/</guid>
+      <description>If you have an account on a remote computer that you use very often, it is convienient if you do not have to type your password every time you log on to another host. You can achieve this by using ssh&amp;rsquo;s authorization keys.&#xA;First, you need to generate a key-pair. A key-pair consists of two small files. One file contains your secret key, the other your public key. Your secret key is, as the name implies, secret.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>Installing Python 3 compatible Fabric ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header>
+  <span id="header-title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header-subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/blog/">Home</a>
+    </li>
+    
+    <li>
+      <a href="/blog/posts">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/blog/about">About</a>
+    </li>
+    
+    <li>
+      <a href="/blog/contacts">Contact</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<div class="container">
+  <article>
+
+    <div class="grid">
+
+      <div class="homepage_article__title">
+        <h2>Installing Python 3 compatible Fabric</h2>
+      </div>
+
+      <div class="article-categories"><span><i class="fa fa-list"></i></span>
+            <a class="article-category" href="/categories/python">python</a>
+      </div>
+
+    </div>
+    
+      <div class="homepage-article__date">2015-05-02 23:12</div>
+    
+    <div class="homepage-article__author">Morten Kjeldgaard</div>
+
+    <hr />
+    <div class="content">
+      <p>Unfortunately, <a href="https://pypi.python.org/pypi/Fabric/1.10.1">Fabric</a>
+has not yet officilly been ported to Python 3. However, it is possible
+to get it to work. Here is how I did it.</p>
+<p>First, create a virtual environment to run fabric in. (If you haven&rsquo;t
+set up <a href="https://virtualenv.pypa.io/en/latest/">virtual environments</a>
+for Python, go ahead and do that now, then come back.) I have the
+[fink environment] (<a href="http://finkproject.org">http://finkproject.org</a>) installed on my Mac, and
+the Python 3 executable is in <code>/sw/bin/python3</code>. If you have Python3
+from homebrew or elsewhere, just put the correct path to the python3
+executable after the <code>--python</code> switch below:</p>
+<pre><code>$ mkvirtualenv --python=/sw/bin/python3 fabric
+[ ... ]
+</code></pre>
+<p>Save the following lines in a file <code>/tmp/requirements.txt</code>:</p>
+<pre><code>Babel==1.3
+Jinja2==2.7.3
+MarkupSafe==0.23
+Pygments==2.0.2
+Sphinx==1.3.1
+alabaster==0.6.1
+docutils==0.12
+ecdsa==0.13
+fudge==0.9.6
+invocations==0.10.0
+invoke==0.10.1
+nose==1.3.6
+paramiko==1.15.2
+pycrypto==2.6.1
+pytz==2015.2
+releases==0.6.1
+semantic-version==2.4.0
+six==1.9.0
+snowballstemmer==1.2.0
+sphinx-rtd-theme==0.1.7
+wheel==0.24.0
+</code></pre>
+<hr>
+<p>[Added 20150509] If you don&rsquo;t care about running fabric&rsquo;s unittests, you can actually get by with this list:</p>
+<pre><code>ecdsa
+paramiko
+six
+</code></pre>
+<hr>
+<p>In the <code>fabric</code> environment, install these packages:</p>
+<pre><code>(fabric)$ pip3 install -r /tmp/requirements.txt
+</code></pre>
+<p>Now, all you need is the last two requirements, which are not
+available from <a href="https://pypi.python.org/">PyPi</a>, because they are
+forked from the main developement line. Go to the place you store
+your github clones:</p>
+<pre><code>(fabric)$ cd ~/github
+</code></pre>
+<p>First, clone and install the Python 3 version of <code>rudolf</code>:</p>
+<pre><code>(fabric)$ git clone --depth=1 git@github.com:mok0/rudolf.git
+(fabric)$ cd rudolf
+(fabric)$ python3 setup.py install
+</code></pre>
+<p>(The <code>--depth=1</code> switch gives a shallow clone. It is sufficient for most
+cases, unless you are interested in the history of the repo.)
+Next, clone the git repository from <a href="https://github.com/pashinin">Sergey Pashinin</a>, who has
+ported fabric itself to Python 3:</p>
+<pre><code>(fabric)$ cd ~/github
+(fabric)$ git clone --depth=1 git@github.com:pashinin/fabric.git
+(fabric)$ cd fabric
+</code></pre>
+<p>See the tests, most of them run ok, but a few do fail :-(</p>
+<pre><code>(fabric)$ python3 setup.py nosetests
+</code></pre>
+<p>Even though some tests fail, fabric seems to work fine for most
+things I have tried. Build and install:</p>
+<pre><code>(fabric)$ python3 setup.py install
+</code></pre>
+<p>Now, test out your <code>fabric</code> installation. From the documentation,
+try the following example. Place in <code>/tmp/fabfile.py</code>:</p>
+<pre><code>from fabric.api import run
+def host_type():
+    run('uname -s')
+</code></pre>
+<p>Now try to run it on <code>localhost</code> (requires ssh):</p>
+<pre><code>(fabric)$ fab -H localhost host_type
+[localhost] Executing task 'host_type'
+[localhost] run: uname -s
+[localhost] out: Darwin
+[localhost] out:
+
+Done.
+Disconnecting from localhost... done.
+(fabric)$
+</code></pre>
+<p>Deactivate the <code>fabric</code> enviroment:</p>
+<pre><code>(fabric)$ deactivate
+$
+</code></pre>
+<p>Whenever you need to use your <code>fabric</code> installation, just issue the command:</p>
+<pre><code>$ workon fabric
+</code></pre>
+<p>(The latter requires that you have also installed virtualenvwrapper).</p>
+<p>That&rsquo;s all, good luck!</p>
+
+    </div>
+
+    <div class="article__tags">
+    </div>
+  </article>
+</div>
+
+        </div><footer>
+  <span id="footer-title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
