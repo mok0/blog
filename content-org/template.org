@@ -1,0 +1,27 @@
+#+TITLE: Tips for Hugo
+#+DATE: [2024-06-28 11:14]
+#+AUTHOR: Morten Kjeldgaard
+#+HUGO_CATEGORIES: Hugo
+#+HUGO_TAGS: emacs org-mode
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: ./posts
+#+OPTIONS: author:nil toc:nil num:1
+#+HUGO_CUSTOM_FRONT_MATTER: :author Morten Kjeldgaard
+#+HUGO_CUSTOM_FRONT_MATTER: :description My Hugo tips
+#+HUGO_CUSTOM_FRONT_MATTER: :keywords hugo ox-hugo emacs
+
+
+
+
+
+
+
+----
+
+
+
+
+# Local Variables:
+# org-time-stamp-custom-formats: ("<%Y-%m>" . "<%Y-%m-%dT%H:%M:%S%:z>")
+# eval: (org-hugo-auto-export-mode)
+# End:
