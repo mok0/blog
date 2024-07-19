@@ -1,7 +1,7 @@
 +++
 title = "Timezone Aware Timestamps in Python"
-date = 2024-07-06T12:14:00+02:00
-tags = ["datetime", "timezone"]
+date = 2024-07-19T22:57:00+02:00
+tags = ["datetime", "timezone", "python", "DST"]
 categories = ["Python"]
 draft = false
 author = "Morten Kjeldgaard"
@@ -10,6 +10,8 @@ keywords = "python datetime pytz"
 +++
 
 The datetime object in Python is very powerful, but if you want to do serious timeseries analysis and use data from around the world, you need to use timezone aware `datetime` objects, and these are not the default.
+
+<!--more-->
 
 ```python
 >>> import datetime as dt
@@ -116,47 +118,103 @@ datetime.datetime(2024, 7, 14, 12, 0, tzinfo=<DstTzInfo 'US/Eastern' LMT-1 day, 
 
 ## The new way: The built-in `zoneinfo` module {#the-new-way-the-built-in-zoneinfo-module}
 
+Since version 3.9, Python comes with the [ZoneInfo](https://docs.python.org/3/library/zoneinfo.html) module built-in. The `pytz` module we have used until now works well, but is a third party module that you need to install with `pip`.
+
+Let's check out the ZoneInfo module, and especially how it behaves with daylight savings time. We'll declare a couple of dates, one in the winter, the other in the summer.
+
 ```python
-import datetime as dt
+>>> import datetime as dt
+>>> from zoneinfo import ZoneInfo
+>>> winter_naive = dt.datetime(2024, 2, 14, 12, 0)
+>>> summer_naive = dt.datetime(2024, 7, 14, 12, 0)
 
-def now_tzaware():
-    # Return zone aware present time. This will also take care of
-    # daylight savings time.
-    return dt.datetime.now().astimezone()
+>>> print("winter_naive:", winter_naive)
+winter_naive: 2024-02-14 12:00:00
 
+>>> print("summer_naive:", summer_naive)
+summer_naive: 2024-07-14 12:00:00
+```
 
-# This is from the std library to
-from zoneinfo import ZoneInfo
+The naive objects contain the date and time we expect. Now let's specify these according to the local timezone:
 
-winter_naive = dt.datetime(2024, 2, 14, 12, 0)
-print("winter_naive:", winter_naive)
-summer_naive = dt.datetime(2024, 7, 14, 12, 0)
-print("summer_naive:", summer_naive)
+```python
+>>> winter_aware = winter_naive.astimezone()
+>>> summer_aware = summer_naive.astimezone()
 
-winter_aware = winter_naive.astimezone()
-print("winter_aware:", winter_aware)
-summer_aware = summer_naive.astimezone()
-print("summer_aware:", summer_aware)
+>>> print("winter_aware:", winter_aware)
+winter_aware: 2024-02-14 12:00:00+01:00
 
-print("Convert to UTC")
-print(winter_aware.astimezone(ZoneInfo('UTC')))
-print(summer_aware.astimezone(ZoneInfo('UTC')))
-
-print("Convert to US/Eastern")
-print(winter_aware.astimezone(ZoneInfo('US/Eastern')))
-print(summer_aware.astimezone(ZoneInfo('US/Eastern')))
-
-just_before_dst = dt.datetime(2024,3,31,1,59).astimezone(ZoneInfo('localtime'))
-just_after_dst = dt.datetime(2024,3,31,2,1).astimezone(ZoneInfo('localtime'))
-print("1 minute before dst", just_before_dst)
-print("1 minute after dst", just_after_dst)
-print("difference", just_after_dst - just_before_dst, ", this is wrong!")
-
-
-# Convert to UTC
-delta =  just_after_dst.astimezone(ZoneInfo('UTC'))-just_before_dst.astimezone(ZoneInfo('UTC'))
-print("convert to UTC:", delta)
+>>> print("summer_aware:", summer_aware)
+summer_aware: 2024-07-14 12:00:00+02:00
 
 ```
 
-----
+The time at noon is unchanged, but the offset from UTC is specified. Notice that in this case, the timezone is +1 hour in the winter and +2 hours in the summer. Now let's convert these times to UTC. We now get to use the `ZoneInfo` module.
+
+```python
+>>> print("Convert to UTC")
+>>> print(winter_aware.astimezone(ZoneInfo('UTC')))
+>>> print(summer_aware.astimezone(ZoneInfo('UTC')))
+Convert to UTC
+2024-02-14 11:00:00+00:00
+2024-07-14 10:00:00+00:00
+```
+
+These times are correct, also in the UTC timezone. Let's try converting to US/Eastern timezone:
+
+```python
+>>> print("Convert to US/Eastern")
+>>> print(winter_aware.astimezone(ZoneInfo('US/Eastern')))
+>>> print(summer_aware.astimezone(ZoneInfo('US/Eastern')))
+Convert to US/Eastern
+2024-02-14 06:00:00-05:00
+2024-07-14 06:00:00-04:00
+```
+
+The times are still correct, the timestamp is the same, but of course the walltime is different in Europe and in Eastern US.
+
+Now, let's do something that might , and that is taking time deltas across daylight savings time. We'll define two timezone aware timestamps, two minutes apart, at the time point where daylight savings time began in Europe in 2024.
+
+```python
+>>> just_before_dst = dt.datetime(2024,3,31,1,59).astimezone()
+>>> just_after_dst = dt.datetime(2024,3,31,2,1).astimezone()
+```
+
+So, just after DST changes, the time is 02:01, right? Let's print out these objects and check:
+
+```python
+>>> print("1 minute before dst", just_before_dst)
+>>> print("1 minute after dst", just_after_dst)
+1 minute before dst 2024-03-31 01:59:00+01:00
+1 minute after dst 2024-03-31 03:01:00+02:00
+```
+
+Notice that the timestamp immediately after DST begins is set at 03:01, which is correct. We tried to set the time to 02:01, but that timepoint simply doesn't exist. Fortunately the module corrected our mistake silently. Now lets print the difference in time between 01:59 before DST and 03:01 after DST:
+
+```python
+>>> print(just_after_dst - just_before_dst)
+0:02:00
+```
+
+The result is two minutes, which is correct! Let's try to convert these to timestamps to UTC time and see what happens.
+
+```python
+# Convert to UTC
+>>> just_before_dst_utc = just_before_dst.astimezone(ZoneInfo('UTC'))
+>>> just_after_dst_utc = just_after_dst.astimezone(ZoneInfo('UTC'))
+2024-03-31 00:59:00+00:00
+2024-03-31 01:01:00+00:00
+```
+
+Now both timestamps have been converted to UTC, and the difference:
+
+```python
+ print(just_after_dst_utc-just_before_dst_utc)
+0:02:00
+```
+
+is still 2 minutes.
+
+So, it seems if you are using timezone aware `datetime` objects, things are pretty safe. However the topic of time is a complex one. The obvious answer, to always use timezone aware timestamps is however not always correct, since timezones change all the time, and DST may be abolished in the future. So a time marking is a volatile and subjective piece of data.
+
+Joël Perras recently wrote a [blog post](https://nerderati.com/a-python-epoch-timestamp-timezone-trap/) on his site Nerderati describing the pitfalls you can encounter especially when using UNIX timestamps intermixed with Python `datetime` objects.
