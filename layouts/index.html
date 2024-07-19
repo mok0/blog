@@ -5,7 +5,6 @@
 </article>
 <section>
   <h3>Latest blog post</h3>
-  <div class="posts">
     {{ range where .Site.RegularPages "Type" "posts" | first 1 }}
     <article class="homepage-article">
       <h1>
@@ -16,10 +15,9 @@
       <hr />
       <div class="content">
         {{ .Content }}
-      </div>
+      </div> <!-- content -->
     </article>
     {{ end }}
-  </div>
 </section>
 </main> <!-- container -->
 {{ end }}

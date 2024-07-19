@@ -1,27 +1,25 @@
 {{ define "main" }}
-<div class="container">
-  <section>
+<main>
+  <div class="container">
     <h3> {{ .Type | humanize  }} </h3>
-    <div class="posts">
-      {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
-      {{ range $paginator.Pages }}
-      <ul class="homepage-article">
-        <div class="homepage-article__title">
-          <a class="homepage-article__link" href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
+    {{ range $paginator.Pages }}
+      <ul>
+        <div class="article__title">
+          <a class="article__link" href="{{ .Permalink }}">{{ .Title }}</a>
         </div>
-        <div class="homepage-article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
-        <div class="homepage-article__summary">
+        <div class="article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
+        <div class="article__summary">
           {{ .Summary }}
           <span>
-            <a class="homepage-article__link" href="{{ .Permalink }}"> ... </a>
+            <a class="article__link" href="{{ .Permalink }}"> ... </a>
           </span>
-        </div>
+        </div> <!-- summary -->
         <hr/>
       </ul>
-      {{ end }}
-    </div>
+    {{ end }}
     <!-- Hugo's default pagination template. -->
     {{ template "_internal/pagination.html" . }}
-  </section>
-</div>
+  </div> <!-- container -->
+</main>
 {{ end }}

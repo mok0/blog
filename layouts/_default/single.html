@@ -1,40 +1,37 @@
 {{ define "main"}}
-<div class="container">
-  <article>
-
-    <div class="grid">
-
-      <div class="homepage_article__title">
-        <h2>{{.Title}}</h2>
-      </div>
-
-      <div class="article-categories">
-        {{- if .Params.categories -}}
-          {{- range .Params.categories -}}
-            <span><i class="fa fa-list"></i></span>
-            <a class="article-category" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-          {{- end -}}
-        {{ end }}
-      </div>
-
-    </div>
-    {{ if not .Date.IsZero }}
-      <div class="homepage-article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
-    {{ end }}
-    <div class="homepage-article__author">{{ index .Params.author }}</div>
-
-    <hr />
-    <div class="content">
-      {{ .Content }}
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>{{.Title}}</h2>
     </div>
 
-    <div class="article__tags">
-      {{- if .Params.tags -}}
-      {{- range .Params.tags -}}
-      <a class="article__tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }} </a>
+    <div class="article__categories">
+      {{- if .Params.categories -}}
+      {{- range .Params.categories -}}
+      <span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
       {{- end -}}
       {{ end }}
-    </div>
-  </article>
-</div>
+    </div> <!-- categories -->
+
+  </div> <!-- grid -->
+
+  {{ if not .Date.IsZero }}
+    <div class="article__date">{{ .Date.Format "2006-01-02 15:04" }}</div>
+  {{ end }}
+  <div class="article__author">{{ index .Params.author }}</div>
+
+  <hr />
+  <div class="content">
+    {{ .Content }}
+  </div> <!-- content -->
+
+  <div class="article__tags">
+    {{- if .Params.tags -}}
+      {{- range .Params.tags -}}
+        <a class="article__tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }} </a>
+      {{- end -}}
+    {{ end }}
+  </div> <!-- tags -->
+</main> <!-- container -->
 {{ end }}

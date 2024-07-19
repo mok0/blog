@@ -12,11 +12,11 @@ header {
     text-align: center;
 }
 
-#header-title {
+#header__title {
     font-size: 3rem;
 }
 
-#header-subtitle {
+#header__subtitle {
     font-size: 2rem;
     font-style: italic;
 }
@@ -29,20 +29,20 @@ footer {
     text-align: right;
 }
 
-#footer-title {
+#footer__title {
     font-size: 1rem;
 }
 
-.homepage-article__date {
+article__date {
     color: grey;
 }
 
-.homepage-article__author {
+.article__author {
     color: grey;
     font-style: italic;
 }
 
-.homepage-article__link:hover {
+.article__link:hover {
     color: #009966;
      transform: scale(2);
 }
@@ -52,27 +52,26 @@ a:hover {
      transform: scale(1.1);
 }
 
-.homepage-article__link {
+.article__link {
     color: #999;
     font-weight: bold;
     font-size: 1.5rem;
     text-decoration: none;
-
 }
 
-.homepage-article__title {
+.article__title {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.article-categories {
+.article__categories {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
     gap: 2.0rem;
 }
 
-.article-category {
+.article__category {
     color: var(--pico-fg-color);
     text-decoration: none;
     font-size: 0.8rem;
