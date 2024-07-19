@@ -18,6 +18,6 @@ Structural Biologist from Aarhus University, retired. Antifascist. Tweets about 
     </div>
 </div>
 <div>
-<img alt="Me in 2017" src="/img/selfie-20170111.jpg">
+<img alt="Me in 2017" src="/img/selfie-20170111.webp">
 </div>
 </div>
