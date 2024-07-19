@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Org-Mode on MOK&#39;s Onomatomaniske Kaos</title>
-    <link>https://mok0.github.io/blog/tags/org-mode/</link>
+    <link>https://bioxray.dk/tags/org-mode/</link>
     <description>Recent content in Org-Mode on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
     <lastBuildDate>Thu, 13 Jun 2024 22:18:00 +0200</lastBuildDate>
-    <atom:link href="https://mok0.github.io/blog/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioxray.dk/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tips for Hugo</title>
-      <link>https://mok0.github.io/blog/posts/2024-06-10-tips-for-hugo/</link>
+      <link>https://bioxray.dk/posts/2024-06-10-tips-for-hugo/</link>
       <pubDate>Thu, 13 Jun 2024 22:18:00 +0200</pubDate>
-      <guid>https://mok0.github.io/blog/posts/2024-06-10-tips-for-hugo/</guid>
+      <guid>https://bioxray.dk/posts/2024-06-10-tips-for-hugo/</guid>
       <description>&lt;p&gt;Tips and tricks on Hugo, Emacs, Org-mode and &lt;code&gt;ox-hugo&lt;/code&gt; I discovered while developing this site, in random order.&lt;/p&gt;</description>
     </item>
   </channel>

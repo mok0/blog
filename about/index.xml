@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About me! on MOK&#39;s Onomatomaniske Kaos</title>
-    <link>https://mok0.github.io/blog/about/</link>
+    <link>https://bioxray.dk/about/</link>
     <description>Recent content in About me! on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <atom:link href="https://mok0.github.io/blog/about/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioxray.dk/about/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
