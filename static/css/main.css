@@ -5,11 +5,11 @@
     }
 
 header {
-    background-color: var(--pico-color);
-    color: var(--pico-background-color);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
+  background-color: var(--pico-background-color);
+  color: var(--pico-color);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 #header__title {
@@ -22,11 +22,11 @@ header {
 }
 
 footer {
-    background-color: var(--pico-color);
-    color: var(--pico-background-color);
-    padding: 2rem;
-    margin-top: 2rem;
-    text-align: right;
+  background-color: var(--pico-background-color);
+  color: var(--pico-color);
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: right;
 }
 
 #footer__title {
@@ -118,6 +118,5 @@ a:hover {
 
 .disabled a[role="button"] {
     outline: none;
-
     background-color: #666;
 }
