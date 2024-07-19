@@ -1,6 +1,7 @@
 ---
 title: Reservation of IP address on Nanostation M5
 date: 2015-05-15T12:30:13+02:00
+published: false
 categories:
   - nanostation
 author:

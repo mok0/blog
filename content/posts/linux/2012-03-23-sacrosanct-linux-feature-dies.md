@@ -3,7 +3,7 @@ title = "Sacrosanct Linux Feature Dies"
 date = 2012-03-23T19:07:13+01:00
 tags = ["ubuntu"]
 categories = ["Linux"]
-published = true
+published = false
 author = "Morten Kjeldgaard"
 keywords = "ubuntu virtual terminal"
 +++

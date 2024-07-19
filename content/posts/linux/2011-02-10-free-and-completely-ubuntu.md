@@ -3,7 +3,7 @@ title = "Free and Completely Ubuntu"
 date = 2011-02-10T21:08:39+01:00
 tags = ["ubuntu"]
 categories = ["Linux"]
-published = true
+published = false
 author = "Morten Kjeldgaard"
 keywords = "ubuntu"
 +++

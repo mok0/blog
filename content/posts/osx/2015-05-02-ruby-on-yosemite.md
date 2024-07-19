@@ -2,6 +2,7 @@
 layout: post
 title:  Install newer version of Ruby on OS X Yosemite
 date: 2015-05-02 16:00:00
+published: false
 categories:
   - Mac
 author: Morten Kjeldgaard
@@ -10,8 +11,6 @@ tags: ['ruby', 'brew', 'macos']
 
 This post describes how to install a newer version of Ruby on OS X Yosemite.
 <!-- more -->
-
-
 
 Following this video: <https://youtu.be/jx0NrIbQbzI>
 ```sh

@@ -3,7 +3,7 @@ title: Ubuntu on the Dell mini 10 (1)
 date: 2009-05-22 12:46:18
 categories: ['Linux']
 tags: ['ubuntu']
-published: true
+published: false
 ---
 
 I recently purchased a Dell Mini 10 notebook. I've been wanting to get

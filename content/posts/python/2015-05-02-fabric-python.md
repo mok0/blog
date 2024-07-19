@@ -3,6 +3,7 @@ title = "Installing Python 3 compatible Fabric"
 date = 2015-05-02T23:12:13+02:00
 categories = ['python']
 author = "Morten Kjeldgaard"
+published = false
 +++
 
 Unfortunately, [Fabric](https://pypi.python.org/pypi/Fabric/1.10.1)
