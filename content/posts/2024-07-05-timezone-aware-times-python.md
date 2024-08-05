@@ -173,7 +173,7 @@ Convert to US/Eastern
 
 The times are still correct, the timestamp is the same, but of course the walltime is different in Europe and in Eastern US.
 
-Now, let's do something that might , and that is taking time deltas across daylight savings time. We'll define two timezone aware timestamps, two minutes apart, at the time point where daylight savings time began in Europe in 2024.
+Now, let's do something that might fail, and that is taking time deltas across daylight savings time. We'll define two timezone aware timestamps, two minutes apart, at the time point where daylight savings time began in Europe in 2024.
 
 ```python
 >>> just_before_dst = dt.datetime(2024,3,31,1,59).astimezone()
@@ -217,4 +217,4 @@ is still 2 minutes.
 
 So, it seems if you are using timezone aware `datetime` objects, things are pretty safe. However the topic of time is a complex one. The obvious answer, to always use timezone aware timestamps is however not always correct, since timezones change all the time, and DST may be abolished in the future. So a time marking is a volatile and subjective piece of data.
 
-Joël Perras recently wrote a [blog post](https://nerderati.com/a-python-epoch-timestamp-timezone-trap/) on his site Nerderati describing the pitfalls you can encounter especially when using UNIX timestamps intermixed with Python `datetime` objects.
+Joël Perras recently wrote a related [blog post](https://nerderati.com/a-python-epoch-timestamp-timezone-trap/) on his site Nerderati describing the pitfalls you can encounter especially when using UNIX timestamps intermixed with Python `datetime` objects.

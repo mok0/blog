@@ -1,6 +1,6 @@
 +++
 title = "Tips for Hugo"
-date = 2024-06-13T22:18:00+02:00
+date = 2024-07-19T19:02:00+02:00
 tags = ["emacs", "org-mode", "hugo"]
 categories = ["Hugo"]
 draft = false
@@ -28,6 +28,7 @@ Tips and tricks on Hugo, Emacs, Org-mode and `ox-hugo` I discovered while develo
     - [Keywords](#keywords)
     - [Description](#description)
     - [How to insert description and keyword metatags with ox-hugo](#how-to-insert-description-and-keyword-metatags-with-ox-hugo)
+- <span class="section-num">6</span> [Other blog posts](#other-blog-posts)
 
 </div>
 <!--endtoc-->
@@ -246,5 +247,13 @@ When the right code in `=partials/head.html`, this becomes strings in the markdo
  <meta name="description" content="My Hugo tips">
  <meta name="keywords" content="hugo, ox-hugo, emacs">
 ```
+
+
+## <span class="section-num">6</span> Other blog posts {#other-blog-posts}
+
+Here's some other blog posts I've come across:
+
+-   Andrey Listopadov, [My blogging setup with Emacs and Org Mode](https://andreyor.st/posts/2022-10-16-my-blogging-setup-with-emacs-and-org-mode/), lots of great tips for setting up Emacs and Org Mode with blogging on Hugo (Oct. 16, 2022)
+-   Masukomi's comprehensive blog post [Using Org Mode With Hugo](https://weblog.masukomi.org/2024/07/19/using-org-mode-with-hugo/) (July 19, 2024).
 
 [^fn:1]: Look here: <https://gohugo.io/content-management/syntax-highlighting/>

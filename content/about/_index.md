@@ -3,7 +3,7 @@ title: "About me!"
 layout: single
 ---
 
-Structural Biologist from Aarhus University, retired. Antifascist. Tweets about science, politics, IT, pseudoscience, scientific racism and other nonsense.
+Structural Biologist from Aarhus University, retired. Antifascist. Blogs about science, politics, IT, pseudoscience, scientific racism and other nonsense.
 
 <div class="grid">
   <div>
