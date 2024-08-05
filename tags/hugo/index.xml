@@ -6,12 +6,12 @@
     <description>Recent content in Hugo on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Thu, 13 Jun 2024 22:18:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jul 2024 19:02:00 +0200</lastBuildDate>
     <atom:link href="https://bioxray.dk/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tips for Hugo</title>
       <link>https://bioxray.dk/posts/2024-06-10-tips-for-hugo/</link>
-      <pubDate>Thu, 13 Jun 2024 22:18:00 +0200</pubDate>
+      <pubDate>Fri, 19 Jul 2024 19:02:00 +0200</pubDate>
       <guid>https://bioxray.dk/posts/2024-06-10-tips-for-hugo/</guid>
       <description>&lt;p&gt;Tips and tricks on Hugo, Emacs, Org-mode and &lt;code&gt;ox-hugo&lt;/code&gt; I discovered while developing this site, in random order.&lt;/p&gt;</description>
     </item>
