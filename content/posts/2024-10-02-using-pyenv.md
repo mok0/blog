@@ -1,7 +1,7 @@
 +++
 title = "Using pyenv to manage your Python versions"
 date = 2024-10-02T21:03:00+02:00
-tags = ["emacs", "org-mode"]
+tags = ["python", "pyenv"]
 categories = ["Python"]
 draft = false
 author = "Morten Kjeldgaard"
