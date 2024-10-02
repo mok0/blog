@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on MOK&#39;s Onomatomaniske Kaos</title>
-    <link>https://bioxray.dk/tags/python/</link>
-    <description>Recent content in Python on MOK&#39;s Onomatomaniske Kaos</description>
+    <title>Pyenv on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/pyenv/</link>
+    <description>Recent content in Pyenv on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
     <lastBuildDate>Wed, 02 Oct 2024 21:03:00 +0200</lastBuildDate>
-    <atom:link href="https://bioxray.dk/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioxray.dk/tags/pyenv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using pyenv to manage your Python versions</title>
       <link>https://bioxray.dk/posts/2024-10-02-using-pyenv/</link>
       <pubDate>Wed, 02 Oct 2024 21:03:00 +0200</pubDate>
       <guid>https://bioxray.dk/posts/2024-10-02-using-pyenv/</guid>
       <description>In this blog post I will explain how I use pyenv to manage my Python installation. The following is only of relevance if you develop Python programs.&#xA;Most &amp;ndash; if not all &amp;ndash; Linux distributions come with a system version of Python, and the most important reason to include it as a system package is to run Python code from other packages.&#xA;If you develop Python programs you find you&amp;rsquo;ll need to install other Python modules.</description>
-    </item>
-    <item>
-      <title>Timezone Aware Timestamps in Python</title>
-      <link>https://bioxray.dk/posts/2024-07-05-timezone-aware-times-python/</link>
-      <pubDate>Fri, 19 Jul 2024 22:57:00 +0200</pubDate>
-      <guid>https://bioxray.dk/posts/2024-07-05-timezone-aware-times-python/</guid>
-      <description>&lt;p&gt;The datetime object in Python is very powerful, but if you want to do serious timeseries analysis and use data from around the world, you need to use timezone aware &lt;code&gt;datetime&lt;/code&gt; objects, and these are not the default.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
