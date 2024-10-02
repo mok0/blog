@@ -2,7 +2,7 @@
 title = "Using pyenv to manage your Python versions"
 date = 2024-10-02T21:03:00+02:00
 tags = ["emacs", "org-mode"]
-categories = ["Hugo"]
+categories = ["Python"]
 draft = false
 author = "Morten Kjeldgaard"
 description = "Manage Python version with pyenv"
@@ -24,7 +24,7 @@ But wait... isn't that an enormous waste of valuable disk space?
 
 Well, it depends on what your needs are. A full installation of Python including a handsome bunch of extra modules might take up 1 Gigabyte of space, but that is no more than many flatpak programs you install take. So if you need it, you need it. Another advantage is that you might want a newer --or older-- version of Python than the one your distro ships with.
 
-Here, I will not go into how to install `pyenv`, just go [here](https://github.com/pyenv/pyenv) and follow the instructions. Basically, you install the software (which lives in `~/.pyenv`) and put some shell commands in your `.bashrc` or `.zshrc` file.
+Here, I will not go into how to install `pyenv`, just go [here](https://github.com/pyenv/pyenv) and follow the instructions. Basically, you install the software (which lives in `~/.pyenv`)  with `git` and put some shell commands in your `.bashrc` or `.zshrc` file to initalize `pyenv`.
 
 
 ## <span class="section-num">2</span> Install your first version of Python {#install-your-first-version-of-python}
