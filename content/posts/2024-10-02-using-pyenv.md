@@ -41,7 +41,7 @@ As of writing, this generates a list of 842 different versions available to you.
 $ pyenv install 3.12.6
 ```
 
-`Pyenv` goes ahead and downloads the file and compiles it. You'll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called `build-essentials`.  After the build has completed, you can take a look at what Python versions are avaible in `pyenv`:
+`Pyenv` goes ahead and downloads the file and compiles it. You'll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called `build-essential`.  After the build has completed, you can take a look at what Python versions are avaible in `pyenv`:
 
 ```shell
 $ pyenv versions
