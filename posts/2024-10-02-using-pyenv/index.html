@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html data-theme="light"><head>
-	<meta name="generator" content="Hugo 0.128.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="description" content="Manage Python version with pyenv">
+    <meta name="keywords" content="python, pyenv, environment, tutorial">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link href="/css/main.css" rel="stylesheet"/>
-    <title>MOK&#39;s Onomatomaniske Kaos ~ Super Cool</title>
+    <title>Using pyenv to manage your Python versions ~ MOK&#39;s Onomatomaniske Kaos</title>
 </head>
 <body><header data-theme="dark" >
   <span id="header__title">
@@ -33,23 +34,26 @@
 </nav>
 </header>
 <div id="content">
-<main class="container">
-<article>
-  <p>Welcome to my pages! What I will be posting here is mainly notes I&rsquo;ve made to myself, cleaned up a bit for public consumption. Mainly focused on Linux and programming.</p>
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>Using pyenv to manage your Python versions</h2>
+    </div>
 
-</article>
-<section>
-  <h3>Latest blog post</h3>
-    
-    <article class="homepage-article">
-      <h1>
-      <a href="https://bioxray.dk/posts/2024-10-02-using-pyenv/" class="title-latest-blogpost"> Using pyenv to manage your Python versions</a>
-      </h1>
-      <div class="homepage-article__date">2024-10-02</div>
-      <div class="homepage-article__author">Morten Kjeldgaard</div>
-      <hr />
-      <div class="content">
-        <p>In this blog post I will explain how I use <code>pyenv</code> to manage my Python installation. The following is only of relevance if you develop Python programs.</p>
+    <div class="article__categories"><span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="/categories/hugo">Hugo</a>
+    </div> 
+
+  </div> 
+
+  
+    <div class="article__date">2024-10-02 21:03</div>
+  
+  <div class="article__author">Morten Kjeldgaard</div>
+
+  <hr />
+  <div class="content">
+    <p>In this blog post I will explain how I use <code>pyenv</code> to manage my Python installation. The following is only of relevance if you develop Python programs.</p>
 <p>Most &ndash; if not all &ndash; Linux distributions come with a system version of Python, and the most important reason to include it as a system package is to run Python code from other packages.</p>
 <p>If you develop Python programs you find you&rsquo;ll need to install other Python modules. Many are available as system packages, but far from all. If you search the web, you&rsquo;ll find that people tell you to install those packages using <code>pip</code>, but if you try to do that, you&rsquo;ll find that you aren&rsquo;t allowed to install your own modules to the system version of Python&hellip; for good reason. Another option is to add the <code>--user</code> switch to <code>pip</code>, and that will install the packages somewhere in your <code>~/.local</code> directory hierachy, but that quickly becomes unmanageable as the system version of Python with time is updated, while your user-local version of packages aren&rsquo;t. Or perhaps you&rsquo;ll find you suddenly need multiple versions of Python modules installed.</p>
 <h2 id="pyenv-to-the-rescue"><span class="section-num">1</span> Pyenv to the rescue</h2>
@@ -169,10 +173,10 @@
 </span></span><span style="display:flex;"><span><span style="color:#00a8c8">done</span>
 </span></span></code></pre></div><hr>
 
-      </div> 
-    </article>
-    
-</section>
+  </div> 
+
+  <div class="article__tags"><a class="article__tag" href="/tags/emacs">#emacs </a><a class="article__tag" href="/tags/org-mode">#org-mode </a>
+  </div> 
 </main> 
 
         </div><footer data-theme="dark" >
