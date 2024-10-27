@@ -69,7 +69,7 @@
 </span></span><span style="display:flex;"><span>Downloading Python-3.12.6.tar.xz...
 </span></span><span style="display:flex;"><span>-&gt; https://www.python.org/ftp/python/3.12.6/Python-3.12.6.tar.xz
 </span></span><span style="display:flex;"><span>Installing Python-3.12.6...
-</span></span></code></pre></div><p><code>Pyenv</code> goes ahead and downloads the <code>.tar.xz</code> source file and compiles it. You&rsquo;ll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called <code>build-essential</code>.  After the build has completed, you can take a look at what Python versions are avaible in <code>pyenv</code>:</p>
+</span></span></code></pre></div><p><code>Pyenv</code> goes ahead and downloads the <code>.tar.xz</code> source file and compiles it. You&rsquo;ll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called <code>build-essential</code> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  After the build has completed, you can take a look at what Python versions are avaible in <code>pyenv</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv versions
 </span></span><span style="display:flex;"><span>  * system
 </span></span><span style="display:flex;"><span>  3.12.6
@@ -175,6 +175,14 @@
 </span></span><span style="display:flex;"><span>    pip --quiet install --upgrade <span style="color:#111">$p</span>
 </span></span><span style="display:flex;"><span><span style="color:#00a8c8">done</span>
 </span></span></code></pre></div><hr>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: <code>build-essential</code>, <code>libncurses-dev</code>, <code>libssl-dev</code>, <code>liblzma-dev</code>, <code>libsqlite3-dev</code>, <code>libbz2-dev</code>, <code>libreadline-dev</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
   </div> 
 
