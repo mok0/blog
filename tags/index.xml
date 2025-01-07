@@ -6,8 +6,22 @@
     <description>Recent content in Tags on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Wed, 02 Oct 2024 21:03:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2025 23:42:00 +0100</lastBuildDate>
     <atom:link href="https://bioxray.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emacs</title>
+      <link>https://bioxray.dk/tags/emacs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/emacs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Org-Mode</title>
+      <link>https://bioxray.dk/tags/org-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/org-mode/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Pyenv</title>
       <link>https://bioxray.dk/tags/pyenv/</link>
@@ -41,20 +55,6 @@
       <link>https://bioxray.dk/tags/timezone/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://bioxray.dk/tags/timezone/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Emacs</title>
-      <link>https://bioxray.dk/tags/emacs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bioxray.dk/tags/emacs/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Org-Mode</title>
-      <link>https://bioxray.dk/tags/org-mode/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bioxray.dk/tags/org-mode/</guid>
       <description></description>
     </item>
     <item>

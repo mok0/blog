@@ -43,142 +43,212 @@
     
     <article class="homepage-article">
       <h1>
-      <a href="https://bioxray.dk/posts/2024-10-02-using-pyenv/" class="title-latest-blogpost"> Using pyenv to manage your Python versions</a>
+      <a href="https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/" class="title-latest-blogpost"> Install Arch Linux from scratch on Mac mini</a>
       </h1>
-      <div class="homepage-article__date">2024-10-02</div>
+      <div class="homepage-article__date">2025-01-07</div>
       <div class="homepage-article__author">Morten Kjeldgaard</div>
       <hr />
       <div class="content">
-        <p>In this blog post I will explain how I use <code>pyenv</code> to manage my Python installation. The following is only of relevance if you develop Python programs.</p>
-<p>Most &ndash; if not all &ndash; Linux distributions come with a system version of Python, and the most important reason to include it as a system package is to run Python code from other packages.</p>
-<p>If you develop Python programs you find you&rsquo;ll need to install other Python modules. Many are available as system packages, but far from all. If you search the web, you&rsquo;ll find that people tell you to install those packages using <code>pip</code>, but if you try to do that, you&rsquo;ll find that you aren&rsquo;t allowed to install your own modules to the system version of Python&hellip; for good reason. Another option is to add the <code>--user</code> switch to <code>pip</code>, and that will install the packages somewhere in your <code>~/.local</code> directory hierachy, but that quickly becomes unmanageable as the system version of Python with time is updated, while your user-local version of packages aren&rsquo;t. Or perhaps you&rsquo;ll find you suddenly need multiple versions of Python modules installed.</p>
-<h2 id="pyenv-to-the-rescue"><span class="section-num">1</span> Pyenv to the rescue</h2>
-<p><code>Pyenv</code> is a system that lets you install your own Python versions, that live in your home directory tree, more explicitly in <code>~/.pyenv</code>. You can install any version of Python, there are actually hundreds of various Python versions you can install using this system. What actually happens when you install something using <code>pyenv</code> is that is fetches the source code, compiles a special version for your machine, and puts it somewhere in <code>~/.pyenv</code>. When you activate Python from now on, it will not (necessarily) invoke the system version of Python, but the one you have installed using <code>pyenv</code>.</p>
-<p>But wait&hellip; isn&rsquo;t that an enormous waste of valuable disk space?</p>
-<p>Well, it depends on what your needs are. A full installation of Python including a handsome bunch of extra modules might take up 1 Gigabyte of space, but that is no more than many flatpak programs you install take. So if you need it, you need it. Another advantage is that you might want a newer &ndash;or older&ndash; version of Python than the one your distro ships with.</p>
-<p>Here, I will not go into how to install <code>pyenv</code>, just go <a href="https://github.com/pyenv/pyenv">here</a> and follow the instructions. Basically, you install the software (which lives in <code>~/.pyenv</code>)  with <code>git</code> and put some shell commands in your <code>.bashrc</code> or <code>.zshrc</code> file to initalize <code>pyenv</code>.</p>
-<h2 id="install-your-first-version-of-python"><span class="section-num">2</span> Install your first version of Python</h2>
-<p>To see what versions of Python are available, you can now list them all:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv install --list
-</span></span></code></pre></div><p>As of writing, this generates a list of 842 different versions available to you. But to install Python version 3.12.6, which is the newest stable version, simply go:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv install 3.12.6
-</span></span><span style="display:flex;"><span>Downloading Python-3.12.6.tar.xz...
-</span></span><span style="display:flex;"><span>-&gt; https://www.python.org/ftp/python/3.12.6/Python-3.12.6.tar.xz
-</span></span><span style="display:flex;"><span>Installing Python-3.12.6...
-</span></span></code></pre></div><p><code>Pyenv</code> goes ahead and downloads the <code>.tar.xz</code> source file and compiles it. You&rsquo;ll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called <code>build-essential</code> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  After the build has completed, you can take a look at what Python versions are avaible in <code>pyenv</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv versions
-</span></span><span style="display:flex;"><span>  * system
-</span></span><span style="display:flex;"><span>  3.12.6
-</span></span></code></pre></div><p>The one with an asterisk is the currently active version. This is my system version of Python at the moment:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ python3 --version
-</span></span><span style="display:flex;"><span>Python 3.11.2
-</span></span></code></pre></div><p>To activate the version we just installed, try this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv shell 3.12.6
-</span></span><span style="display:flex;"><span>$ python3 --version
-</span></span><span style="display:flex;"><span>Python 3.12.6
-</span></span></code></pre></div><p>Now the shell you are running is using Python version 3.12.6. If you open another terminal window, you will still be running the system version, so the <code>shell</code> keyword means that it&rsquo;s only set for that session. There are ways to make version 3.12.6 permanent, using either the <code>local</code> (local to a particular directory) or <code>global</code> (everywhere) keywords. Check out the <code>pyenv</code> documentation for more on this.</p>
-<h2 id="next-step-install-plugins"><span class="section-num">3</span> Next step: Install plugins</h2>
-<p>Before going further, I recommend that you install a few <code>pyenv</code> plugins. Here are the two most important plugins you&rsquo;ll need to begin with:</p>
+        <h2 id="install-arch-linux-from-scratch-on-mac-mini"><span class="section-num">1</span> Install Arch Linux from scratch on Mac mini</h2>
+<p>This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.</p>
+<p>Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took aournd 10 minutes and everything worked including wifi after using Mint&rsquo;s driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I&rsquo;ll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it&rsquo;s still a lot of work 😬.</p>
+<p>A few things in this document is specific to Macmini6,1, notably the things related to the wireless interface, otherwise you can probably use most of the following for any computer.</p>
+<h3 id="flashing-a-usb-stick">Flashing a USB stick</h3>
+<p>Always use the most recent ISO image from the <a href="https://archlinux.org/download/">Arch Linux download site</a>, otherwise you are very likely to get into problems later.</p>
+<p>I first put the Arch ISO on my Ventoy disk, but when I got to the stage of creating the grub installation I ran into a problem because apparently <code>efivars</code> was not active on <code>archiso</code>. I assume this is because the image is booted by Ventoy and not by UEFI on the Mac. Anyway, when later booted directly from a USB stick, the problem went away.</p>
+<h3 id="set-terminal-font-size-and-keyboard-layout">Set terminal font size and keyboard layout</h3>
+<p>I am using my TV as display, so I need to increase the font size. I also need to change the keyboard layout. The layout codes can be listed using  <code>localectl list-keymaps</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>setfont -d
+</span></span><span style="display:flex;"><span>loadkeys dk
+</span></span></code></pre></div><h3 id="connecting-to-wifi">Connecting to WiFi</h3>
+<p>The wireless interface on the Mac mini (&ldquo;Macmini6,1&rdquo;)  is a BCM 4331 chip which is not by default supported by <code>archiso</code>.  I could find the interface using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lspci -nn -d 14e4:
+</span></span></code></pre></div><p>but when looking at the net interfaces using <code>ip link</code>, only the loop and wired interfaces were show. When booting, <code>archiso</code> tells you to go to <a href="https://wireless.wiki.kernel.org/en/users/Drivers/b43#devicefirmware">this link</a>, but <a href="https://wireless.docs.kernel.org/en/latest/en/users/drivers/b43.html#list-of-hardware">this is the correct one</a>. After a lot of web searching, trial and error and many reboots I found that I need to blacklist the b43 driver and load wl which is on <code>archiso</code> from the start.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>modprobe -r b43 wl
+</span></span><span style="display:flex;"><span>modprobe wl
+</span></span><span style="display:flex;"><span>systemctl restart iwd
+</span></span></code></pre></div><p><code>iwctl</code> now shows the device <code>wlan0</code>, and I am back to the normal tutorials. However, <code>ip link</code> shows the device in the state UNKNOWN.</p>
+<p>The next step is to run <code>wpa_supplicant</code>.  First I generated a <code>wpa_supplicant.conf</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_passphrase Kanhavehus2 <span style="color:#d88200">&#34;Elvin&amp;Enzo&#34;</span> &gt; wpa_supplicant.conf
+</span></span></code></pre></div><p>then I ran this command from the wiki:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+</span></span></code></pre></div><p>After this I need to restart <code>dhcp</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dhcpcd wlan0
+</span></span></code></pre></div><p>Now the system received an IP address from my DHCP server and <code>ip link</code> shows wlan0 as UP, and I can ping 192.168.2.1.</p>
+<h3 id="create-partitions">Create partitions</h3>
+<p>Now the network is up, so I can continue by creating partition. Not going into details with this, but these are the partitions I created:</p>
 <ul>
-<li>
-<p>Pyenv <a href="https://github.com/pyenv/pyenv-virtualenv.git">virtualenv</a>, enables and manages virtual environments in <code>pyenv</code></p>
-</li>
-<li>
-<p>Pyenv <a href="https://github.com/pyenv/pyenv-update.git">update</a>, updates <code>pyenv</code> and all installed plugins</p>
-<p>To install, go to the directory <code>~/.pyenv/plugins</code> and clone the git repos of the plugins you want:</p>
-</li>
+<li><code>/dev/sda1</code> 300 Mb FAT32</li>
+<li><code>/dev/sda2</code> 8 Gb swap</li>
+<li><code>/dev/sda3</code> 111 Gb btrfs</li>
 </ul>
-<!--listend-->
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ <span style="color:#111">cd</span> ~/.pyenv/plugins
-</span></span><span style="display:flex;"><span>$ git clone https://github.com/pyenv/pyenv-virtualenv.git
-</span></span><span style="display:flex;"><span>$ git clone https://github.com/pyenv/pyenv-update.git
-</span></span></code></pre></div><p>When you have installed these plugins, a few extra commands will be available, <code>pyenv help</code> shows all of them, but the one you&rsquo;ll need now is <code>virtualenv</code>, that creates a Python virtual environment. What is a virtual environment? Very simply put, it is not much more than a separate copy of the <code>site-packages</code> directory, where <code>pip</code> will install all third-party Python packages.</p>
-<h2 id="always-use-a-virtual-environment"><span class="section-num">4</span> Always use a virtual environment</h2>
-<p>I recommend <em>never</em> install third party packages in your newly created Python directory. I like to keep this version minimal and pristine. Instead, I prefer to create virtual environments based on that version. It&rsquo;s possible to create as many as you want. Many people use a particular virtual environment for a particular project. Or, for example, if you want to play with a Python package that you don&rsquo;t know if you really want, you could create a virtual environment called <code>junk</code> and install the package there. Some Python packages pull in a great number of dependencies, and if you regret, there is no simple way to get rid of those 50 dependencies. But if you isolate your work to a virtual environment, you can use <code>pyenv  virtualenv-delete</code> to get rid of <code>junk</code> again.</p>
-<p>So before going any further, I suggest to create a virtual environment based on 3.12.6.</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv virtualenv 3.12.6 env-3.12.6
-</span></span></code></pre></div><p>Now, change to the new environment:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv shell env-3.12.6
-</span></span></code></pre></div><p>Look at what we now have:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv versions
-</span></span><span style="display:flex;"><span>  system
-</span></span><span style="display:flex;"><span>  3.12.6
-</span></span><span style="display:flex;"><span>  3.12.6/envs/env-3.12.6
-</span></span><span style="display:flex;"><span>.* env-3.12.6 --&gt; /home/mok/.pyenv/versions/3.12.6/envs/env-3.12.6 <span style="color:#f92672">(</span><span style="color:#111">set</span> by PYENV_VERSION environment variable<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p><code>Pyenv</code> lists the new virtual environment twice for some reason, but there only is one. The files are in this directory:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ls -F ~/.pyenv/versions
-</span></span><span style="display:flex;"><span>3.12.6/  env-3.12.6@
-</span></span></code></pre></div><p>Now you can go ahead and install all the packages you need with <code>pip</code>, and they will go into the virtual environment called <code>env-3.12.6</code> (or whatever name you give it):</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pip install numpy
-</span></span></code></pre></div><h2 id="updating-your-installation"><span class="section-num">5</span> Updating your installation</h2>
-<p>After a while, new Python version appear, but they will not be shown by your <code>pyenv</code> unless you update it (in reality, pull from the <code>pyenv</code> git repo). Here, the <code>update</code> plugin we installed above comes in handy. All you need to do at regular intervals is to:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv update
-</span></span><span style="display:flex;"><span>pyenv update
-</span></span><span style="display:flex;"><span>Updating /home/mok/.pyenv...
-</span></span><span style="display:flex;"><span>remote: Enumerating objects: 128, <span style="color:#00a8c8">done</span>.
-</span></span><span style="display:flex;"><span>remote: Counting objects: 100% <span style="color:#f92672">(</span>107/107<span style="color:#f92672">)</span>, <span style="color:#00a8c8">done</span>.
-</span></span><span style="display:flex;"><span>remote: Compressing objects: 100% <span style="color:#f92672">(</span>12/12<span style="color:#f92672">)</span>, <span style="color:#00a8c8">done</span>.
-</span></span><span style="display:flex;"><span>remote: Total <span style="color:#ae81ff">25</span> <span style="color:#f92672">(</span>delta 15<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">21</span> <span style="color:#f92672">(</span>delta 11<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>from 0<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Unpacking objects: 100% <span style="color:#f92672">(</span>25/25<span style="color:#f92672">)</span>, 4.85 KiB <span style="color:#111">|</span> 236.00 KiB/s, <span style="color:#00a8c8">done</span>.
-</span></span><span style="display:flex;"><span>From https://github.com/pyenv/pyenv
-</span></span><span style="display:flex;"><span> * branch              master     -&gt; FETCH_HEAD
-</span></span><span style="display:flex;"><span> * <span style="color:#f92672">[</span>new tag<span style="color:#f92672">]</span>           v2.4.14    -&gt; v2.4.14
-</span></span><span style="display:flex;"><span>   3f2ef9e0..468dc811  master     -&gt; origin/master
-</span></span><span style="display:flex;"><span>Updating 3f2ef9e0..468dc811
-</span></span><span style="display:flex;"><span>Fast-forward
-</span></span><span style="display:flex;"><span> .github/workflows/modified_scripts_build.yml                     <span style="color:#111">|</span> <span style="color:#ae81ff">3</span> +--
-</span></span><span style="display:flex;"><span> CHANGELOG.md                                                     <span style="color:#111">|</span> <span style="color:#ae81ff">4</span> ++++
-</span></span><span style="display:flex;"><span> libexec/pyenv---version                                          <span style="color:#111">|</span> <span style="color:#ae81ff">2</span> +-
-</span></span><span style="display:flex;"><span> plugins/python-build/share/python-build/3.12.7                   <span style="color:#111">|</span> <span style="color:#ae81ff">9</span> +++++++++
-</span></span><span style="display:flex;"><span> plugins/python-build/share/python-build/3.13.0rc2t               <span style="color:#111">|</span> <span style="color:#ae81ff">2</span> --
-</span></span><span style="display:flex;"><span> plugins/python-build/share/python-build/<span style="color:#f92672">{</span>3.13.0rc2 <span style="color:#f92672">=</span>&gt; 3.13.0rc3<span style="color:#f92672">}</span> <span style="color:#111">|</span> <span style="color:#ae81ff">4</span> ++--
-</span></span><span style="display:flex;"><span> plugins/python-build/share/python-build/3.13.0rc3t               <span style="color:#111">|</span> <span style="color:#ae81ff">2</span> ++
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">7</span> files changed, <span style="color:#ae81ff">19</span> insertions<span style="color:#f92672">(</span>+<span style="color:#f92672">)</span>, <span style="color:#ae81ff">7</span> deletions<span style="color:#f92672">(</span>-<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span> create mode <span style="color:#ae81ff">100644</span> plugins/python-build/share/python-build/3.12.7
-</span></span><span style="display:flex;"><span> delete mode <span style="color:#ae81ff">100644</span> plugins/python-build/share/python-build/3.13.0rc2t
-</span></span><span style="display:flex;"><span> rename plugins/python-build/share/python-build/<span style="color:#f92672">{</span>3.13.0rc2 <span style="color:#f92672">=</span>&gt; 3.13.0rc3<span style="color:#f92672">}</span> <span style="color:#f92672">(</span>59%<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span> create mode <span style="color:#ae81ff">100644</span> plugins/python-build/share/python-build/3.13.0rc3t
-</span></span><span style="display:flex;"><span>Updating /home/mok/.pyenv/plugins/pyenv-doctor...
-</span></span><span style="display:flex;"><span>From https://github.com/pyenv/pyenv-doctor
-</span></span><span style="display:flex;"><span> * branch            master     -&gt; FETCH_HEAD
-</span></span><span style="display:flex;"><span>Already up to date.
-</span></span><span style="display:flex;"><span>Updating /home/mok/.pyenv/plugins/pyenv-pip-migrate...
-</span></span><span style="display:flex;"><span>From https://github.com/pyenv/pyenv-pip-migrate
-</span></span><span style="display:flex;"><span> * branch            master     -&gt; FETCH_HEAD
-</span></span><span style="display:flex;"><span>Already up to date.
-</span></span><span style="display:flex;"><span>Updating /home/mok/.pyenv/plugins/pyenv-update...
-</span></span><span style="display:flex;"><span>From https://github.com/pyenv/pyenv-update
-</span></span><span style="display:flex;"><span> * branch            master     -&gt; FETCH_HEAD
-</span></span><span style="display:flex;"><span>Already up to date.
-</span></span><span style="display:flex;"><span>Updating /home/mok/.pyenv/plugins/pyenv-virtualenv...
-</span></span><span style="display:flex;"><span>From https://github.com/pyenv/pyenv-virtualenv
-</span></span><span style="display:flex;"><span> * branch            master     -&gt; FETCH_HEAD
-</span></span><span style="display:flex;"><span>Already up to date.
-</span></span></code></pre></div><p>Notice that there are already updates to <code>pyenv</code> even though I just did an update a few hours ago in preparation for this posting.</p>
-<h2 id="migrate-your-set-of-packages"><span class="section-num">6</span> Migrate your set of packages</h2>
-<p>You can keep your virtual environments around; I prefer to use the same virtual environment everywhere until i decide to upgrade to a new Python version. So for a while, I wil be using <code>env-3.12.6</code>. But eventually, I will want to use a newer version of Python, and that is where the <code>pyenv-pip-migrate</code> plugin is really handy. It lets you copy all installed packages from one virtual environment to another. You can find the <code>migrate</code> plugin <a href="https://github.com/pyenv/pyenv-pip-migrate.git">here</a>, just clone it using <code>git</code> like we did above.</p>
-<p>So say I wanted to try out the new Python version 3.13.0rc3. I would compile and install the Python binary like before, create a virtual environment, and then migrate all my <code>pip</code> installed packages like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv migrate env-3.12.6 env-3.13.0rc3
-</span></span></code></pre></div><p>When in the new environment, I might update the most important packages with a script that calls <code>pip</code> like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#! /bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#111">PACKAGES</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;ipython pandas numpy scipy seaborn matplotlib pillow
-</span></span></span><span style="display:flex;"><span><span style="color:#d88200">SQLAlchemy pyarrow pytz pytest openpyxl loguru jupyter jupyterlab
-</span></span></span><span style="display:flex;"><span><span style="color:#d88200">beautifulsoup4 colored yamllib&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">for</span> p in <span style="color:#111">$PACKAGES</span><span style="color:#111">;</span> <span style="color:#00a8c8">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#111">echo</span> Upgrading: <span style="color:#111">$p</span>
-</span></span><span style="display:flex;"><span>    pip --quiet install --upgrade <span style="color:#111">$p</span>
-</span></span><span style="display:flex;"><span><span style="color:#00a8c8">done</span>
-</span></span></code></pre></div><hr>
-<div class="footnotes" role="doc-endnotes">
+<p>The final partition <code>/dev/sda3</code> is simply the remaining free space on the 128 Gb SSD that came with the Mac mini.</p>
+<p>Many guides tell you to use <code>zramswap</code> instead of having a swap partition, but I am old fashioned and I want a swap area outside <code>btrfs</code>, and disk space is much cheaper than RAM space.</p>
+<p>You <em>could</em> create an additional 4 Gb ext4 partition for <code>/boot</code> but here I am creating a <code>@boot</code> subvolume for that. You want <code>/boot</code> to be isolated from <code>/</code> in order to create snapshots that don&rsquo;t create problems when restoring. In fact, I&rsquo;ve often thought about unmounting <code>/boot</code> once the system is running since you don&rsquo;t need it (except when updating <code>grub</code>).</p>
+<h3 id="create-the-btrfs-main-file-system">Create the btrfs main file system</h3>
+<p>I want to use <code>btrfs</code> subvolumes so the setup becomes a bit involved and confusing. Basically the <code>btrfs</code> main file system can be thought of as an <code>LVM</code> volume group that you put logical volumes on. Having a granular set of subvolumes enables you to use snapshots in a rational way, but contrary to <code>LVM</code>, the subvolumes all share the total device space with the advantages and disadvantages that entails: You can make use of all available disk space, but if one of the subvolumes fills up, like for example your <code>$HOME</code>, the whole system locks up.</p>
+<p>The first thing to do is to create all the subvolumes I want. <code>/dev/sda3</code> is already formatted as a btrfs volume using <code>mkfs.btrfs</code>, so just mount it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 /mnt
+</span></span></code></pre></div><p>Now create subvolumes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>btrfs subvolume create @         <span style="color:#75715e"># for /</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @boot     <span style="color:#75715e"># for /boot</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @varlog   <span style="color:#75715e"># for /var/log</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @cache    <span style="color:#75715e"># for /var/cache</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @home     <span style="color:#75715e"># for /home</span>
+</span></span></code></pre></div><p>The reason to keep <code>/var/log</code> and <code>/var/cache</code> in separate subvolumes is again when restoring <code>/</code> from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.</p>
+<p>Now, unmount <code>/dev/sda3</code> and remount the root subvolume (@):</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount /dev/sda3
+</span></span><span style="display:flex;"><span> mount -o rw,noatime,space_cache<span style="color:#f92672">=</span>v2,compress<span style="color:#f92672">=</span>zstd,ssd,discard<span style="color:#f92672">=</span>async,subvol<span style="color:#f92672">=</span>@ /dev/sda2 /mnt
+</span></span></code></pre></div><p>Create all the mount points needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir /mnt/home
+</span></span><span style="display:flex;"><span>mkdir -p /boot/efi
+</span></span><span style="display:flex;"><span>mkdir -p /var/log
+</span></span><span style="display:flex;"><span>mkdir -p /var/cache
+</span></span></code></pre></div><p>and mount all the subvolumes. I found that you actually don&rsquo;t need to include all the options above, it will work fine with this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@ /mnt
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@boot /mnt/boot
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@home /mnt/home
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@varlog /mnt/var/log
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@cache /mnt/var/cache
+</span></span></code></pre></div><p>Finally mount the efi partition:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /sda1 /mnt/boot/efi
+</span></span></code></pre></div><p>Now we have the naked directory structure needed to install a Linux system mounted on <code>/mnt</code>.</p>
+<h4 id="tip">TIP</h4>
+<p>I had to boot from <code>archiso</code> many times, and every time it has forgotten everything, except the filesystems we have generated on <code>/dev/sda3</code>. I created a few small shell scripts that I store on a second USB stick, and it can be mounted while in <code>archiso</code> environment, and I could then copy the scripts from the USB stick to the local <code>/root.</code> Fortunately the Mac mini has 4 USB ports to it&rsquo;s possible to connect 2 USB sticks, a keyboard and a mouse.</p>
+<h4 id="preparing-for-the-arch-installation-environment">Preparing for the Arch installation environment</h4>
+<p>Before doing <code>pacstrap</code> it&rsquo;s a good idea to refresh the signing keys, <em>especially</em> if your install image is not brand new, the signing keys of the Arch devs seem to expire all the time.  This operation might take quite a while.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman-key --refresh-keys
+</span></span></code></pre></div><h3 id="bootstrapping-a-basic-linux-system">Bootstrapping a basic Linux system</h3>
+<p>Now that we have our partitions mounted, let’s install the set of base packages for Arch. I suppose you could use <code>debootstrap</code> if creating a Debian installation instead of Arch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacstrap -i /mnt base
+</span></span></code></pre></div><h3 id="enter-the-chroot-environment">Enter the chroot environment</h3>
+<p>There is nothing else we need to do in the <code>archiso</code> environment right now, so we switch root to the newly bootstrapped Linux system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">cd</span> /root
+</span></span><span style="display:flex;"><span>arch-chroot /mnt
+</span></span></code></pre></div><h3 id="mount-the-swap-partition">Mount the swap partition</h3>
+<p>Next step is creating and mounting the swap partion in our new Linux system. As seen above I created an 8 Gb partition for swap, now activate it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkswap /dev/sda2
+</span></span><span style="display:flex;"><span>swapon /dev/sda2
+</span></span></code></pre></div><h3 id="generate-an-fstab-file">Generate an fstab file</h3>
+<p>Now we have all subvolumes plus swap mounted, so generate an <code>/etc/fstab</code> file to save all this information for the next boot:</p>
+<p>Generate an fstab and place it in <code>/etc</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>genfstab -U &gt; /etc/fstab
+</span></span></code></pre></div><p>The <code>-U</code> switch prompts <code>genfstab</code> to output UUIDs instead of device names that might change. Inspect the <code>/etc/fstab</code> file to check that all the information is correct, and that all our partitions are listed in the file.</p>
+<h3 id="set-zoneinfo-and-hostname">Set zoneinfo and hostname</h3>
+<p>Just set the timezone, it&rsquo;s also possible to wait and do it via the Cosmic settings, but we might as well do it now we&rsquo;re here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ln -s /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
+</span></span></code></pre></div><p>Set the hostname, I name it after the monster Grendel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat <span style="color:#d88200">&#34;grendel&#34;</span> &gt; /etc/hostname
+</span></span></code></pre></div><p>We also need to define the hostname in <code>/etc/hosts</code>, from here it will be recognized by the local network, thanks to mDNS (<code>avahi_daemon</code>) that we installed above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat <span style="color:#d88200">&lt;&lt; EOF &gt; /etc/hosts
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">127.0.0.1 localhost
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">::1       localhost
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">127.0.1.1 grendel
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">EOF</span>
+</span></span></code></pre></div><h3 id="user-accounts">User accounts</h3>
+<p>To protect the root account, set a password for it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd
+</span></span></code></pre></div><p>and I also create a user for myself:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd  --groups wheel,users --home-dir /home/mok --uid <span style="color:#ae81ff">1026</span> mok
+</span></span></code></pre></div><p>Then, I set a password:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd mok
+</span></span></code></pre></div><h3 id="install-basic-packages">Install basic packages</h3>
+<p>Next step is to install basic packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S base-devel btrfs-progs grub efibootmgr mtools networkmanager openssh sudo acpid vim
+</span></span></code></pre></div><h3 id="install-linux-kernel">Install Linux kernel</h3>
+<p>Install at least one kernel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S linux linux-headers
+</span></span></code></pre></div><p>and install firmware files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S linux-firmware
+</span></span></code></pre></div><p>The Mac mini has an Intel GPU, so I install mesa:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S mesa
+</span></span></code></pre></div><h3 id="more-packages-to-install">More packages to install</h3>
+<p>More packages to install, in no particular order:</p>
+<ul>
+<li>broadcom-wl  (necessary for Mac mini)</li>
+<li>git</li>
+<li>dnsutils</li>
+<li>inetutils</li>
+<li>dnsutils</li>
+<li>fastfetch</li>
+<li>htop</li>
+<li>btop</li>
+<li>man-db</li>
+<li>man-pages</li>
+<li>pipewire</li>
+<li>wireplumber</li>
+<li>pipewire-alsa</li>
+<li>pipewire-pulseaudio</li>
+<li>fzf</li>
+<li>zoxide</li>
+<li>eza</li>
+<li>bat</li>
+<li>emacs</li>
+<li>tmux</li>
+<li>mosh</li>
+<li>otf-monaspace-nerd</li>
+<li>ttf-firacode-nerd</li>
+<li>firefox</li>
+</ul>
+<p>Copy/paste this list from here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>bat bind bluez broadcom-wl btop btrfs-progs chromium cmake
+</span></span><span style="display:flex;"><span>cosmic dnsutils emacs eza fastfetch firefox fzf git grub-btrfs htop
+</span></span><span style="display:flex;"><span>inetutils inotify-tools ipython linux linux-firmware linux-headers
+</span></span><span style="display:flex;"><span>man-db man-pages mosh openssh otf-monaspace-nerd pipewire pipewire-alsa
+</span></span><span style="display:flex;"><span>pipewire-pulse pipewire-pulseaudio reflector timeshift tmux
+</span></span><span style="display:flex;"><span>ttf-firacode-nerd wireplumber xdg-desktop-portal-cosmic zoxide
+</span></span><span style="display:flex;"><span>zsh
+</span></span></code></pre></div><p>Many guides on the Internet talk about <code>os-prober</code>, but I don&rsquo;t plan to add more operating systems so I am omitting it.</p>
+<h3 id="install-cosmic-desktop">Install Cosmic desktop</h3>
+<p>Install the Cosmic desktop and enable it  when booting</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S cosmic
+</span></span></code></pre></div><p>Note, <code>cosmic</code> is a meta package that will install around 20 other packages such as <code>cosmic-greeter</code>, <code>cosmic-settings</code> and <code>cosmic-terminal</code>. You can select to install all of them (recommended).</p>
+<p>Next enable <code>cosmic-greeter</code> to present the login screen when booting next time.</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">systemctl enable cosmic-greeter
+</code></pre><h3 id="enable-ssh">Enable ssh</h3>
+<p>I installed <code>openssh</code> so enable it to start up at boot time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> sshd --now
+</span></span></code></pre></div><p>The <code>--now</code> switch tells <code>systemd</code> to start the service after enabling it for boot. At this point you should in fact be able to ssh into the new machine from another computer.</p>
+<h3 id="generate-kernel-ramdisks">Generate kernel ramdisks</h3>
+<p>Generate the intial Linux image to boot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkinitcpio -p linux
+</span></span></code></pre></div><h3 id="set-up-grub">Set up GRUB</h3>
+<p>Install GRUB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-install --target<span style="color:#f92672">=</span>x86_64-efi --bootloader-id<span style="color:#f92672">=</span>grub_uefi --recheck
+</span></span></code></pre></div><p>and generate a config file for GRUB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><h3 id="other-services-to-start">Other services to start</h3>
+<p>Enable NetworkManager so networking will function when you reboot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> NetworkManager
+</span></span></code></pre></div><p>acpid for power management:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> acpid
+</span></span></code></pre></div><p>next, <code>systemd-resolved</code> for DNS resolution and <code>avahi-daemon</code> for name resolution on your local network (mDNS):</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> systemd-resolved
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> avahi-daemon
+</span></span></code></pre></div><p>Enable bluetooth</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> bluetooth
+</span></span></code></pre></div><p>Enable boot from timeshift snapshots. You will have to configure this system later. Check out manuals and YouTube videos for guides. I find that Timeshift does not open a window on Wayland, btw.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> grub-btrfs
+</span></span></code></pre></div><p>For the sound system to work, enable everything pipewire:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> pipewire-pulse
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> pipewire
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> wireplumber.service
+</span></span></code></pre></div><p>That&rsquo;s it for now. Once the newly installed system boots, there will be opportunity to enable other services if needed.</p>
+<h3 id="update-the-pacman-mirrorlist">Update the pacman mirrorlist</h3>
+<p>Let&rsquo;s just update the list of pacman mirrors to be the fastest I can access:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>reflector --country DK --latest <span style="color:#ae81ff">10</span> --sort rate --save /etc/pacman.d/mirrorlist
+</span></span></code></pre></div><h3 id="blacklist-the-b43-driver">Blacklist the b43 driver</h3>
+<p><strong>Important!</strong></p>
+<p>The Macmini6,1 wireless interface needs the <code>wl</code> kernel module that we installed above in the <code>broadcom-wl</code> package. But we need to prevent the <code>b43</code> module from starting, otherwise wifi won&rsquo;t work. Create a file in <code>/etc/modprobe.d/</code> called <code>blacklist.conf</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">echo</span> <span style="color:#d88200">&#34;blacklist b43&#34;</span> &gt; /etc/modprobe.d/blacklist.conf
+</span></span></code></pre></div><h3 id="wrapping-up">Wrapping Up</h3>
+<p>Exit our chroot environment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">exit</span>
+</span></span></code></pre></div><p>Now we are back on <code>archiso</code>. Unmount all partitions and reboot.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount -R /mnt
+</span></span><span style="display:flex;"><span>reboot
+</span></span></code></pre></div><p>If you are lucky, the system will boot up in the Cosmic greeter. Otherwise, back to the drawing board.</p>
 <hr>
-<ol>
-<li id="fn:1">
-<p>On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: <code>build-essential</code>, <code>libncurses-dev</code>, <code>libssl-dev</code>, <code>liblzma-dev</code>, <code>libsqlite3-dev</code>, <code>libbz2-dev</code>, <code>libreadline-dev</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
 
       </div> 
     </article>

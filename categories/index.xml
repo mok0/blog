@@ -6,8 +6,15 @@
     <description>Recent content in Categories on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Wed, 02 Oct 2024 21:03:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2025 23:42:00 +0100</lastBuildDate>
     <atom:link href="https://bioxray.dk/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://bioxray.dk/categories/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/categories/linux/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Python</title>
       <link>https://bioxray.dk/categories/python/</link>
@@ -34,13 +41,6 @@
       <link>https://bioxray.dk/categories/matador/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://bioxray.dk/categories/matador/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://bioxray.dk/categories/linux/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bioxray.dk/categories/linux/</guid>
       <description></description>
     </item>
     <item>

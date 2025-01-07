@@ -109,7 +109,7 @@
 </span></span><span style="display:flex;"><span>  3.12.6
 </span></span><span style="display:flex;"><span>  3.12.6/envs/env-3.12.6
 </span></span><span style="display:flex;"><span>.* env-3.12.6 --&gt; /home/mok/.pyenv/versions/3.12.6/envs/env-3.12.6 <span style="color:#f92672">(</span><span style="color:#111">set</span> by PYENV_VERSION environment variable<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p><code>Pyenv</code> lists the new virtual environment twice for some reason, but there only is one. The files are in this directory:</p>
+</span></span></code></pre></div><p><code>Pyenv</code> lists the new virtual environment twice for some reason, but there only is one, and the active environment is marked by an asterisk. The files are in this directory:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ls -F ~/.pyenv/versions
 </span></span><span style="display:flex;"><span>3.12.6/  env-3.12.6@
 </span></span></code></pre></div><p>Now you can go ahead and install all the packages you need with <code>pip</code>, and they will go into the virtual environment called <code>env-3.12.6</code> (or whatever name you give it):</p>
@@ -174,13 +174,13 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#111">echo</span> Upgrading: <span style="color:#111">$p</span>
 </span></span><span style="display:flex;"><span>    pip --quiet install --upgrade <span style="color:#111">$p</span>
 </span></span><span style="display:flex;"><span><span style="color:#00a8c8">done</span>
-</span></span></code></pre></div><hr>
-<div class="footnotes" role="doc-endnotes">
+</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: <code>build-essential</code>, <code>libncurses-dev</code>, <code>libssl-dev</code>, <code>liblzma-dev</code>, <code>libsqlite3-dev</code>, <code>libbz2-dev</code>, <code>libreadline-dev</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
+<p>On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: <code>build-essential</code>, <code>libncurses-dev</code>, <code>libssl-dev</code>, <code>liblzma-dev</code>, <code>libsqlite3-dev</code>, <code>libbz2-dev</code>, <code>libreadline-dev</code>.</p>
+<hr>
+&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
 </ol>
 </div>
 
