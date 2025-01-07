@@ -1,12 +1,12 @@
 +++
 title = "Install Arch Linux from scratch on Mac mini"
 date = 2025-01-07T23:42:00+01:00
-tags = ["emacs", "org-mode"]
+tags = ["arch", "macmini", "wifi", "broadcom-wl", "driver"]
 categories = ["Linux"]
 draft = false
 author = "Morten Kjeldgaard"
 description = "Install Linux on Mac mini"
-keywords = "linux arch macmini"
+keywords = "linux arch macmini broadcom-wl driver"
 +++
 
 This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.
