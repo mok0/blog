@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Macmini on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/macmini/</link>
+    <description>Recent content in Macmini on MOK&#39;s Onomatomaniske Kaos</description>
+    <generator>Hugo</generator>
+    <language>en-dk</language>
+    <lastBuildDate>Tue, 07 Jan 2025 23:42:00 +0100</lastBuildDate>
+    <atom:link href="https://bioxray.dk/tags/macmini/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install Arch Linux from scratch on Mac mini</title>
+      <link>https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/</link>
+      <pubDate>Tue, 07 Jan 2025 23:42:00 +0100</pubDate>
+      <guid>https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/</guid>
+      <description>This is a description of how I installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.</description>
+    </item>
+  </channel>
+</rss>

@@ -7,12 +7,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://bioxray.dk/tags/arch/</loc>
+    <lastmod>2025-01-07T23:42:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://bioxray.dk/tags/broadcom-wl/</loc>
+    <lastmod>2025-01-07T23:42:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://bioxray.dk/categories/</loc>
     <lastmod>2025-01-07T23:42:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://bioxray.dk/tags/emacs/</loc>
+    <loc>https://bioxray.dk/tags/driver/</loc>
     <lastmod>2025-01-07T23:42:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -27,12 +37,17 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://bioxray.dk/tags/org-mode/</loc>
+    <loc>https://bioxray.dk/tags/macmini/</loc>
     <lastmod>2025-01-07T23:42:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/tags/</loc>
+    <lastmod>2025-01-07T23:42:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://bioxray.dk/tags/wifi/</loc>
     <lastmod>2025-01-07T23:42:00+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -77,12 +92,22 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://bioxray.dk/tags/emacs/</loc>
+    <lastmod>2024-07-19T19:02:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://bioxray.dk/tags/hugo/</loc>
     <lastmod>2024-07-19T19:02:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/categories/hugo/</loc>
+    <lastmod>2024-07-19T19:02:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://bioxray.dk/tags/org-mode/</loc>
     <lastmod>2024-07-19T19:02:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
