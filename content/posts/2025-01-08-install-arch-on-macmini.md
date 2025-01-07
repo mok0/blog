@@ -1,12 +1,12 @@
 +++
-title = "This is a title"
-date = 2024-07-19T19:04:00+02:00
+title = "Install Arch Linux from scratch on Mac mini"
+date = 2025-01-07T23:42:00+01:00
 tags = ["emacs", "org-mode"]
-categories = ["Hugo"]
+categories = ["Linux"]
 draft = false
 author = "Morten Kjeldgaard"
-description = "My Hugo tips"
-keywords = "hugo ox-hugo emacs"
+description = "Install Linux on Mac mini"
+keywords = "linux arch macmini"
 +++
 
 ## <span class="section-num">1</span> Install Arch Linux from scratch on Mac mini {#install-arch-linux-from-scratch-on-mac-mini}

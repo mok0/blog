@@ -116,7 +116,7 @@ $ pyenv versions
 .* env-3.12.6 --> /home/mok/.pyenv/versions/3.12.6/envs/env-3.12.6 (set by PYENV_VERSION environment variable)
 ```
 
-`Pyenv` lists the new virtual environment twice for some reason, but there only is one. The files are in this directory:
+`Pyenv` lists the new virtual environment twice for some reason, but there only is one, and the active environment is marked by an asterisk. The files are in this directory:
 
 ```shell
 $ ls -F ~/.pyenv/versions
@@ -207,6 +207,6 @@ for p in $PACKAGES; do
 done
 ```
 
-----
-
 [^fn:1]: On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: `build-essential`, `libncurses-dev`, `libssl-dev`, `liblzma-dev`, `libsqlite3-dev`, `libbz2-dev`, `libreadline-dev`.
+
+    ----
