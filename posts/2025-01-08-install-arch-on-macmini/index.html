@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html data-theme="light"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="description" content="My Hugo tips">
+    <meta name="keywords" content="hugo, ox-hugo, emacs">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <title>This is a title ~ MOK&#39;s Onomatomaniske Kaos</title>
+</head>
+<body><header data-theme="dark" >
+  <span id="header__title">
+    MOK&#39;s Onomatomaniske Kaos
+  </span>
+  <div id="header__subtitle">
+        Super Cool
+  </div><nav class="site-nav">
+  <ul class="main-menu">
+    
+    <li>
+      <a href="/"  data-theme="dark" class="contrast">Home</a>
+    </li>
+    
+    <li>
+      <a href="/posts"  data-theme="dark" class="contrast">Posts</a>
+    </li>
+    
+    <li>
+      <a href="/about"  data-theme="dark" class="contrast">About</a>
+    </li>
+    
+  </ul>
+</nav>
+</header>
+<div id="content">
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>This is a title</h2>
+    </div>
+
+    <div class="article__categories"><span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="/categories/hugo">Hugo</a>
+    </div> 
+
+  </div> 
+
+  
+    <div class="article__date">2024-07-19 19:04</div>
+  
+  <div class="article__author">Morten Kjeldgaard</div>
+
+  <hr />
+  <div class="content">
+    <h2 id="install-arch-linux-from-scratch-on-mac-mini"><span class="section-num">1</span> Install Arch Linux from scratch on Mac mini</h2>
+<p>This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.</p>
+<p>Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took aournd 10 minutes and everything worked including wifi after using Mint&rsquo;s driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I&rsquo;ll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it&rsquo;s still a lot of work 😬.</p>
+<p>A few things in this document is specific to Macmini6,1, notably the things related to the wireless interface, otherwise you can probably use most of the following for any computer.</p>
+<h3 id="flashing-a-usb-stick">Flashing a USB stick</h3>
+<p>Always use the most recent ISO image from the <a href="https://archlinux.org/download/">Arch Linux download site</a>, otherwise you are very likely to get into problems later.</p>
+<p>I first put the Arch ISO on my Ventoy disk, but when I got to the stage of creating the grub installation I ran into a problem because apparently <code>efivars</code> was not active on <code>archiso</code>. I assume this is because the image is booted by Ventoy and not by UEFI on the Mac. Anyway, when later booted directly from a USB stick, the problem went away.</p>
+<h3 id="set-terminal-font-size-and-keyboard-layout">Set terminal font size and keyboard layout</h3>
+<p>I am using my TV as display, so I need to increase the font size. I also need to change the keyboard layout. The layout codes can be listed using  <code>localectl list-keymaps</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>setfont -d
+</span></span><span style="display:flex;"><span>loadkeys dk
+</span></span></code></pre></div><h3 id="connecting-to-wifi">Connecting to WiFi</h3>
+<p>The wireless interface on the Mac mini (&ldquo;Macmini6,1&rdquo;)  is a BCM 4331 chip which is not by default supported by <code>archiso</code>.  I could find the interface using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lspci -nn -d 14e4:
+</span></span></code></pre></div><p>but when looking at the net interfaces using <code>ip link</code>, only the loop and wired interfaces were show. When booting, <code>archiso</code> tells you to go to <a href="https://wireless.wiki.kernel.org/en/users/Drivers/b43#devicefirmware">this link</a>, but <a href="https://wireless.docs.kernel.org/en/latest/en/users/drivers/b43.html#list-of-hardware">this is the correct one</a>. After a lot of web searching, trial and error and many reboots I found that I need to blacklist the b43 driver and load wl which is on <code>archiso</code> from the start.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>modprobe -r b43 wl
+</span></span><span style="display:flex;"><span>modprobe wl
+</span></span><span style="display:flex;"><span>systemctl restart iwd
+</span></span></code></pre></div><p><code>iwctl</code> now shows the device <code>wlan0</code>, and I am back to the normal tutorials. However, <code>ip link</code> shows the device in the state UNKNOWN.</p>
+<p>The next step is to run <code>wpa_supplicant</code>.  First I generated a <code>wpa_supplicant.conf</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_passphrase Kanhavehus2 <span style="color:#d88200">&#34;Elvin&amp;Enzo&#34;</span> &gt; wpa_supplicant.conf
+</span></span></code></pre></div><p>then I ran this command from the wiki:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+</span></span></code></pre></div><p>After this I need to restart <code>dhcp</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dhcpcd wlan0
+</span></span></code></pre></div><p>Now the system received an IP address from my DHCP server and <code>ip link</code> shows wlan0 as UP, and I can ping 192.168.2.1.</p>
+<h3 id="create-partitions">Create partitions</h3>
+<p>Now the network is up, so I can continue by creating partition. Not going into details with this, but these are the partitions I created:</p>
+<ul>
+<li><code>/dev/sda1</code> 300 Mb FAT32</li>
+<li><code>/dev/sda2</code> 8 Gb swap</li>
+<li><code>/dev/sda3</code> 111 Gb btrfs</li>
+</ul>
+<p>The final partition <code>/dev/sda3</code> is simply the remaining free space on the 128 Gb SSD that came with the Mac mini.</p>
+<p>Many guides tell you to use <code>zramswap</code> instead of having a swap partition, but I am old fashioned and I want a swap area outside <code>btrfs</code>, and disk space is much cheaper than RAM space.</p>
+<p>You <em>could</em> create an additional 4 Gb ext4 partition for <code>/boot</code> but here I am creating a <code>@boot</code> subvolume for that. You want <code>/boot</code> to be isolated from <code>/</code> in order to create snapshots that don&rsquo;t create problems when restoring. In fact, I&rsquo;ve often thought about unmounting <code>/boot</code> once the system is running since you don&rsquo;t need it (except when updating <code>grub</code>).</p>
+<h3 id="create-the-btrfs-main-file-system">Create the btrfs main file system</h3>
+<p>I want to use <code>btrfs</code> subvolumes so the setup becomes a bit involved and confusing. Basically the <code>btrfs</code> main file system can be thought of as an <code>LVM</code> volume group that you put logical volumes on. Having a granular set of subvolumes enables you to use snapshots in a rational way, but contrary to <code>LVM</code>, the subvolumes all share the total device space with the advantages and disadvantages that entails: You can make use of all available disk space, but if one of the subvolumes fills up, like for example your <code>$HOME</code>, the whole system locks up.</p>
+<p>The first thing to do is to create all the subvolumes I want. <code>/dev/sda3</code> is already formatted as a btrfs volume using <code>mkfs.btrfs</code>, so just mount it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 /mnt
+</span></span></code></pre></div><p>Now create subvolumes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>btrfs subvolume create @         <span style="color:#75715e"># for /</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @boot     <span style="color:#75715e"># for /boot</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @varlog   <span style="color:#75715e"># for /var/log</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @cache    <span style="color:#75715e"># for /var/cache</span>
+</span></span><span style="display:flex;"><span>btrfs subvolume create @home     <span style="color:#75715e"># for /home</span>
+</span></span></code></pre></div><p>The reason to keep <code>/var/log</code> and <code>/var/cache</code> in separate subvolumes is again when restoring <code>/</code> from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.</p>
+<p>Now, unmount <code>/dev/sda3</code> and remount the root subvolume (@):</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount /dev/sda3
+</span></span><span style="display:flex;"><span> mount -o rw,noatime,space_cache<span style="color:#f92672">=</span>v2,compress<span style="color:#f92672">=</span>zstd,ssd,discard<span style="color:#f92672">=</span>async,subvol<span style="color:#f92672">=</span>@ /dev/sda2 /mnt
+</span></span></code></pre></div><p>Create all the mount points needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir /mnt/home
+</span></span><span style="display:flex;"><span>mkdir -p /boot/efi
+</span></span><span style="display:flex;"><span>mkdir -p /var/log
+</span></span><span style="display:flex;"><span>mkdir -p /var/cache
+</span></span></code></pre></div><p>and mount all the subvolumes. I found that you actually don&rsquo;t need to include all the options above, it will work fine with this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@ /mnt
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@boot /mnt/boot
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@home /mnt/home
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@varlog /mnt/var/log
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@cache /mnt/var/cache
+</span></span></code></pre></div><p>Finally mount the efi partition:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /sda1 /mnt/boot/efi
+</span></span></code></pre></div><p>Now we have the naked directory structure needed to install a Linux system mounted on <code>/mnt</code>.</p>
+<h4 id="tip">TIP</h4>
+<p>I had to boot from <code>archiso</code> many times, and every time it has forgotten everything, except the filesystems we have generated on <code>/dev/sda3</code>. I created a few small shell scripts that I store on a second USB stick, and it can be mounted while in <code>archiso</code> environment, and I could then copy the scripts from the USB stick to the local <code>/root.</code> Fortunately the Mac mini has 4 USB ports to it&rsquo;s possible to connect 2 USB sticks, a keyboard and a mouse.</p>
+<h4 id="preparing-for-the-arch-installation-environment">Preparing for the Arch installation environment</h4>
+<p>Before doing <code>pacstrap</code> it&rsquo;s a good idea to refresh the signing keys, <em>especially</em> if your install image is not brand new, the signing keys of the Arch devs seem to expire all the time.  This operation might take quite a while.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman-key --refresh-keys
+</span></span></code></pre></div><h3 id="bootstrapping-a-basic-linux-system">Bootstrapping a basic Linux system</h3>
+<p>Now that we have our partitions mounted, let’s install the set of base packages for Arch. I suppose you could use <code>debootstrap</code> if creating a Debian installation instead of Arch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacstrap -i /mnt base
+</span></span></code></pre></div><h3 id="enter-the-chroot-environment">Enter the chroot environment</h3>
+<p>There is nothing else we need to do in the <code>archiso</code> environment right now, so we switch root to the newly bootstrapped Linux system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">cd</span> /root
+</span></span><span style="display:flex;"><span>arch-chroot /mnt
+</span></span></code></pre></div><h3 id="mount-the-swap-partition">Mount the swap partition</h3>
+<p>Next step is creating and mounting the swap partion in our new Linux system. As seen above I created an 8 Gb partition for swap, now activate it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkswap /dev/sda2
+</span></span><span style="display:flex;"><span>swapon /dev/sda2
+</span></span></code></pre></div><h3 id="generate-an-fstab-file">Generate an fstab file</h3>
+<p>Now we have all subvolumes plus swap mounted, so generate an <code>/etc/fstab</code> file to save all this information for the next boot:</p>
+<p>Generate an fstab and place it in <code>/etc</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>genfstab -U &gt; /etc/fstab
+</span></span></code></pre></div><p>The <code>-U</code> switch prompts <code>genfstab</code> to output UUIDs instead of device names that might change. Inspect the <code>/etc/fstab</code> file to check that all the information is correct, and that all our partitions are listed in the file.</p>
+<h3 id="set-zoneinfo-and-hostname">Set zoneinfo and hostname</h3>
+<p>Just set the timezone, it&rsquo;s also possible to wait and do it via the Cosmic settings, but we might as well do it now we&rsquo;re here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ln -s /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
+</span></span></code></pre></div><p>Set the hostname, I name it after the monster Grendel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat <span style="color:#d88200">&#34;grendel&#34;</span> &gt; /etc/hostname
+</span></span></code></pre></div><p>We also need to define the hostname in <code>/etc/hosts</code>, from here it will be recognized by the local network, thanks to mDNS (<code>avahi_daemon</code>) that we installed above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat <span style="color:#d88200">&lt;&lt; EOF &gt; /etc/hosts
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">127.0.0.1 localhost
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">::1       localhost
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">127.0.1.1 grendel
+</span></span></span><span style="display:flex;"><span><span style="color:#d88200">EOF</span>
+</span></span></code></pre></div><h3 id="user-accounts">User accounts</h3>
+<p>To protect the root account, set a password for it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd
+</span></span></code></pre></div><p>and I also create a user for myself:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd  --groups wheel,users --home-dir /home/mok --uid <span style="color:#ae81ff">1026</span> mok
+</span></span></code></pre></div><p>Then, I set a password:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd mok
+</span></span></code></pre></div><h3 id="install-basic-packages">Install basic packages</h3>
+<p>Next step is to install basic packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S base-devel btrfs-progs grub efibootmgr mtools networkmanager openssh sudo acpid vim
+</span></span></code></pre></div><h3 id="install-linux-kernel">Install Linux kernel</h3>
+<p>Install at least one kernel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S linux linux-headers
+</span></span></code></pre></div><p>and install firmware files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S linux-firmware
+</span></span></code></pre></div><p>The Mac mini has an Intel GPU, so I install mesa:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S mesa
+</span></span></code></pre></div><h3 id="more-packages-to-install">More packages to install</h3>
+<p>More packages to install, in no particular order:</p>
+<ul>
+<li>broadcom-wl  (necessary for Mac mini)</li>
+<li>git</li>
+<li>dnsutils</li>
+<li>inetutils</li>
+<li>dnsutils</li>
+<li>fastfetch</li>
+<li>htop</li>
+<li>btop</li>
+<li>man-db</li>
+<li>man-pages</li>
+<li>pipewire</li>
+<li>wireplumber</li>
+<li>pipewire-alsa</li>
+<li>pipewire-pulseaudio</li>
+<li>fzf</li>
+<li>zoxide</li>
+<li>eza</li>
+<li>bat</li>
+<li>emacs</li>
+<li>tmux</li>
+<li>mosh</li>
+<li>otf-monaspace-nerd</li>
+<li>ttf-firacode-nerd</li>
+<li>firefox</li>
+</ul>
+<p>Copy/paste this list from here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>bat bind bluez broadcom-wl btop btrfs-progs chromium cmake
+</span></span><span style="display:flex;"><span>cosmic dnsutils emacs eza fastfetch firefox fzf git grub-btrfs htop
+</span></span><span style="display:flex;"><span>inetutils inotify-tools ipython linux linux-firmware linux-headers
+</span></span><span style="display:flex;"><span>man-db man-pages mosh openssh otf-monaspace-nerd pipewire pipewire-alsa
+</span></span><span style="display:flex;"><span>pipewire-pulse pipewire-pulseaudio reflector timeshift tmux
+</span></span><span style="display:flex;"><span>ttf-firacode-nerd wireplumber xdg-desktop-portal-cosmic zoxide
+</span></span><span style="display:flex;"><span>zsh
+</span></span></code></pre></div><p>Many guides on the Internet talk about <code>os-prober</code>, but I don&rsquo;t plan to add more operating systems so I am omitting it.</p>
+<h3 id="install-cosmic-desktop">Install Cosmic desktop</h3>
+<p>Install the Cosmic desktop and enable it  when booting</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S cosmic
+</span></span></code></pre></div><p>Note, <code>cosmic</code> is a meta package that will install around 20 other packages such as <code>cosmic-greeter</code>, <code>cosmic-settings</code> and <code>cosmic-terminal</code>. You can select to install all of them (recommended).</p>
+<p>Next enable <code>cosmic-greeter</code> to present the login screen when booting next time.</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">systemctl enable cosmic-greeter
+</code></pre><h3 id="enable-ssh">Enable ssh</h3>
+<p>I installed <code>openssh</code> so enable it to start up at boot time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> sshd --now
+</span></span></code></pre></div><p>The <code>--now</code> switch tells <code>systemd</code> to start the service after enabling it for boot. At this point you should in fact be able to ssh into the new machine from another computer.</p>
+<h3 id="generate-kernel-ramdisks">Generate kernel ramdisks</h3>
+<p>Generate the intial Linux image to boot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkinitcpio -p linux
+</span></span></code></pre></div><h3 id="set-up-grub">Set up GRUB</h3>
+<p>Install GRUB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-install --target<span style="color:#f92672">=</span>x86_64-efi --bootloader-id<span style="color:#f92672">=</span>grub_uefi --recheck
+</span></span></code></pre></div><p>and generate a config file for GRUB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><h3 id="other-services-to-start">Other services to start</h3>
+<p>Enable NetworkManager so networking will function when you reboot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> NetworkManager
+</span></span></code></pre></div><p>acpid for power management:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> acpid
+</span></span></code></pre></div><p>next, <code>systemd-resolved</code> for DNS resolution and <code>avahi-daemon</code> for name resolution on your local network (mDNS):</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> systemd-resolved
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> avahi-daemon
+</span></span></code></pre></div><p>Enable bluetooth</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> bluetooth
+</span></span></code></pre></div><p>Enable boot from timeshift snapshots. You will have to configure this system later. Check out manuals and YouTube videos for guides. I find that Timeshift does not open a window on Wayland, btw.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> grub-btrfs
+</span></span></code></pre></div><p>For the sound system to work, enable everything pipewire:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> pipewire-pulse
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> pipewire
+</span></span><span style="display:flex;"><span>systemctl <span style="color:#111">enable</span> wireplumber.service
+</span></span></code></pre></div><p>That&rsquo;s it for now. Once the newly installed system boots, there will be opportunity to enable other services if needed.</p>
+<h3 id="update-the-pacman-mirrorlist">Update the pacman mirrorlist</h3>
+<p>Let&rsquo;s just update the list of pacman mirrors to be the fastest I can access:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>reflector --country DK --latest <span style="color:#ae81ff">10</span> --sort rate --save /etc/pacman.d/mirrorlist
+</span></span></code></pre></div><h3 id="blacklist-the-b43-driver">Blacklist the b43 driver</h3>
+<p><strong>Important!</strong></p>
+<p>The Macmini6,1 wireless interface needs the <code>wl</code> kernel module that we installed above in the <code>broadcom-wl</code> package. But we need to prevent the <code>b43</code> module from starting, otherwise wifi won&rsquo;t work. Create a file in <code>/etc/modprobe.d/</code> called <code>blacklist.conf</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">echo</span> <span style="color:#d88200">&#34;blacklist b43&#34;</span> &gt; /etc/modprobe.d/blacklist.conf
+</span></span></code></pre></div><h3 id="wrapping-up">Wrapping Up</h3>
+<p>Exit our chroot environment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#111">exit</span>
+</span></span></code></pre></div><p>Now we are back on <code>archiso</code>. Unmount all partitions and reboot.</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount -R /mnt
+</span></span><span style="display:flex;"><span>reboot
+</span></span></code></pre></div><p>If you are lucky, the system will boot up in the Cosmic greeter. Otherwise, back to the drawing board.</p>
+<hr>
+
+  </div> 
+
+  <div class="article__tags"><a class="article__tag" href="/tags/emacs">#emacs </a><a class="article__tag" href="/tags/org-mode">#org-mode </a>
+  </div> 
+</main> 
+
+        </div><footer data-theme="dark" >
+  <span id="footer__title">
+    © Morten Kjeldgaard, 2024
+  </span>
+</footer>
+<script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -23,6 +23,13 @@
       <description>&lt;p&gt;The datetime object in Python is very powerful, but if you want to do serious timeseries analysis and use data from around the world, you need to use timezone aware &lt;code&gt;datetime&lt;/code&gt; objects, and these are not the default.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>This is a title</title>
+      <link>https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/</link>
+      <pubDate>Fri, 19 Jul 2024 19:04:00 +0200</pubDate>
+      <guid>https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/</guid>
+      <description>1 Install Arch Linux from scratch on Mac mini This is a description of how I installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.</description>
+    </item>
+    <item>
       <title>Tips for Hugo</title>
       <link>https://bioxray.dk/posts/2024-06-10-tips-for-hugo/</link>
       <pubDate>Fri, 19 Jul 2024 19:02:00 +0200</pubDate>
