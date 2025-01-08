@@ -12,7 +12,7 @@ pygmentsstyle = "monokailight"
 [params]
 slogan = "Super Cool"
 theme = "light"
-footer = '© Morten Kjeldgaard, 2024'
+footer = '© Morten Kjeldgaard, 2025'
 
 paginate = 4
 
