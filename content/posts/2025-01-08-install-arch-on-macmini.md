@@ -11,6 +11,8 @@ keywords = "linux arch macmini broadcom-wl driver"
 
 This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.
 
+<!--more-->
+
 Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took aournd 10 minutes and everything worked including wifi after using Mint's driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I'll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it's still a lot of work 😬.
 
 A few things in this document is specific to Macmini6,1, notably the things related to the wireless interface, otherwise you can probably use most of the following for any computer.
@@ -452,5 +454,7 @@ reboot
 ```
 
 If you are lucky, the system will boot up in the Cosmic greeter. Otherwise, back to the drawing board.
+
+<img alt="Screenshot of terminal with fastfetch output" src="img/cosmic-screenshot-2025-01-08.webp"/>
 
 ---
