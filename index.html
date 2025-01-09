@@ -50,7 +50,7 @@
       <hr />
       <div class="content">
         <p>This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that I purchased very cheaply refurbished. This machine has 16 Gb of RAM and 128 Gb SSD and it was expensive when it was first purchased. It is not possible to upgrade this machine past macOS Catalina, but with Linux the support will continue forever, and this little computer can continue to run a modern, fully secure and updated operating system.</p>
-<p>Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took aournd 10 minutes and everything worked including wifi after using Mint&rsquo;s driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I&rsquo;ll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it&rsquo;s still a lot of work 😬.</p>
+<p>Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took around 10 minutes and everything worked including wifi after using Mint&rsquo;s driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I&rsquo;ll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it&rsquo;s still a lot of work 😬.</p>
 <p>A few things in this document is specific to Macmini6,1, notably the things related to the wireless interface, otherwise you can probably use most of the following for any computer.</p>
 <h2 id="flashing-a-usb-stick"><span class="section-num">1</span> Flashing a USB stick</h2>
 <p>Always use the most recent ISO image from the <a href="https://archlinux.org/download/">Arch Linux download site</a>, otherwise you are very likely to get into problems later.</p>
@@ -104,11 +104,11 @@
 </span></span><span style="display:flex;"><span>mkdir -p /var/log
 </span></span><span style="display:flex;"><span>mkdir -p /var/cache
 </span></span></code></pre></div><p>and mount all the subvolumes. I found that you actually don&rsquo;t need to include all the options above, it will work fine with this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@ /mnt
-</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@boot /mnt/boot
-</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@home /mnt/home
-</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@varlog /mnt/var/log
-</span></span><span style="display:flex;"><span>mount /dev/sda3 -o <span style="color:#111">subvol</span><span style="color:#f92672">=</span>@cache /mnt/var/cache
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@ /mnt
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@boot /mnt/boot
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@home /mnt/home
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@varlog /mnt/var/log
+</span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@cache /mnt/var/cache
 </span></span></code></pre></div><p>Finally mount the efi partition:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /sda1 /mnt/boot/efi
 </span></span></code></pre></div><p>Now we have the naked directory structure needed to install a Linux system mounted on <code>/mnt</code>.</p>
@@ -257,7 +257,7 @@
 
         </div><footer data-theme="dark" >
   <span id="footer__title">
-    © Morten Kjeldgaard, 2024
+    © Morten Kjeldgaard, 2025
   </span>
 </footer>
 <script src="https://kit.fontawesome.com/e55e3b2e7b.js" crossorigin="anonymous"></script>
