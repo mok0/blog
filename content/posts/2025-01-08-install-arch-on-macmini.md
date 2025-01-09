@@ -13,7 +13,7 @@ This is a description of how I  installed Arch on my Mac mini (ultimo 2012) that
 
 <!--more-->
 
-Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took aournd 10 minutes and everything worked including wifi after using Mint's driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I'll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it's still a lot of work 😬.
+Before I had fun doing this, I actually installed Linux Mint 21 on the same hardware, it took around 10 minutes and everything worked including wifi after using Mint's driver manager to install the driver, which it found automatically. However, I wanted to try to install Linux on btrfs subvolumes and that is why I started this project. I will need this machine for teaching installation of Linux, so I will wipe the Arch installation again soon, but I had fun doing this, and perhaps I'll repeat this installation when the teaching is done.. I installed Arch several years ago on a different machine, but I can comfort you by saying that it's still a lot of work 😬.
 
 A few things in this document is specific to Macmini6,1, notably the things related to the wireless interface, otherwise you can probably use most of the following for any computer.
 
@@ -130,11 +130,11 @@ mkdir -p /var/cache
 and mount all the subvolumes. I found that you actually don't need to include all the options above, it will work fine with this:
 
 ```shell
-mount /dev/sda3 -o subvol=@ /mnt
-mount /dev/sda3 -o subvol=@boot /mnt/boot
-mount /dev/sda3 -o subvol=@home /mnt/home
-mount /dev/sda3 -o subvol=@varlog /mnt/var/log
-mount /dev/sda3 -o subvol=@cache /mnt/var/cache
+mount /dev/sda3 -o  -o compress=zstd,subvol=@ /mnt
+mount /dev/sda3 -o  -o compress=zstd,subvol=@boot /mnt/boot
+mount /dev/sda3 -o  -o compress=zstd,subvol=@home /mnt/home
+mount /dev/sda3 -o  -o compress=zstd,subvol=@varlog /mnt/var/log
+mount /dev/sda3 -o  -o compress=zstd,subvol=@cache /mnt/var/cache
 ```
 
 Finally mount the efi partition:
