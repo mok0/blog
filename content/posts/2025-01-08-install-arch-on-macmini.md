@@ -103,13 +103,12 @@ Now create subvolumes:
 
 ```shell
 btrfs subvolume create @         # for /
-btrfs subvolume create @boot     # for /boot
 btrfs subvolume create @varlog   # for /var/log
 btrfs subvolume create @cache    # for /var/cache
 btrfs subvolume create @home     # for /home
 ```
 
-The reason to keep `/var/log` and `/var/cache` in separate subvolumes is again when restoring `/` from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.
+The reason to keep `/var/log` and `/var/cache` in separate subvolumes&nbsp;[^fn:1] is again when restoring `/` from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.
 
 Now, unmount `/dev/sda3` and remount the root subvolume (@):
 
@@ -131,7 +130,6 @@ and mount all the subvolumes. I found that you actually don't need to include al
 
 ```shell
 mount /dev/sda3 -o  -o compress=zstd,subvol=@ /mnt
-mount /dev/sda3 -o  -o compress=zstd,subvol=@boot /mnt/boot
 mount /dev/sda3 -o  -o compress=zstd,subvol=@home /mnt/home
 mount /dev/sda3 -o  -o compress=zstd,subvol=@varlog /mnt/var/log
 mount /dev/sda3 -o  -o compress=zstd,subvol=@cache /mnt/var/cache
@@ -306,6 +304,8 @@ More packages to install, in no particular order:
 -   otf-monaspace-nerd
 -   ttf-firacode-nerd
 -   firefox
+-   pciutils
+-   usbutils
 
 Copy/paste this list from here:
 
@@ -316,7 +316,7 @@ inetutils inotify-tools ipython linux linux-firmware linux-headers
 man-db man-pages mosh openssh otf-monaspace-nerd pipewire pipewire-alsa
 pipewire-pulse pipewire-pulseaudio reflector timeshift tmux
 ttf-firacode-nerd wireplumber xdg-desktop-portal-cosmic zoxide
-zsh
+zsh pciutils usbutils
 ```
 
 Many guides on the Internet talk about `os-prober`, but I don't plan to add more operating systems so I am omitting it.
@@ -455,6 +455,8 @@ reboot
 
 If you are lucky, the system will boot up in the Cosmic greeter. Otherwise, back to the drawing board.
 
-<img alt="Screenshot of terminal with fastfetch output" src="img/cosmic-screenshot-2025-01-08.webp"/>
+[^fn:1]: In the first iteration of this blog post, I include a subvolume named `@boot` to contain the `/boot` directory. However, I have revised my idea and no longer think this is a good idea. The point is, we want `/boot` to be backed up along with the rest of the root system.
 
----
+    <img alt="Screenshot of terminal with fastfetch output" src="img/cosmic-screenshot-2025-01-08.webp"/>
+
+    ---
