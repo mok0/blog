@@ -90,11 +90,10 @@
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 /mnt
 </span></span></code></pre></div><p>Now create subvolumes:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>btrfs subvolume create @         <span style="color:#75715e"># for /</span>
-</span></span><span style="display:flex;"><span>btrfs subvolume create @boot     <span style="color:#75715e"># for /boot</span>
 </span></span><span style="display:flex;"><span>btrfs subvolume create @varlog   <span style="color:#75715e"># for /var/log</span>
 </span></span><span style="display:flex;"><span>btrfs subvolume create @cache    <span style="color:#75715e"># for /var/cache</span>
 </span></span><span style="display:flex;"><span>btrfs subvolume create @home     <span style="color:#75715e"># for /home</span>
-</span></span></code></pre></div><p>The reason to keep <code>/var/log</code> and <code>/var/cache</code> in separate subvolumes is again when restoring <code>/</code> from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.</p>
+</span></span></code></pre></div><p>The reason to keep <code>/var/log</code> and <code>/var/cache</code> in separate subvolumes <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> is again when restoring <code>/</code> from a snapshot, the system retains logs etc. and in addtion, the files in these areas are constantly updated with information and would take up disk space in the snapshot.</p>
 <p>Now, unmount <code>/dev/sda3</code> and remount the root subvolume (@):</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount /dev/sda3
 </span></span><span style="display:flex;"><span> mount -o rw,noatime,space_cache<span style="color:#f92672">=</span>v2,compress<span style="color:#f92672">=</span>zstd,ssd,discard<span style="color:#f92672">=</span>async,subvol<span style="color:#f92672">=</span>@ /dev/sda2 /mnt
@@ -105,7 +104,6 @@
 </span></span><span style="display:flex;"><span>mkdir -p /var/cache
 </span></span></code></pre></div><p>and mount all the subvolumes. I found that you actually don&rsquo;t need to include all the options above, it will work fine with this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@ /mnt
-</span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@boot /mnt/boot
 </span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@home /mnt/home
 </span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@varlog /mnt/var/log
 </span></span><span style="display:flex;"><span>mount /dev/sda3 -o  -o <span style="color:#111">compress</span><span style="color:#f92672">=</span>zstd,subvol<span style="color:#f92672">=</span>@cache /mnt/var/cache
@@ -188,6 +186,8 @@
 <li>otf-monaspace-nerd</li>
 <li>ttf-firacode-nerd</li>
 <li>firefox</li>
+<li>pciutils</li>
+<li>usbutils</li>
 </ul>
 <p>Copy/paste this list from here:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>bat bind bluez broadcom-wl btop btrfs-progs chromium cmake
@@ -196,7 +196,7 @@
 </span></span><span style="display:flex;"><span>man-db man-pages mosh openssh otf-monaspace-nerd pipewire pipewire-alsa
 </span></span><span style="display:flex;"><span>pipewire-pulse pipewire-pulseaudio reflector timeshift tmux
 </span></span><span style="display:flex;"><span>ttf-firacode-nerd wireplumber xdg-desktop-portal-cosmic zoxide
-</span></span><span style="display:flex;"><span>zsh
+</span></span><span style="display:flex;"><span>zsh pciutils usbutils
 </span></span></code></pre></div><p>Many guides on the Internet talk about <code>os-prober</code>, but I don&rsquo;t plan to add more operating systems so I am omitting it.</p>
 <h2 id="install-cosmic-desktop"><span class="section-num">16</span> Install Cosmic desktop</h2>
 <p>Install the Cosmic desktop and enable it  when booting</p>
@@ -247,8 +247,16 @@
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount -R /mnt
 </span></span><span style="display:flex;"><span>reboot
 </span></span></code></pre></div><p>If you are lucky, the system will boot up in the Cosmic greeter. Otherwise, back to the drawing board.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>In the first iteration of this blog post, I include a subvolume named <code>@boot</code> to contain the <code>/boot</code> directory. However, I have revised my idea and no longer think this is a good idea. The point is, we want <code>/boot</code> to be backed up along with the rest of the root system.</p>
 <img alt="Screenshot of terminal with fastfetch output" src="img/cosmic-screenshot-2025-01-08.webp"/>
 <hr>
+&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
+</ol>
+</div>
       </div> 
     </article>
     
