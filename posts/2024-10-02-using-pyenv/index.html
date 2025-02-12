@@ -61,6 +61,16 @@
 <p>But wait&hellip; isn&rsquo;t that an enormous waste of valuable disk space?</p>
 <p>Well, it depends on what your needs are. A full installation of Python including a handsome bunch of extra modules might take up 1 Gigabyte of space, but that is no more than many flatpak programs you install take. So if you need it, you need it. Another advantage is that you might want a newer &ndash;or older&ndash; version of Python than the one your distro ships with.</p>
 <p>Here, I will not go into how to install <code>pyenv</code>, just go <a href="https://github.com/pyenv/pyenv">here</a> and follow the instructions. Basically, you install the software (which lives in <code>~/.pyenv</code>)  with <code>git</code> and put some shell commands in your <code>.bashrc</code> or <code>.zshrc</code> file to initalize <code>pyenv</code>.</p>
+<p>You&rsquo;ll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called <code>build-essential</code>. In addition, on newly installed Debian and Pop!_OS systems I had to install the following packages in order to get Python to compile correctly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install build-essential
+</span></span><span style="display:flex;"><span>sudo apt install libncurses-dev
+</span></span><span style="display:flex;"><span>sudo apt install libssl-dev
+</span></span><span style="display:flex;"><span>sudo apt install liblzma-dev
+</span></span><span style="display:flex;"><span>sudo apt install libsqlite3-dev
+</span></span><span style="display:flex;"><span>sudo apt install libbz2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libreadline-dev
+</span></span><span style="display:flex;"><span>sudo apt install libffi-dev
+</span></span></code></pre></div><p>You may or may not have all these packages installed.</p>
 <h2 id="install-your-first-version-of-python"><span class="section-num">2</span> Install your first version of Python</h2>
 <p>To see what versions of Python are available, you can now list them all:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv install --list
@@ -69,7 +79,7 @@
 </span></span><span style="display:flex;"><span>Downloading Python-3.12.6.tar.xz...
 </span></span><span style="display:flex;"><span>-&gt; https://www.python.org/ftp/python/3.12.6/Python-3.12.6.tar.xz
 </span></span><span style="display:flex;"><span>Installing Python-3.12.6...
-</span></span></code></pre></div><p><code>Pyenv</code> goes ahead and downloads the <code>.tar.xz</code> source file and compiles it. You&rsquo;ll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called <code>build-essential</code> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  After the build has completed, you can take a look at what Python versions are avaible in <code>pyenv</code>:</p>
+</span></span></code></pre></div><p><code>Pyenv</code> goes ahead and downloads the <code>.tar.xz</code> source file and compiles it. After the build has completed, you can take a look at what Python versions are avaible in <code>pyenv</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ pyenv versions
 </span></span><span style="display:flex;"><span>  * system
 </span></span><span style="display:flex;"><span>  3.12.6
@@ -174,15 +184,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#111">echo</span> Upgrading: <span style="color:#111">$p</span>
 </span></span><span style="display:flex;"><span>    pip --quiet install --upgrade <span style="color:#111">$p</span>
 </span></span><span style="display:flex;"><span><span style="color:#00a8c8">done</span>
-</span></span></code></pre></div><div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: <code>build-essential</code>, <code>libncurses-dev</code>, <code>libssl-dev</code>, <code>liblzma-dev</code>, <code>libsqlite3-dev</code>, <code>libbz2-dev</code>, <code>libreadline-dev</code>.</p>
-<hr>
-&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
-</ol>
-</div>
+</span></span></code></pre></div><hr>
 
   </div> 
 
