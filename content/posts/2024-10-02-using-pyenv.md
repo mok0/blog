@@ -26,6 +26,21 @@ Well, it depends on what your needs are. A full installation of Python including
 
 Here, I will not go into how to install `pyenv`, just go [here](https://github.com/pyenv/pyenv) and follow the instructions. Basically, you install the software (which lives in `~/.pyenv`)  with `git` and put some shell commands in your `.bashrc` or `.zshrc` file to initalize `pyenv`.
 
+You'll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called `build-essential`. In addition, on newly installed Debian and Pop!_OS systems I had to install the following packages in order to get Python to compile correctly:
+
+```shell
+sudo apt install build-essential
+sudo apt install libncurses-dev
+sudo apt install libssl-dev
+sudo apt install liblzma-dev
+sudo apt install libsqlite3-dev
+sudo apt install libbz2-dev
+sudo apt install libreadline-dev
+sudo apt install libffi-dev
+```
+
+You may or may not have all these packages installed.
+
 
 ## <span class="section-num">2</span> Install your first version of Python {#install-your-first-version-of-python}
 
@@ -44,7 +59,7 @@ Downloading Python-3.12.6.tar.xz...
 Installing Python-3.12.6...
 ```
 
-`Pyenv` goes ahead and downloads the `.tar.xz` source file and compiles it. You'll have to first install the tools to compile a and build C program, on the Debian family of distros, this package is called `build-essential`&nbsp;[^fn:1].  After the build has completed, you can take a look at what Python versions are avaible in `pyenv`:
+`Pyenv` goes ahead and downloads the `.tar.xz` source file and compiles it. After the build has completed, you can take a look at what Python versions are avaible in `pyenv`:
 
 ```shell
 $ pyenv versions
@@ -207,6 +222,4 @@ for p in $PACKAGES; do
 done
 ```
 
-[^fn:1]: On a newly installed Pop!_OS system I had to install the following packages in order to get Python to compile correctly: `build-essential`, `libncurses-dev`, `libssl-dev`, `liblzma-dev`, `libsqlite3-dev`, `libbz2-dev`, `libreadline-dev`.
-
-    ----
+----
