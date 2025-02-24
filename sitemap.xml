@@ -444,9 +444,5 @@
     <loc>https://bioxray.dk/contacts/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://bioxray.dk/markdown-test/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

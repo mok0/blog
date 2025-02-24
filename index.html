@@ -68,7 +68,7 @@
 </span></span><span style="display:flex;"><span>systemctl restart iwd
 </span></span></code></pre></div><p><code>iwctl</code> now shows the device <code>wlan0</code>, and I am back to the normal tutorials. However, <code>ip link</code> shows the device in the state UNKNOWN.</p>
 <p>The next step is to run <code>wpa_supplicant</code>.  First I generated a <code>wpa_supplicant.conf</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_passphrase Kanhavehus2 <span style="color:#d88200">&#34;Elvin&amp;Enzo&#34;</span> &gt; wpa_supplicant.conf
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_passphrase network_name <span style="color:#d88200">&#34;secret-passphrase&#34;</span> &gt; wpa_supplicant.conf
 </span></span></code></pre></div><p>then I ran this command from the wiki:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 </span></span></code></pre></div><p>After this I need to restart <code>dhcp</code>:</p>
