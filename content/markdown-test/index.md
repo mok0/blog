@@ -2,6 +2,7 @@
 date: 2024-06-09T00:09:00+2:00
 title: "Det er min hjemmeside"
 subtitle: Det er en subtitle
+draft: true
 author: Morten Kjeldgaard
 ---
 
