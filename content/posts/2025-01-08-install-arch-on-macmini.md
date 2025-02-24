@@ -56,7 +56,7 @@ systemctl restart iwd
 The next step is to run `wpa_supplicant`.  First I generated a `wpa_supplicant.conf` file:
 
 ```shell
-wpa_passphrase Kanhavehus2 "Elvin&Enzo" > wpa_supplicant.conf
+wpa_passphrase network_name "secret-passphrase" > wpa_supplicant.conf
 ```
 
 then I ran this command from the wiki:
