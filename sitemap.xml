@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bioxray.dk/</loc>
-    <lastmod>2025-01-07T23:42:00+01:00</lastmod>
+    <lastmod>2025-04-08T13:36:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -434,10 +434,6 @@
   </url><url>
     <loc>https://bioxray.dk/posts/linux/2006-05-06-how-to-authenticate-using-ssh/</loc>
     <lastmod>2006-05-06T13:03:44+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://bioxray.dk/color-hexcodes/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
