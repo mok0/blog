@@ -36,5 +36,12 @@
       <guid>https://bioxray.dk/posts/linux/2006-05-06-how-to-authenticate-using-ssh/</guid>
       <description>If you have an account on a remote computer that you use very often, it is convienient if you do not have to type your password every time you log on to another host. You can achieve this by using ssh&amp;rsquo;s authorization keys.&#xA;First, you need to generate a key-pair. A key-pair consists of two small files. One file contains your secret key, the other your public key. Your secret key is, as the name implies, secret.</description>
     </item>
+    <item>
+      <title>Hexcolors</title>
+      <link>https://bioxray.dk/color-hexcodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/color-hexcodes/</guid>
+      <description>I was looking for a list of RGB hexcodes online in json format that you can simply load into a program but I couldn&amp;rsquo;t find one. So I generated one. I have included all color defs I could find, CSS4, X11 and XKCD.&#xA;The json file is here. It&amp;rsquo;s really easy to use in Python, you just load the requests module, call requests.get() on the url (find it by following the link below).</description>
+    </item>
   </channel>
 </rss>

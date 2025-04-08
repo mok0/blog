@@ -22,5 +22,12 @@
       <guid>https://bioxray.dk/posts/2024-07-05-timezone-aware-times-python/</guid>
       <description>&lt;p&gt;The datetime object in Python is very powerful, but if you want to do serious timeseries analysis and use data from around the world, you need to use timezone aware &lt;code&gt;datetime&lt;/code&gt; objects, and these are not the default.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Hexcolors</title>
+      <link>https://bioxray.dk/color-hexcodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/color-hexcodes/</guid>
+      <description>I was looking for a list of RGB hexcodes online in json format that you can simply load into a program but I couldn&amp;rsquo;t find one. So I generated one. I have included all color defs I could find, CSS4, X11 and XKCD.&#xA;The json file is here. It&amp;rsquo;s really easy to use in Python, you just load the requests module, call requests.get() on the url (find it by following the link below).</description>
+    </item>
   </channel>
 </rss>

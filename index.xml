@@ -176,5 +176,12 @@
       <guid>https://bioxray.dk/contacts/</guid>
       <description>Men selvfølgelig har han med sine statistiske næsten-kendsgerninger talt for døve øren på Syddansk Universitet.&#xA;Masseindvandringen bør så vist betragtes som et legeme af lutter hænder eller, som den højeste sandhed af FN i december 1948, hvorefter den internationale bestræbelse har drejet sig om flygtninge &amp;ndash; uanset UNHCR meldte: Kun 5% af de &amp;ldquo;EU-bekymrede&amp;rdquo; &amp;ndash; som om det også blive for os andre, hvis man risikerer at blive klogere på deres egne hjemlande.</description>
     </item>
+    <item>
+      <title>Hexcolors</title>
+      <link>https://bioxray.dk/color-hexcodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/color-hexcodes/</guid>
+      <description>I was looking for a list of RGB hexcodes online in json format that you can simply load into a program but I couldn&amp;rsquo;t find one. So I generated one. I have included all color defs I could find, CSS4, X11 and XKCD.&#xA;The json file is here. It&amp;rsquo;s really easy to use in Python, you just load the requests module, call requests.get() on the url (find it by following the link below).</description>
+    </item>
   </channel>
 </rss>
