@@ -1,18 +1,37 @@
 ---
-title: hexcolors
-layout: post
-date: "2025-04-08 13:36:00"
-published: true
+title: Hexcolors
+layout: single
+date:  2025-05-08T00:13:36+2:00
+draft: false
 categories: ['Linux']
 author: Morten Kjeldgaard
 tags: ['python', 'hexcolors', 'json' ]
 ---
 
-# Hexcolors
+I was looking for a list of RGB hexcodes online in json format that
+you can simply load into a program but I couldn't find one. So I
+generated one. I have included all color defs I could find, CSS4, X11
+and [XKCD](XKCD).
 
-This data includes CSS4, X11 and
-[XKCD](https://blog.xkcd.com/2010/05/03/color-survey-results/) color codes
-([json file here](https://codeberg.org/mok0/gist/raw/branch/main/color-hexcodes.json)).
+The json file is [here](json). It's really easy to use in Python, you
+just load the `requests` module, call `requests.get()` on the url
+(find it by following the link below). That will give you the json
+content as a string that you can decode using Python's `json.loads()`
+method.
+
+```python
+import requests
+import json
+
+url = "https://codeberg.org/mok0/gist/raw/branch/main/color-hexcodes.json"
+response = requests.get(url)
+hexcolors = json.loads(response.text)
+```
+
+Here's the list of colors with colors:
+
+[XKCD]: https://blog.xkcd.com/2010/05/03/color-survey-results/
+[json]:https://codeberg.org/mok0/gist/raw/branch/main/color-hexcodes.json
 
 
 <table style="border: 1px solid silver">
