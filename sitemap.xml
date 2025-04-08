@@ -437,6 +437,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://bioxray.dk/color-hexcodes/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://bioxray.dk/about/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
