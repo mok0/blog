@@ -11,9 +11,10 @@ tags: ['python', 'hexcolors', 'json' ]
 I was looking for a list of RGB hexcodes online in json format that
 you can simply load into a program but I couldn't find one. So I
 generated one. I have included all color defs I could find, CSS4, X11
-and [XKCD](XKCD).
+and [XKCD](https://blog.xkcd.com/2010/05/03/color-survey-results/).
 
-The json file is [here](json). It's really easy to use in Python, you
+The json file is [here](https://codeberg.org/mok0/gist/raw/branch/main/color-hexcodes.json).
+It's really easy to use in Python, you
 just load the `requests` module, call `requests.get()` on the url
 (find it by following the link below). That will give you the json
 content as a string that you can decode using Python's `json.loads()`
@@ -29,9 +30,6 @@ hexcolors = json.loads(response.text)
 ```
 
 Here's the list of colors with colors:
-
-[XKCD]: https://blog.xkcd.com/2010/05/03/color-survey-results/
-[json]:https://codeberg.org/mok0/gist/raw/branch/main/color-hexcodes.json
 
 
 <table style="border: 1px solid silver">
