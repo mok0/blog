@@ -29,7 +29,7 @@ response = requests.get(url)
 hexcolors = json.loads(response.text)
 ```
 
-Here's the list of colors with colors:
+Here's the list of 1513 colors with colors:
 
 <table style="border: 1px solid silver">
 <tr>
