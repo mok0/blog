@@ -175,7 +175,7 @@ tar -xf documents.tar.zst
 In this experiment I have used `cpio`, another Unix archiving utility which is similar to tar, but different.  Instead of specifying a directory, as you do with tar, you feed `cpio` with a list of files via standard input. This means you can use other utilities to generate a list of files you want to back up. In this example, I am looking for all files with the `.tex` extension in `Documents/`, I might not want everything in `Documents/`, only the LaTeX documents. `cpio` by default outputs its archive to `stdout`, so it can be piped into a compression program that further pipes it into a file. `zstd` is easy because you don't need to specify any flags, it's the default behaviour when reading and writing to a pipe. With `gzip`, for example, we would have to specify `gzip -dc` there.
 
 ```shell
-find ~/Documents -name "*.tex" | cpio -o | zstd > ~/backups/tex-documents-$(date --iso).cpio.zstd
+find ~/Documents -name "*.tex" | cpio -o | zstd > ~/backups/tex-documents-$(date --iso).cpio.zst
 ```
 
 The `-o` switch (or `--create`) tells `cpio` that it will be receiving a list of files on `stdin` and it should create an archive. To unpack, one would use the `-i` (or `--extract`) switch, telling `cpio` that it's receiving an archive on `stdin` and it should extract those files.
@@ -212,7 +212,7 @@ As a number 2 comes `gzip`. You probably didn't expect that, did you? There's a 
 
 Number 3 is `bzip2`. Relative to the other programs it's not particularly good at compressing files and it's not particularly fast. However, `bzip2`'s ability to uncompress archives asynchronously as well as its ability to restore corrupt archives gives it a niche in practical use.
 
-The program that is able to do the absolute best compression is `xz`, but it does so at a big price in execution time. At a compression speed at only 1.4 Mb/s It comes last in compression efficiency. For the 1.1 Gb archive in this experiment, `xz` saves 66 Mb compared to the runner up, `zstd`. I disk space is very important to you, and you have plenty of CPU power, then `xz` is a good choice. The Arch Linux project uses `xz` as the compression used in their compiled packages, which are in `.tar.xz` format. It means their software archives are smaller in size, and since `xz` decompresses very fast, it works well for the the end-user of those packages.
+The program that is able to do the absolute best compression is `xz`, but it does so at a big price in execution time. At a compression speed at only 1.4 Mb/s It comes last in compression efficiency. For the 1.1 Gb archive in this experiment, `xz` saves 66 Mb compared to the runner up, `zstd`. If disk space is very important to you, and you have plenty of CPU power, then `xz` is a good choice. The Arch Linux project uses `xz` as the compression used in their compiled packages, which are in `.tar.xz` format. It means their software archives are smaller in size, and since `xz` decompresses very fast, it works well for the the end-user of those packages.
 
 My initial problem was that I chose `xz` to compress backups from my Raspberry Pi's with the `xz` program, and it simply took forever. Then I started to look at these other programs and found that for my use case, `zstd` is outside any competition the best choice.
 
