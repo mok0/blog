@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Macos on MOK&#39;s Onomatomaniske Kaos</title>
-    <link>https://bioxray.dk/tags/macos/</link>
-    <description>Recent content in Macos on MOK&#39;s Onomatomaniske Kaos</description>
+    <title>Linux on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/linux/</link>
+    <description>Recent content in Linux on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
     <lastBuildDate>Mon, 24 Mar 2025 10:49:00 +0100</lastBuildDate>
-    <atom:link href="https://bioxray.dk/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioxray.dk/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Testing Compression Algorithms</title>
       <link>https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/</link>

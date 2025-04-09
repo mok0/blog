@@ -6,8 +6,15 @@
     <description>Recent content on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Tue, 07 Jan 2025 23:42:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 10:49:00 +0100</lastBuildDate>
     <atom:link href="https://bioxray.dk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing Compression Algorithms</title>
+      <link>https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/</link>
+      <pubDate>Mon, 24 Mar 2025 10:49:00 +0100</pubDate>
+      <guid>https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/</guid>
+      <description>Today I tested out various compression programs that are available on macOS/Linux.&#xA;The compression programs used TL;DR: Never mind, take me to Results!&#xA;GNU gzip GNU Gzip is the most used and loved compression program in the Linux/macOS world. Originally written by Jean-loup Gailly and Mark Adler for the GNU project. It has been the standard compression program used for many years in the open source community, and is a well established standard, not least for tar.</description>
+    </item>
     <item>
       <title>Install Arch Linux from scratch on Mac mini</title>
       <link>https://bioxray.dk/posts/2025-01-08-install-arch-on-macmini/</link>

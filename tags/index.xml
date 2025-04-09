@@ -6,8 +6,22 @@
     <description>Recent content in Tags on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Tue, 07 Jan 2025 23:42:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 10:49:00 +0100</lastBuildDate>
     <atom:link href="https://bioxray.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>https://bioxray.dk/tags/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Macos</title>
+      <link>https://bioxray.dk/tags/macos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/macos/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Arch</title>
       <link>https://bioxray.dk/tags/arch/</link>

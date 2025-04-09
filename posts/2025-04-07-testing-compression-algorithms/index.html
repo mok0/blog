@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html data-theme="light"><head>
-	<meta name="generator" content="Hugo 0.128.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="keywords" content="linux, macos, compression, gzip, xz, bz2, zstd, tar, cpio">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link href="/css/main.css" rel="stylesheet"/>
-    <title>MOK&#39;s Onomatomaniske Kaos ~ Super Cool</title>
+    <title>Testing Compression Algorithms ~ MOK&#39;s Onomatomaniske Kaos</title>
 </head>
 <body><header data-theme="dark" >
   <span id="header__title">
@@ -33,23 +33,26 @@
 </nav>
 </header>
 <div id="content">
-<main class="container">
-<article>
-  <p>Welcome to my pages! What I will be posting here is mainly notes I&rsquo;ve made to myself, cleaned up a bit for public consumption. Mainly focused on Linux and programming.</p>
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>Testing Compression Algorithms</h2>
+    </div>
 
-</article>
-<section>
-  <h3>Latest blog post</h3>
-    
-    <article class="homepage-article">
-      <h1>
-      <a href="https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/" class="title-latest-blogpost"> Testing Compression Algorithms</a>
-      </h1>
-      <div class="homepage-article__date">2025-03-24</div>
-      <div class="homepage-article__author">Morten Kjeldgaard</div>
-      <hr />
-      <div class="content">
-        <p><strong>Today I tested out various compression programs that are available on macOS/Linux.</strong></p>
+    <div class="article__categories"><span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="/categories/linux">Linux</a>
+    </div> 
+
+  </div> 
+
+  
+    <div class="article__date">2025-03-24 10:49</div>
+  
+  <div class="article__author">Morten Kjeldgaard</div>
+
+  <hr />
+  <div class="content">
+    <p><strong>Today I tested out various compression programs that are available on macOS/Linux.</strong></p>
 <h2 id="the-compression-programs-used">The compression programs used</h2>
 <p>TL;DR: Never mind, take me to <a href="#results">Results</a>!</p>
 <h3 id="gnu-gzip">GNU gzip</h3>
@@ -202,10 +205,10 @@ Filter the archive through <a href="https://manpages.org/gzip">gzip(1)</a>.</li>
 <p>My initial problem was that I chose <code>xz</code> to compress backups from my Raspberry Pi&rsquo;s with the <code>xz</code> program, and it simply took forever. Then I started to look at these other programs and found that for my use case, <code>zstd</code> is outside any competition the best choice.</p>
 <hr>
 
-      </div> 
-    </article>
-    
-</section>
+  </div> 
+
+  <div class="article__tags"><a class="article__tag" href="/tags/linux">#linux </a><a class="article__tag" href="/tags/macos">#macos </a>
+  </div> 
 </main> 
 
         </div><footer data-theme="dark" >
