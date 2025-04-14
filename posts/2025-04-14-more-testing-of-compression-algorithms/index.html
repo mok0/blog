@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html data-theme="light"><head>
-	<meta name="generator" content="Hugo 0.128.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="description" content="Testing compression programs 2">
+    <meta name="keywords" content="linux, macos, compression, zstd, gzip, bzip2, xz">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link href="/css/main.css" rel="stylesheet"/>
-    <title>MOK&#39;s Onomatomaniske Kaos ~ Super Cool</title>
+    <title>Revisiting the zstd compression algorithm ~ MOK&#39;s Onomatomaniske Kaos</title>
 </head>
 <body><header data-theme="dark" >
   <span id="header__title">
@@ -33,23 +34,26 @@
 </nav>
 </header>
 <div id="content">
-<main class="container">
-<article>
-  <p>Welcome to my pages! What I will be posting here is mainly notes I&rsquo;ve made to myself, cleaned up a bit for public consumption. Mainly focused on Linux and programming.</p>
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>Revisiting the zstd compression algorithm</h2>
+    </div>
 
-</article>
-<section>
-  <h3>Latest blog post</h3>
-    
-    <article class="homepage-article">
-      <h1>
-      <a href="https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/" class="title-latest-blogpost"> Revisiting the zstd compression algorithm</a>
-      </h1>
-      <div class="homepage-article__date">2025-04-14</div>
-      <div class="homepage-article__author">Morten Kjeldgaard</div>
-      <hr />
-      <div class="content">
-        <p>A few days ago, <a href="/posts/2025-04-07-testing-compression-algorithms/">I wrote about various compression algorithms</a> and how they perform. Today, I am looking further into the 19 different compression levels available in <code>zstd</code>. I ran the experiment in exactly the same way, using the same cpio archive and the same computer.</p>
+    <div class="article__categories"><span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="/categories/linux">Linux</a>
+    </div> 
+
+  </div> 
+
+  
+    <div class="article__date">2025-04-14 19:42</div>
+  
+  <div class="article__author">Morten Kjeldgaard</div>
+
+  <hr />
+  <div class="content">
+    <p>A few days ago, <a href="/posts/2025-04-07-testing-compression-algorithms/">I wrote about various compression algorithms</a> and how they perform. Today, I am looking further into the 19 different compression levels available in <code>zstd</code>. I ran the experiment in exactly the same way, using the same cpio archive and the same computer.</p>
 <p><code>zstd</code> has 19 different compression levels, and in the experiment detailed below they are named &ldquo;zstd-1&rdquo;, &ldquo;zstd-2&rdquo;, etc. up to &ldquo;zstd-19&rdquo;. For purposes of comparison, I have included results from <code>gzip</code>, <code>bzip2</code> and <code>xz</code> from last time.</p>
 <p>The data is detailed is in the <a href="#table--data">table below</a>, but let&rsquo;s look at it in graphical form. In the graph below, I have plotted the compression time in seconds along the X-axis, and the size of the compressed file in percentage of the initial size along the Y-axis.</p>
 <p>The left panel shows all the runs. At the top left the uncompressed file is indicated by a yellow dot at (0, 100). Then in green, all the <code>zstd</code> runs are shown. The result from <code>gzip</code> is shown with a blue dot, <code>bzip2</code> is magenta dot and <code>xz</code> is a red dot. The compression ratio drops very quickly and then flattens out almost in an L-shape.</p>
@@ -265,10 +269,10 @@
 </table>
 <hr>
 
-      </div> 
-    </article>
-    
-</section>
+  </div> 
+
+  <div class="article__tags"><a class="article__tag" href="/tags/linux">#linux </a><a class="article__tag" href="/tags/macos">#macos </a><a class="article__tag" href="/tags/compression">#compression </a>
+  </div> 
 </main> 
 
         </div><footer data-theme="dark" >

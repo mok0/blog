@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on MOK&#39;s Onomatomaniske Kaos</title>
-    <link>https://bioxray.dk/tags/linux/</link>
-    <description>Recent content in Linux on MOK&#39;s Onomatomaniske Kaos</description>
+    <title>Compression on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/compression/</link>
+    <description>Recent content in Compression on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
     <lastBuildDate>Mon, 14 Apr 2025 19:42:00 +0200</lastBuildDate>
-    <atom:link href="https://bioxray.dk/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bioxray.dk/tags/compression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Revisiting the zstd compression algorithm</title>
       <link>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</link>

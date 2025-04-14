@@ -3,32 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bioxray.dk/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/categories/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://bioxray.dk/tags/compression/</loc>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/tags/linux/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/categories/linux/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/tags/macos/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</loc>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://bioxray.dk/tags/</loc>
-    <lastmod>2025-03-24T10:49:00+01:00</lastmod>
+    <lastmod>2025-04-14T19:42:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -464,11 +474,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://bioxray.dk/color-hexcodes/</loc>
+    <loc>https://bioxray.dk/tags/json/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://bioxray.dk/tags/json/</loc>
+    <loc>https://bioxray.dk/color-hexcodes/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

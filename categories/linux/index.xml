@@ -6,8 +6,15 @@
     <description>Recent content in Linux on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Mon, 24 Mar 2025 10:49:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 14 Apr 2025 19:42:00 +0200</lastBuildDate>
     <atom:link href="https://bioxray.dk/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Revisiting the zstd compression algorithm</title>
+      <link>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</link>
+      <pubDate>Mon, 14 Apr 2025 19:42:00 +0200</pubDate>
+      <guid>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</guid>
+      <description>A few days ago, I wrote about various compression algorithms and how they perform. Today, I am looking further into the 19 different compression levels available in zstd. I ran the experiment in exactly the same way, using the same cpio archive and the same computer.&#xA;zstd has 19 different compression levels, and in the experiment detailed below they are named &amp;ldquo;zstd-1&amp;rdquo;, &amp;ldquo;zstd-2&amp;rdquo;, etc. up to &amp;ldquo;zstd-19&amp;rdquo;. For purposes of comparison, I have included results from gzip, bzip2 and xz from last time.</description>
+    </item>
     <item>
       <title>Testing Compression Algorithms</title>
       <link>https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/</link>
@@ -44,7 +51,7 @@
       <description>If you have an account on a remote computer that you use very often, it is convienient if you do not have to type your password every time you log on to another host. You can achieve this by using ssh&amp;rsquo;s authorization keys.&#xA;First, you need to generate a key-pair. A key-pair consists of two small files. One file contains your secret key, the other your public key. Your secret key is, as the name implies, secret.</description>
     </item>
     <item>
-      <title>Hexcolors</title>
+      <title>Taking control of hexcolor codes</title>
       <link>https://bioxray.dk/color-hexcodes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://bioxray.dk/color-hexcodes/</guid>

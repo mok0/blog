@@ -6,8 +6,15 @@
     <description>Recent content in Macos on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Mon, 24 Mar 2025 10:49:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 14 Apr 2025 19:42:00 +0200</lastBuildDate>
     <atom:link href="https://bioxray.dk/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Revisiting the zstd compression algorithm</title>
+      <link>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</link>
+      <pubDate>Mon, 14 Apr 2025 19:42:00 +0200</pubDate>
+      <guid>https://bioxray.dk/posts/2025-04-14-more-testing-of-compression-algorithms/</guid>
+      <description>A few days ago, I wrote about various compression algorithms and how they perform. Today, I am looking further into the 19 different compression levels available in zstd. I ran the experiment in exactly the same way, using the same cpio archive and the same computer.&#xA;zstd has 19 different compression levels, and in the experiment detailed below they are named &amp;ldquo;zstd-1&amp;rdquo;, &amp;ldquo;zstd-2&amp;rdquo;, etc. up to &amp;ldquo;zstd-19&amp;rdquo;. For purposes of comparison, I have included results from gzip, bzip2 and xz from last time.</description>
+    </item>
     <item>
       <title>Testing Compression Algorithms</title>
       <link>https://bioxray.dk/posts/2025-04-07-testing-compression-algorithms/</link>
