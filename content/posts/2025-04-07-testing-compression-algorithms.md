@@ -1,10 +1,11 @@
 +++
 title = "Testing Compression Algorithms"
 date = 2025-03-24T10:49:00+01:00
-tags = ["linux", "macos"]
+tags = ["linux", "macos", "compression"]
 categories = ["Linux"]
 draft = false
 author = "Morten Kjeldgaard"
+description = "Testing compression programs"
 keywords = "linux macos compression gzip xz bz2 zstd tar cpio"
 +++
 

@@ -1,5 +1,5 @@
 ---
-title: Hexcolors
+title: Taking control of hexcolor codes
 layout: single
 date:  2025-05-08T00:13:36+2:00
 draft: false
@@ -29,7 +29,7 @@ response = requests.get(url)
 hexcolors = json.loads(response.text)
 ```
 
-Here's the list of 1513 colors with colors:
+Here's the list of 1513 colors:
 
 <table style="border: 1px solid silver">
 <tr>
