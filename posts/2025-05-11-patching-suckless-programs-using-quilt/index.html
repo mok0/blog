@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html data-theme="light"><head>
-	<meta name="generator" content="Hugo 0.128.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="description" content="System to patch suckless programs using quilt">
+    <meta name="keywords" content="suckless, quilt, python">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link href="/css/main.css" rel="stylesheet"/>
-    <title>MOK&#39;s Onomatomaniske Kaos ~ Super Cool</title>
+    <title>Patching suckless programs using Quilt ~ MOK&#39;s Onomatomaniske Kaos</title>
 </head>
 <body><header data-theme="dark" >
   <span id="header__title">
@@ -33,23 +34,26 @@
 </nav>
 </header>
 <div id="content">
-<main class="container">
-<article>
-  <p>Welcome to my pages! What I will be posting here is mainly notes I&rsquo;ve made to myself, cleaned up a bit for public consumption. Mainly focused on Linux and programming.</p>
+<main class=container>
+  <div class="grid">
+    <div class="article__title">
+      <h2>Patching suckless programs using Quilt</h2>
+    </div>
 
-</article>
-<section>
-  <h3>Latest blog post</h3>
-    
-    <article class="homepage-article">
-      <h1>
-      <a href="https://bioxray.dk/posts/2025-05-11-patching-suckless-programs-using-quilt/" class="title-latest-blogpost"> Patching suckless programs using Quilt</a>
-      </h1>
-      <div class="homepage-article__date">2025-05-11</div>
-      <div class="homepage-article__author">Morten Kjeldgaard</div>
-      <hr />
-      <div class="content">
-        <p>I created a system to patch suckless programs using <code>GNU quilt</code>. When building suckless programs from source I found that dealing with the patches was confusing and error prone. I therefore made a tool to make looking at patches systematic and reproducible by making use of <code>quilt</code>. This tool is used by Debian for patching source packages which is why I know about it.</p>
+    <div class="article__categories"><span><i class="fa fa-list"></i></span>
+      <a class="article__category" href="/categories/linux">Linux</a>
+    </div> 
+
+  </div> 
+
+  
+    <div class="article__date">2025-05-11 20:39</div>
+  
+  <div class="article__author">Morten Kjeldgaard</div>
+
+  <hr />
+  <div class="content">
+    <p>I created a system to patch suckless programs using <code>GNU quilt</code>. When building suckless programs from source I found that dealing with the patches was confusing and error prone. I therefore made a tool to make looking at patches systematic and reproducible by making use of <code>quilt</code>. This tool is used by Debian for patching source packages which is why I know about it.</p>
 <p>The advantage of using <code>quilt</code> is that you can always reverse the patches and get back to a blank slate, which means you can do <code>git pull</code> from the upstream repo and then reapply your patches.</p>
 <p>I have written a small Python script that reads a YAML file with the definitions of what patches you want and where to find them, and what priority they have. It&rsquo;s a very simple system that creates a patches directory in the suckless build directory and copies the patches there following a naming scheme that decides in what order patches will be applied.</p>
 <p>The git repo is <a href="https://codeberg.org/mok0/suckless-patches">here on codeberg</a> and there&rsquo;s a tutorial that mainly shows how to use <code>quilt</code>. You will notice that the writeup there is pretty much exactly the same as this blog post 😬</p>
@@ -284,10 +288,10 @@
 <p>One advantage you will notice is if you need to pull updates to the software from git. You can simply pop off all patches, do a <code>git pull origin master</code>, and reapply the patches one by one, solving any problems as you go along.</p>
 <hr>
 
-      </div> 
-    </article>
-    
-</section>
+  </div> 
+
+  <div class="article__tags"><a class="article__tag" href="/tags/python">#python </a><a class="article__tag" href="/tags/quilt">#quilt </a><a class="article__tag" href="/tags/suckless">#suckless </a><a class="article__tag" href="/tags/dwm">#dwm </a>
+  </div> 
 </main> 
 
         </div><footer data-theme="dark" >

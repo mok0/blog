@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quilt on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/quilt/</link>
+    <description>Recent content in Quilt on MOK&#39;s Onomatomaniske Kaos</description>
+    <generator>Hugo</generator>
+    <language>en-dk</language>
+    <lastBuildDate>Sun, 11 May 2025 20:39:00 +0200</lastBuildDate>
+    <atom:link href="https://bioxray.dk/tags/quilt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Patching suckless programs using Quilt</title>
+      <link>https://bioxray.dk/posts/2025-05-11-patching-suckless-programs-using-quilt/</link>
+      <pubDate>Sun, 11 May 2025 20:39:00 +0200</pubDate>
+      <guid>https://bioxray.dk/posts/2025-05-11-patching-suckless-programs-using-quilt/</guid>
+      <description>I created a system to patch suckless programs using GNU quilt. When building suckless programs from source I found that dealing with the patches was confusing and error prone. I therefore made a tool to make looking at patches systematic and reproducible by making use of quilt. This tool is used by Debian for patching source packages which is why I know about it.&#xA;The advantage of using quilt is that you can always reverse the patches and get back to a blank slate, which means you can do git pull from the upstream repo and then reapply your patches.</description>
+    </item>
+  </channel>
+</rss>
