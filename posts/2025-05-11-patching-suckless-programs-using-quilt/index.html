@@ -59,7 +59,7 @@
 <p>The git repo is <a href="https://codeberg.org/mok0/suckless-patches">here on codeberg</a> and there&rsquo;s a tutorial that mainly shows how to use <code>quilt</code>. You will notice that the writeup there is pretty much exactly the same as this blog post 😬</p>
 <h2 id="introduction"><span class="section-num">1</span> Introduction</h2>
 <p>The Python script named <code>suckless-patches.py</code> can help you download suckless patches and prepare them to be applied using <a href="https://savannah.nongnu.org/projects/quilt/quilt/">GNU quilt</a> system, that <em>&ldquo;allows you to easily manage large numbers of patches by keeping track of the changes each patch makes. Patches can be applied, un-applied, refreshed, and more.&rdquo;</em>. The <code>quilt</code> manpage can be seen <a href="https://linux.die.net/man/1/quilt">here</a>.</p>
-<p>In this tutorial, we shall apply patches to the simple terminal <code>st</code>, but the system works as well for <code>dwm</code> and more. For each program you wish to patch, create a file in yaml format that specifies the patches you want. Here is our example file <code>st-patches.yaml</code>.</p>
+<p>In this tutorial, we shall apply patches to the simple terminal <code>st</code>, but the system works as well for <code>dwm</code> and more. For each program you wish to patch, create a file in YAML format that specifies the patches you want. Here is our example file <code>st-patches.yaml</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>builddir: ~/Build/st
 </span></span><span style="display:flex;"><span>url: https://st.suckless.org/patches/
@@ -163,7 +163,7 @@
 </span></span><span style="display:flex;"><span> };
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span> /*
-</span></span></code></pre></div><p>There is a couple of lines that <code>quilt</code> couldn&rsquo;t place, so we add those two lines manually by editing the file. The two lines with <code>ShiftMask</code> couldn&rsquo;t be inserted because those lines were modified by the fullscreen patch. The next reject file, <code>st.h.rej</code> looks like this:</p>
+</span></span></code></pre></div><p>There is a couple of lines that <code>quilt</code> couldn&rsquo;t place, so we add those two lines manually by editing the file. The two lines with <code>ShiftMask</code> couldn&rsquo;t be inserted because those lines were already modified by the fullscreen patch. The next reject file, <code>st.h.rej</code> looks like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>--- st.h
 </span></span><span style="display:flex;"><span>+++ st.h
 </span></span><span style="display:flex;"><span>@@ -81,6 +81,8 @@ void die(const char *, ...);
@@ -208,7 +208,7 @@
 </span></span><span style="display:flex;"><span>patching file st.h
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Now at patch 040-st-scrollback-0.9.2.diff
-</span></span></code></pre></div><p>Both patches now work, time to see if <code>st</code> compiles:</p>
+</span></span></code></pre></div><p>Both patches now applied cleanly, time to see if <code>st</code> compiles:</p>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ rm config.h
 </span></span><span style="display:flex;"><span>$ make clean st
 </span></span><span style="display:flex;"><span>rm -f st st.o x.o st-0.9.2.tar.gz
