@@ -22,7 +22,7 @@ The git repo is [here on codeberg](https://codeberg.org/mok0/suckless-patches) a
 
 The Python script named `suckless-patches.py` can help you download suckless patches and prepare them to be applied using [GNU quilt](https://savannah.nongnu.org/projects/quilt/quilt/) system, that _"allows you to easily manage large numbers of patches by keeping track of the changes each patch makes. Patches can be applied, un-applied, refreshed, and more."_. The `quilt` manpage can be seen [here](https://linux.die.net/man/1/quilt).
 
-In this tutorial, we shall apply patches to the simple terminal `st`, but the system works as well for `dwm` and more. For each program you wish to patch, create a file in yaml format that specifies the patches you want. Here is our example file `st-patches.yaml`.
+In this tutorial, we shall apply patches to the simple terminal `st`, but the system works as well for `dwm` and more. For each program you wish to patch, create a file in YAML format that specifies the patches you want. Here is our example file `st-patches.yaml`.
 
 ```shell
 ---
@@ -182,7 +182,7 @@ Here is the first reject, `config.def.h.rej`:
  /*
 ```
 
-There is a couple of lines that `quilt` couldn't place, so we add those two lines manually by editing the file. The two lines with `ShiftMask` couldn't be inserted because those lines were modified by the fullscreen patch. The next reject file, `st.h.rej` looks like this:
+There is a couple of lines that `quilt` couldn't place, so we add those two lines manually by editing the file. The two lines with `ShiftMask` couldn't be inserted because those lines were already modified by the fullscreen patch. The next reject file, `st.h.rej` looks like this:
 
 ```diff
 --- st.h
@@ -244,7 +244,7 @@ patching file st.h
 Now at patch 040-st-scrollback-0.9.2.diff
 ```
 
-Both patches now work, time to see if `st` compiles:
+Both patches now applied cleanly, time to see if `st` compiles:
 
 ```shell
 $ rm config.h
