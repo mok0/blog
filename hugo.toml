@@ -34,6 +34,12 @@ paginate = 4
     weight = 20
 
 [[menu.main]]
+    identifier = "hexcodes"
+    name = "Hexcodes"
+    url = "/color-hexcodes"
+    weight = 22
+
+[[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about"
