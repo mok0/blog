@@ -6,8 +6,57 @@
     <description>Recent content in Tags on MOK&#39;s Onomatomaniske Kaos</description>
     <generator>Hugo</generator>
     <language>en-dk</language>
-    <lastBuildDate>Tue, 20 May 2025 01:50:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 21:22:00 +0200</lastBuildDate>
     <atom:link href="https://bioxray.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch</title>
+      <link>https://bioxray.dk/tags/arch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/arch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Broadcom-Wl</title>
+      <link>https://bioxray.dk/tags/broadcom-wl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/broadcom-wl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Btrfs</title>
+      <link>https://bioxray.dk/tags/btrfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/btrfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chroot</title>
+      <link>https://bioxray.dk/tags/chroot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/chroot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Debian</title>
+      <link>https://bioxray.dk/tags/debian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Debootstrap</title>
+      <link>https://bioxray.dk/tags/debootstrap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/debootstrap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Install</title>
+      <link>https://bioxray.dk/tags/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://bioxray.dk/tags/install/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Desktop</title>
       <link>https://bioxray.dk/tags/desktop/</link>
@@ -69,20 +118,6 @@
       <link>https://bioxray.dk/tags/macos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://bioxray.dk/tags/macos/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Arch</title>
-      <link>https://bioxray.dk/tags/arch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bioxray.dk/tags/arch/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Broadcom-Wl</title>
-      <link>https://bioxray.dk/tags/broadcom-wl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://bioxray.dk/tags/broadcom-wl/</guid>
       <description></description>
     </item>
     <item>

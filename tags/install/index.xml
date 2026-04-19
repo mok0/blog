@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Install on MOK&#39;s Onomatomaniske Kaos</title>
+    <link>https://bioxray.dk/tags/install/</link>
+    <description>Recent content in Install on MOK&#39;s Onomatomaniske Kaos</description>
+    <generator>Hugo</generator>
+    <language>en-dk</language>
+    <lastBuildDate>Sat, 18 Apr 2026 21:22:00 +0200</lastBuildDate>
+    <atom:link href="https://bioxray.dk/tags/install/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I use Debian, BTW</title>
+      <link>https://bioxray.dk/posts/2026-04-17-i-use-debian-btw/</link>
+      <pubDate>Sat, 18 Apr 2026 21:22:00 +0200</pubDate>
+      <guid>https://bioxray.dk/posts/2026-04-17-i-use-debian-btw/</guid>
+      <description>Introduction I came into an old Apple MacBook Pro 13 inch mid 2011. It&amp;rsquo;s a dual core machine, with 4Gb RAM and it came with a 240Gb SSD, which the previous owner wanted to keep, so I swapped it for a 128 Gb SSD I had from my ThinkPad T520. Interestingly, that SSD had Windows 10 on it, and the MacBook actually booted up in Windows when I installed it. I also put in a new battery in the MacBook, the old one was finished.</description>
+    </item>
+  </channel>
+</rss>
