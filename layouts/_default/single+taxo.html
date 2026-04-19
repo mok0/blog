@@ -9,29 +9,5 @@
       {{ .Content }}
     </div>
   </article>
-
-
-<!-- test tag section from theme jane -->
-<!--
-<div class="tag-section">
-          {{ with .Params.tags -}}
-            <div class="post-tags">
-              {{ range . }}
-                {{- $name := . -}}
-                {{- with $.Site.GetPage "taxonomy" (printf "tags/%s" $name) | default ($.Sit
-e.GetPage "taxonomy" (printf "tags/%s" ($name | urlize))) -}}
-                  <a href="{{ .Permalink }}">{{ $name }}</a>
-                {{ end -}}
-              {{ end }}
-            </div>
-          {{- end }}
-</div>
--->
-
-
-
-
-
-
 </div>
 {{ end }}
